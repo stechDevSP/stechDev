@@ -1,0 +1,20 @@
+/**
+ * Breakpoints
+ */
+
+$breakpoints: (
+    small: 20em, // Mobile
+    medium: 35em, // 560px // Tablet
+    large: 60em // 960px // Desktop
+);
+
+/**
+ * Tweakpoints
+ */
+
+$tweakpoints: ();
+
+/**
+ * Paths
+ */
+$imagePath: '/_img';
