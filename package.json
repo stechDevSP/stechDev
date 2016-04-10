@@ -1,0 +1,55 @@
+{
+  "name": "starterpack",
+  "version": "0.0.1",
+  "description": "A frontend starter pack for projects at Golin.",
+  "config": {
+    "basepath": {
+      "src": {
+        "img": "assets/img",
+        "js": "assets/js",
+        "css": "assets/css"
+      },
+      "dest": {
+        "img": "public/_img",
+        "js": "public/_js",
+        "css": "public/_css",
+        "styleguide": "public/_styleguide"
+      }
+    }
+  },
+  "scripts": {
+    "prebuild:css": "rm -rf $npm_package_config_basepath_dest_js && mkdir -p $npm_package_config_basepath_dest_css",
+    "build:css": "node-sass $npm_package_config_basepath_src_css -o $npm_package_config_basepath_dest_css --source-map $npm_package_config_basepath_dest_css",
+    "postbuild:css": "node scripts/build.css.post.js --directory $npm_package_config_basepath_dest_css/**/* --styleguide $npm_package_config_basepath_dest_styleguide",
+    "prebuild:images": "rm -rf $npm_package_config_basepath_dest_img && mkdir -p $npm_package_config_basepath_dest_img",
+    "build:images": "node scripts/build.images.js --directory $npm_package_config_basepath_src_img --output $npm_package_config_basepath_dest_img",
+    "prebuild:js": "rm -rf $npm_package_config_basepath_dest_js && mkdir -p $npm_package_config_basepath_dest_js",
+    "build:js": "cat `find $npm_package_config_basepath_src_js -name '*.js' | sort -r` > $npm_package_config_basepath_dest_js/app.js",
+    "postbuild:js": "uglifyjs $npm_package_config_basepath_dest_js/app.js -o $npm_package_config_basepath_dest_js/app.js --screw-ie8 --source-map $npm_package_config_basepath_dest_js/app.js.map --source-map-url /_js/app.js.map",
+    "lint": "npm run lint:js",
+    "lint:js": "eslint $npm_package_config_basepath_src_js/**/*.js"
+  },
+  "author": "Jake Mulley <jmulley@golin.com>",
+  "license": "Unlicense",
+  "bugs": {
+    "url": "https://github.com/golincode/starterpack/issues"
+  },
+  "homepage": "https://github.com/golincode/starterpack#readme",
+  "dependencies": {
+    "autoprefixer": "^6.3.5",
+    "cssnano": "^3.5.2",
+    "es6-promise": "^3.1.2",
+    "glob": "^7.0.3",
+    "imagemin": "^4.0.0",
+    "mdcss": "^1.5.1",
+    "minimist": "^1.2.0",
+    "node-sass": "^3.4.2",
+    "postcss": "^5.0.19",
+    "postcss-flexbugs-fixes": "^2.0.0",
+    "postcss-pxtorem": "^3.3.1",
+    "uglifyjs": "^2.4.10"
+  },
+  "devDependencies": {
+    "eslint": "^2.4.0"
+  }
+}
