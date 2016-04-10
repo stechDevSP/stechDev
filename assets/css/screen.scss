@@ -23,7 +23,6 @@
 /**
  * Import all layout files
  */
-@import 'pages/home';
 
 /**
  * Import all component files
@@ -33,3 +32,11 @@
 /**
  * Import page specific files
  */
+@import 'pages/home';
+
+/**
+ * Import print styles (if necessary)
+ */
+@media print {
+
+}
