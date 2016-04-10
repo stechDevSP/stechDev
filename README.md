@@ -22,7 +22,6 @@ The CSS structure is based upon the [7-1 Pattern](http://sass-guidelin.es/#the-7
         /utils - Includes all Sass tools, helpers, etcetera. This should include every global variable, function, mixin and placeholder.
         /vendors - Includes all vendor files - if you didn't write it, it goes here.
     ie.scss - Compiles a separate stylesheet for IE
-    print.scss - Compiles a separate stylesheet for print
     screen.scss - Compiles a separate stylesheet for screen
 ```
 
@@ -30,10 +29,13 @@ The CSS structure is based upon the [7-1 Pattern](http://sass-guidelin.es/#the-7
 If you need to write specific code for IE fixes for an element, please create another file in the folder, and suffix the filename with `.ie.scss`. This makes it easier for yourself and other developers to find IE-specific files if they need to. These specific stylesheets should _only_ be imported in the ie.scss file.
 
 #### Print Specific Styles
-As with IE Specific Styles, please create another file, in the same folder as the original file, and suffix the filename with `.print.scss`. These specific stylesheets should _only_ be imported in the print.scss file.
+As with IE Specific Styles, please create another file, in the same folder as the original file, and suffix the filename with `.print.scss`. These specific stylesheets should be imported in the screen.scss, inside the `@media print` block.
 
 ### JavaScript
+The JavaScript structure depends on what your framework of choice is. If you are using AngularJS, please follow [John Papa's](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md) styleguide.
+
 ### Images
+I've recently got into the habit of splitting images into folders based on type - svgs in one, pngs in another. You're welcome to do whatever you want here!
 
 ## Usage
 - Build everything: `npm run build` / `npm run build --production`
@@ -44,10 +46,10 @@ As with IE Specific Styles, please create another file, in the same folder as th
 - Watch everything: `npm run watch`
 
 ### Using the Production flag
-The production flag strips some tasks for being run on servers, such as linting JS and CSS, or generating a styleguide, which are only ever installed as dev dependencies anyway. Image compression is also _not_ run on the servers as it has a massive overhead. This means it will a) use less space on a server, and b) take less time to deploy.
+The production flag strips some tasks for being run on servers, such as linting JS and CSS, or generating a styleguide, which are only ever installed as dev dependencies anyway.
 
 ### A note about Images
-PNGs, JPGs, etcetera, are all minified using Imagemin - locally. This is not run on any servers, and is only run locally. Your initial image files will be replaced with their respective minified versions. These will have to be committed, and compiled into the `public` folder on build.
+PNGs, JPGs, etcetera, are all minified using Imagemin. Please note this may take a long time, so get a cuppa!
 
 SVGs are minified, added to a single file (svg.svg), and are injected inline.
 
@@ -146,3 +148,14 @@ PNGs, JPGs, etcetera, are all minified using Imagemin. This is not run on any se
 
 #### SVGs
 SVGs are minified, added to a single file (svg.svg), and are injected inline.
+
+# Todo
+- SVGs are minified, added to a single file (svg.svg), and are injected inline.
+- npm run build --production
+- Watch tasks
+- ESlint implementation
+- Sourcemap check
+- Imagemin caching
+- Hashbust and Inject
+- Styleguide theme for Golin
+- Inline-svg
