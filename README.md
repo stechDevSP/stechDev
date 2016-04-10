@@ -2,11 +2,11 @@
 A frontend starter pack for projects at Golin.
 
 ## Browser Support
-Chrome (latest)
-Firefox (latest)
-IE Edge (IE 12+)
-Internet Explorer 9+
-Safari (latest)
+- Chrome (latest)
+- Firefox (latest)
+- IE Edge (IE 12+)
+- Internet Explorer 9+
+- Safari (latest)
 
 ## Structure
 ### CSS
