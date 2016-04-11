@@ -94,10 +94,14 @@ You can also run `watch:css`, `watch:js`, `watch:images`, but I'll let you guess
 
 This task will create a separate directory, /public/_styleguide, which is where the styleguide will reside. This task takes upwards of 5 seconds on most stylesheets, hence it is not part of the Build CSS task (for quicker development).
 
-## Updating the Starterpack
+## Cachebusting
+A major issue with clients is having them to forcibly clear cache. For non-tech savvy clients, this can prove a problem. Therefore, I have built two NPM modules that will automatically append a hash to a filename based on contents, and then inject the reference into `index.php`.
+
+## Notes
+### Updating the Starterpack
 This Starterpack will be updated weekly, on a Friday evening, if needs be. Deprecated packages, if any, will be replaced/removed, and packages will be updated to their latest appropriate version.
 
-## Contributing
+### Contributing
 If you wish to add a task, or add features to a current task, please feel free. Fork this repository and PR back into `develop`!
 
 ## Other notes
@@ -156,6 +160,5 @@ SVGs are minified, added to a single file (svg.svg), and are injected inline.
 - ESlint implementation
 - Sourcemap check
 - Imagemin caching
-- Hashbust and Inject
 - Styleguide theme for Golin
 - Inline-svg

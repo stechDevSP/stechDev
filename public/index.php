@@ -13,7 +13,7 @@
         <link rel="apple-touch-icon" href="_img/apple-touch-icon.png">
 
         <!-- Styles -->
-        <link rel="stylesheet" href="_css/screen.css">
+        <!--inject:css--><!--inject:stop-->
 
         <!--[if lt IE 9 ]>
         <link href="_css/ie.css" rel="stylesheet" type="text/css">
@@ -31,6 +31,8 @@
         <!-- Scripts -->
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="_bower-packages/dist/jquery.min.js"><\/script>')</script>
+
+        <!--inject:js--><!--inject:stop-->
 
     </body>
 </html>
