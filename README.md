@@ -64,7 +64,7 @@ The CSS task will do the following:
 - Minify CSS using CSSNano
 - Generate sourcemaps for your CSS files, removing the need to generate both a minified and unminified version
 
-This task will output a `screen.css`, `ie.css` and `print.css` as separate stylesheets.
+This task will output a `screen.css` and `ie.css` as separate stylesheets.
 
 ### Build JS
 The JS task will do the following:
@@ -159,3 +159,4 @@ SVGs are minified, added to a single file (svg.svg), and are injected inline.
 - Hashbust and Inject
 - Styleguide theme for Golin
 - Inline-svg
+- Remove lint from production task

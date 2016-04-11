@@ -24,7 +24,7 @@
     "postbuild:css": "node scripts/build.css.post.js --directory $npm_package_config_basepath_dest_css/**/* --styleguide $npm_package_config_basepath_dest_styleguide",
     "prebuild:images": "rm -rf $npm_package_config_basepath_dest_img && mkdir -p $npm_package_config_basepath_dest_img",
     "build:images": "node scripts/build.images.js --directory $npm_package_config_basepath_src_img --output $npm_package_config_basepath_dest_img",
-    "prebuild:js": "rm -rf $npm_package_config_basepath_dest_js && mkdir -p $npm_package_config_basepath_dest_js",
+    "prebuild:js": "npm run lint:js && rm -rf $npm_package_config_basepath_dest_js && mkdir -p $npm_package_config_basepath_dest_js",
     "build:js": "cat `find $npm_package_config_basepath_src_js -name '*.js' | sort -r` > $npm_package_config_basepath_dest_js/app.js",
     "postbuild:js": "uglifyjs $npm_package_config_basepath_dest_js/app.js -o $npm_package_config_basepath_dest_js/app.js --screw-ie8 --source-map $npm_package_config_basepath_dest_js/app.js.map --source-map-url /_js/app.js.map",
     "lint": "npm run lint:js",
@@ -51,6 +51,8 @@
     "uglifyjs": "^2.4.10"
   },
   "devDependencies": {
-    "eslint": "^2.4.0"
+    "eslint": "^2.4.0",
+    "eslint-config-airbnb": "^6.2.0",
+    "eslint-plugin-react": "^4.3.0"
   }
 }

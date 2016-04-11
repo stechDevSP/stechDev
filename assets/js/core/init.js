@@ -1,18 +1,10 @@
-var CORE_JS = (function ($) {
+(function ($) {
+  'use strict';
 
-  var variables = '',
+  function domReady() {
+    $('body').addClass('jquery');
+  }
 
-    init      = function() {
-      $('html').removeClass('no-js').addClass('has-js');
-      $(domReady);
-    },
-
-    domReady  = function() {
-      $('body').addClass('jquery');
-    };
-
-  return {
-    go: init
-  };
-
-})(jQuery);
+  $('html').removeClass('no-js').addClass('has-js');
+  $(domReady);
+})();
