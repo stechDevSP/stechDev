@@ -32,7 +32,9 @@ If you need to write specific code for IE fixes for an element, please create an
 As with IE Specific Styles, please create another file, in the same folder as the original file, and suffix the filename with `.print.scss`. These specific stylesheets should be imported in the screen.scss, inside the `@media print` block.
 
 ### JavaScript
-The JavaScript structure depends on what your framework of choice is. If you are using AngularJS, please follow [John Papa's](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md) styleguide.
+The JavaScript structure depends on what your framework of choice is. If you are using AngularJS, please follow [John Papa's](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md) styleguide. If you're using anything else (including jQuery), please follow the [ESLint Code Conventions](http://eslint.org/docs/developer-guide/code-conventions). The linter is configured for the ESLint Code Conventions using their recommended rules. We do, however, indent JS files with 2 (instead of 4) spaces.
+
+Please also make an effort to write docblocks. We have implemented them on all backend projects, and on some frontend projects. It makes it so much easier for someone to jump onto the project and understand it if they've never worked on it before.
 
 ### Images
 I've recently got into the habit of splitting images into folders based on type - svgs in one, pngs in another. You're welcome to do whatever you want here!
@@ -64,7 +66,7 @@ The CSS task will do the following:
 - Minify CSS using CSSNano
 - Generate sourcemaps for your CSS files, removing the need to generate both a minified and unminified version
 
-This task will output a `screen.css`, `ie.css` and `print.css` as separate stylesheets.
+This task will output a `screen.css` and `ie.css` as separate stylesheets.
 
 ### Build JS
 The JS task will do the following:
@@ -105,7 +107,7 @@ Please make an effort to stop using jQuery for animations, changing CSS properti
 
 Please also stop using floats. Floats are _a fucking pain_ in the ass, and require a hack (see: clearfix) for it to work correctly. You know what's good? Flexbox. Flexbox is better than using floats. Plus, it's fucking easy to vertical align shit that's next to eachother. You can do it with one fucking line (see: `align-items: center`, `justify-content: center`). Oh, and you don't get that PESKY FUCKING SPACE inbetween divs like you do with `display: inline-block`.
 
----- CHECK AND REMOVE ----
+<!-- ---- CHECK AND REMOVE ----
 ## Usage
 ### Build Everything
 To compile CSS, JavaScript and images, run `npm run build:local` on the command line in your Vagrant box. On an Architect server, do _not_ run this. Instead, run `npm run build:server`. The latter will omit developer dependencies, such as Imagemin.
@@ -119,9 +121,6 @@ To start watching files, run `npm run watch`. This will watch your CSS files, Ja
 ### Build CSS
 To compile CSS, run `npm run build:css` on the command line in your Vagrant box.
 
-### Build JavaScript
-To compile JavaScript, run `npm run build:js` on the command line in your Vagrant box.
-
 ### Process Images
 To process images, run `npm run build:images` on the command line in your Vagrant box.
 
@@ -131,13 +130,6 @@ The following proccesses are run:
 - Autoprefixer
 - PXtoREM
 - CSSNano
-- Automatically generate sourcemaps
-
-### JavaScript
-The following proccesses are run:
-- Concat
-- ESHint
-- UglifyJS2
 - Automatically generate sourcemaps
 
 ### Images
@@ -159,3 +151,5 @@ SVGs are minified, added to a single file (svg.svg), and are injected inline.
 - Hashbust and Inject
 - Styleguide theme for Golin
 - Inline-svg
+- Remove lint from production task
+ -->

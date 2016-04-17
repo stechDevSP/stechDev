@@ -1,1 +1,5 @@
-CORE_JS.go();
+'use strict';
+
+(function () {
+  // Do your JS here
+})();
