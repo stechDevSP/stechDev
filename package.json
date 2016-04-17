@@ -28,7 +28,7 @@
     "build:js": "cat `find $npm_package_config_basepath_src_js -name '*.js' | sort -r` > $npm_package_config_basepath_dest_js/app.js",
     "postbuild:js": "uglifyjs $npm_package_config_basepath_dest_js/app.js -o $npm_package_config_basepath_dest_js/app.js --screw-ie8 --source-map $npm_package_config_basepath_dest_js/app.js.map --source-map-url /_js/app.js.map",
     "lint": "npm run lint:js",
-    "lint:js": "eslint $npm_package_config_basepath_src_js/**/*.js"
+    "lint:js": "eslint $npm_package_config_basepath_src_js/**/*.js -c .eslintrc"
   },
   "author": "Jake Mulley <jmulley@golin.com>",
   "license": "Unlicense",
@@ -51,8 +51,6 @@
     "uglifyjs": "^2.4.10"
   },
   "devDependencies": {
-    "eslint": "^2.4.0",
-    "eslint-config-airbnb": "^6.2.0",
-    "eslint-plugin-react": "^4.3.0"
+    "eslint": "^2.8.0"
   }
 }
