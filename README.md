@@ -51,11 +51,7 @@ I've recently got into the habit of splitting images into folders based on type 
 The production flag strips some tasks for being run on servers, such as linting JS and CSS, or generating a styleguide, which are only ever installed as dev dependencies anyway.
 
 ### A note about Images
-PNGs, JPGs, etcetera, are all minified using Imagemin. Please note this may take a long time, so get a cuppa!
-
-SVGs are minified, added to a single file (svg.svg), and are injected inline.
-
-(Possibly add task called something witty that will minify these images before launch, and also tags versions...!)
+PNGs, JPGs, etcetera, are all minified using Imagemin. Please note this may take a long time, so get a cuppa! SVGs are minified and then added to a single file (sprite.css.svg).
 
 ## What does each task do?
 ### Build CSS
@@ -121,9 +117,6 @@ To start watching files, run `npm run watch`. This will watch your CSS files, Ja
 ### Build CSS
 To compile CSS, run `npm run build:css` on the command line in your Vagrant box.
 
-### Process Images
-To process images, run `npm run build:images` on the command line in your Vagrant box.
-
 ## What's happening during the process?
 ### CSS
 The following proccesses are run:
@@ -132,24 +125,15 @@ The following proccesses are run:
 - CSSNano
 - Automatically generate sourcemaps
 
-### Images
-#### General
-- Imagemin
-
-PNGs, JPGs, etcetera, are all minified using Imagemin. This is not run on any servers, and is only run locally. Your initial image files will be replaced with their respective minified versions. These will have to be committed, and compiled into the `public` folder on build.
-
-#### SVGs
-SVGs are minified, added to a single file (svg.svg), and are injected inline.
-
 # Todo
-- SVGs are minified, added to a single file (svg.svg), and are injected inline.
 - npm run build --production
 - Watch tasks
 - ESlint implementation
 - Sourcemap check
-- Imagemin caching
 - Hashbust and Inject
 - Styleguide theme for Golin
-- Inline-svg
 - Remove lint from production task
  -->
+
+## Todo
+- Create package to cache minified images, speeding up Imagemin in the process
