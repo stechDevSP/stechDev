@@ -8,7 +8,6 @@ var fs               = require('fs'),
     cssnano          = require('cssnano'),
     flexbugfixes     = require('postcss-flexbugs-fixes'),
     glob             = require('glob'),
-    mdcss            = require('mdcss'),
     postcss          = require('postcss'),
     pxtorem          = require('postcss-pxtorem'),
 
@@ -27,10 +26,6 @@ var fs               = require('fs'),
       autoprefixer: false // Turn off autoprefixing using CSS Nano
     },
 
-    mdcssOpts        = {
-      destination: argv.styleguide
-    },
-
     pxtoremOpts      = {
       replace: false,
       mediaQuery: false
@@ -41,7 +36,6 @@ var fs               = require('fs'),
         flexbugfixes(),
         autoprefixer(autoprefixerOpts),
         pxtorem(pxtoremOpts),
-        mdcss(mdcssOpts),
         cssnano(cssnanoOpts)
       ]);
 

@@ -44,11 +44,10 @@ I've recently got into the habit of splitting images into folders based on type 
 - Build CSS: `npm run build:css`
 - Build JS: `npm run build:js`
 - Build Images: `npm run build:images`
-- Build Styleguide: `npm run build:styleguide`
 - Watch everything: `npm run watch`
 
 ### Using the Production flag
-The production flag strips some tasks for being run on servers, such as linting JS and CSS, or generating a styleguide, which are only ever installed as dev dependencies anyway.
+The production flag strips some tasks for being run on servers, such as linting JS and CSS, which are only ever installed as dev dependencies anyway.
 
 ### A note about Images
 PNGs, JPGs, etcetera, are all minified using Imagemin. Please note this may take a long time, so get a cuppa! SVGs are minified and then added to a single file (sprite.css.svg).
@@ -79,18 +78,11 @@ The image task will do the following:
 - Inject SVG block into specified file
 - Output into public folder
 
-### Build Styleguide
-The `build:styleguide` task will do the following:
-- Automagically generate a styleguide if you've commented your CSS files appropriately
-- Output into public folder
-
 ### Watch
 The `watch` task will do the following:
 - Watch CSS, JS, Images and run each build task on change.
 
 You can also run `watch:css`, `watch:js`, `watch:images`, but I'll let you guess what they do.
-
-This task will create a separate directory, /public/_styleguide, which is where the styleguide will reside. This task takes upwards of 5 seconds on most stylesheets, hence it is not part of the Build CSS task (for quicker development).
 
 ## Cachebusting
 A major issue with clients is having them to forcibly clear cache. For non-tech savvy clients, this can prove a problem. Therefore, I have built two NPM modules that will automatically append a hash to a filename based on contents, and then inject the reference into `index.php`.
@@ -107,36 +99,18 @@ Please make an effort to stop using jQuery for animations, changing CSS properti
 
 Please also stop using floats. Floats are _a fucking pain_ in the ass, and require a hack (see: clearfix) for it to work correctly. You know what's good? Flexbox. Flexbox is better than using floats. Plus, it's fucking easy to vertical align shit that's next to eachother. You can do it with one fucking line (see: `align-items: center`, `justify-content: center`). Oh, and you don't get that PESKY FUCKING SPACE inbetween divs like you do with `display: inline-block`.
 
-<!-- ---- CHECK AND REMOVE ----
-## Usage
-### Build Everything
-To compile CSS, JavaScript and images, run `npm run build:local` on the command line in your Vagrant box. On an Architect server, do _not_ run this. Instead, run `npm run build:server`. The latter will omit developer dependencies, such as Imagemin.
-
-### Build Everything
-To compile CSS, JavaScript and images, run `npm run build:local` on the command line in your Vagrant box. On an Architect server, do _not_ run this. Instead, run `npm run build:server`. The latter will omit developer dependencies, such as Imagemin.
-
+<!--
 ### Watch
 To start watching files, run `npm run watch`. This will watch your CSS files, JavaScript files and images.
-
-### Build CSS
-To compile CSS, run `npm run build:css` on the command line in your Vagrant box.
-
-## What's happening during the process?
-### CSS
-The following proccesses are run:
-- Autoprefixer
-- PXtoREM
-- CSSNano
-- Automatically generate sourcemaps
 
 # Todo
 - npm run build --production
 - Watch tasks
-- ESlint implementation
 - Sourcemap check
-- Styleguide theme for Golin
+- Hashbust and Inject
 - Remove lint from production task
  -->
 
 ## Todo
 - Create package to cache minified images, speeding up Imagemin in the process
+- Include package to automatically generate styleguide (that works)
