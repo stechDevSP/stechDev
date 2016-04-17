@@ -107,7 +107,7 @@ To start watching files, run `npm run watch`. This will watch your CSS files, Ja
 - npm run build --production
 - Watch tasks
 - Sourcemap check
-- Hashbust and Inject
+- Hashbust and Inject - including SVGS
 - Remove lint from production task
  -->
 
