@@ -95,32 +95,13 @@ Please make an effort to stop using jQuery for animations, changing CSS properti
 
 Please also stop using floats. Floats are _a fucking pain_ in the ass, and require a hack (see: clearfix) for it to work correctly. You know what's good? Flexbox. Flexbox is better than using floats. Plus, it's fucking easy to vertical align shit that's next to eachother. You can do it with one fucking line (see: `align-items: center`, `justify-content: center`). Oh, and you don't get that PESKY FUCKING SPACE inbetween divs like you do with `display: inline-block`.
 
-<!-- ---- CHECK AND REMOVE ----
-## Usage
-### Build Everything
-To compile CSS, JavaScript and images, run `npm run build:local` on the command line in your Vagrant box. On an Architect server, do _not_ run this. Instead, run `npm run build:server`. The latter will omit developer dependencies, such as Imagemin.
-
-### Build Everything
-To compile CSS, JavaScript and images, run `npm run build:local` on the command line in your Vagrant box. On an Architect server, do _not_ run this. Instead, run `npm run build:server`. The latter will omit developer dependencies, such as Imagemin.
-
+<!--
 ### Watch
 To start watching files, run `npm run watch`. This will watch your CSS files, JavaScript files and images.
-
-### Build CSS
-To compile CSS, run `npm run build:css` on the command line in your Vagrant box.
-
-## What's happening during the process?
-### CSS
-The following proccesses are run:
-- Autoprefixer
-- PXtoREM
-- CSSNano
-- Automatically generate sourcemaps
 
 # Todo
 - npm run build --production
 - Watch tasks
-- ESlint implementation
 - Sourcemap check
 - Hashbust and Inject
 - Remove lint from production task
