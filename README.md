@@ -44,11 +44,10 @@ I've recently got into the habit of splitting images into folders based on type 
 - Build CSS: `npm run build:css`
 - Build JS: `npm run build:js`
 - Build Images: `npm run build:images`
-- Build Styleguide: `npm run build:styleguide`
 - Watch everything: `npm run watch`
 
 ### Using the Production flag
-The production flag strips some tasks for being run on servers, such as linting JS and CSS, or generating a styleguide, which are only ever installed as dev dependencies anyway.
+The production flag strips some tasks for being run on servers, such as linting JS and CSS, which are only ever installed as dev dependencies anyway.
 
 ### A note about Images
 PNGs, JPGs, etcetera, are all minified using Imagemin. Please note this may take a long time, so get a cuppa! SVGs are minified and then added to a single file (sprite.css.svg).
@@ -79,18 +78,11 @@ The image task will do the following:
 - Inject SVG block into specified file
 - Output into public folder
 
-### Build Styleguide
-The `build:styleguide` task will do the following:
-- Automagically generate a styleguide if you've commented your CSS files appropriately
-- Output into public folder
-
 ### Watch
 The `watch` task will do the following:
 - Watch CSS, JS, Images and run each build task on change.
 
 You can also run `watch:css`, `watch:js`, `watch:images`, but I'll let you guess what they do.
-
-This task will create a separate directory, /public/_styleguide, which is where the styleguide will reside. This task takes upwards of 5 seconds on most stylesheets, hence it is not part of the Build CSS task (for quicker development).
 
 ## Updating the Starterpack
 This Starterpack will be updated weekly, on a Friday evening, if needs be. Deprecated packages, if any, will be replaced/removed, and packages will be updated to their latest appropriate version.
@@ -131,9 +123,9 @@ The following proccesses are run:
 - ESlint implementation
 - Sourcemap check
 - Hashbust and Inject
-- Styleguide theme for Golin
 - Remove lint from production task
  -->
 
 ## Todo
 - Create package to cache minified images, speeding up Imagemin in the process
+- Include package to automatically generate styleguide (that works)
