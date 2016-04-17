@@ -117,9 +117,6 @@ To start watching files, run `npm run watch`. This will watch your CSS files, Ja
 ### Build CSS
 To compile CSS, run `npm run build:css` on the command line in your Vagrant box.
 
-### Process Images
-To process images, run `npm run build:images` on the command line in your Vagrant box.
-
 ## What's happening during the process?
 ### CSS
 The following proccesses are run:
@@ -128,19 +125,15 @@ The following proccesses are run:
 - CSSNano
 - Automatically generate sourcemaps
 
-### Images
-#### General
-- Imagemin
-
-PNGs, JPGs, etcetera, are all minified using Imagemin. This is not run on any servers, and is only run locally. Your initial image files will be replaced with their respective minified versions. These will have to be committed, and compiled into the `public` folder on build.
-
 # Todo
 - npm run build --production
 - Watch tasks
 - ESlint implementation
 - Sourcemap check
-- Imagemin caching
 - Hashbust and Inject
 - Styleguide theme for Golin
 - Remove lint from production task
  -->
+
+## Todo
+- Create package to cache minified images, speeding up Imagemin in the process
