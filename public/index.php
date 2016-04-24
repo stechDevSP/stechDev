@@ -32,7 +32,7 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="_bower-packages/dist/jquery.min.js"><\/script>')</script>
 
-        <!--inject:js--><!--inject:stop-->
+        <!--inject:js--><script src="/_js/app.b384e760.js"></script><!--inject:stop-->
 
     </body>
 </html>
