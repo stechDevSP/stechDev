@@ -2,6 +2,10 @@
   "name": "starterpack",
   "version": "0.0.1",
   "description": "A frontend starter pack for projects at Golin.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/golincode/starterpack.git"
+  },
   "config": {
     "basepath": {
       "src": {
@@ -39,15 +43,15 @@
   },
   "homepage": "https://github.com/golincode/starterpack#readme",
   "dependencies": {
-    "assetinjector": "0.0.7",
-    "autoprefixer": "^6.3.5",
+    "assetinjector": "1.0.0",
+    "autoprefixer": "^6.3.6",
     "cssnano": "^3.5.2",
     "es6-promise": "^3.1.2",
     "glob": "^7.0.3",
-    "hashbuster": "0.0.2",
+    "hashbuster": "1.0.1",
     "imagemin": "^4.0.0",
     "minimist": "^1.2.0",
-    "node-sass": "^3.4.2",
+    "node-sass": "^3.6.0",
     "postcss": "^5.0.19",
     "postcss-flexbugs-fixes": "^2.0.0",
     "postcss-pxtorem": "^3.3.1",
