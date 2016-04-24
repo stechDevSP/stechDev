@@ -84,10 +84,14 @@ The `watch` task will do the following:
 
 You can also run `watch:css`, `watch:js`, `watch:images`, but I'll let you guess what they do.
 
-## Updating the Starterpack
+## Cachebusting
+A major issue with clients is having them to forcibly clear cache. For non-tech savvy clients, this can prove a problem. Therefore, I have built two NPM modules that will automatically append a hash to a filename based on contents, and then inject the reference into `index.php`.
+
+## Notes
+### Updating the Starterpack
 This Starterpack will be updated weekly, on a Friday evening, if needs be. Deprecated packages, if any, will be replaced/removed, and packages will be updated to their latest appropriate version.
 
-## Contributing
+### Contributing
 If you wish to add a task, or add features to a current task, please feel free. Fork this repository and PR back into `develop`!
 
 ## Other notes
@@ -103,10 +107,11 @@ To start watching files, run `npm run watch`. This will watch your CSS files, Ja
 - npm run build --production
 - Watch tasks
 - Sourcemap check
-- Hashbust and Inject
+- Hashbust and Inject - including SVGS
 - Remove lint from production task
  -->
 
 ## Todo
 - Create package to cache minified images, speeding up Imagemin in the process
 - Include package to automatically generate styleguide (that works)
+- Write Sourcemap tutorial
