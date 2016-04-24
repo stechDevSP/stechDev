@@ -2,5 +2,4 @@
 
 (function () {
   // Do your JS here
-  console.log('hello');
 })();
