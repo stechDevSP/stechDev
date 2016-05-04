@@ -31,6 +31,7 @@
     "uglifyjs": "^2.4.10"
   },
   "devDependencies": {
-    "eslint": "^2.8.0"
+    "eslint": "^2.8.0",
+    "gaze": "^1.0.0"
   }
 }

@@ -7,6 +7,7 @@ ESLINT=node ./node_modules/.bin/eslint
 
 # Node Modules for Images
 SVGO=node ./node_modules/.bin/svgo
+SVG_SPRITE=node ./node_modules/.bin/svg-sprite
 
 # Basepath Source
 BASEPATH_SRC_CSS=./assets/css
@@ -20,7 +21,11 @@ BASEPATH_DEST_IMG=./public/_img
 BASEPATH_DEST_JS=./public/_js
 BASEPATH_DEST_PARTIALS=./public/_partials
 
-build: clean css images js partials
+build: clean css images js_lint js partials
+build_prod: clean css images js partials
+
+init:
+	npm install
 
 clean:
 	@echo 'Cleaning up prebuilt directories'
@@ -42,18 +47,18 @@ images:
 	@mkdir -p $(BASEPATH_DEST_IMG)
 	@cp -a $(BASEPATH_SRC_IMG)/. $(BASEPATH_DEST_IMG)
 	@$(SVGO) -f $(BASEPATH_DEST_IMG)/svg --enable=removeTitle
-	# @todo Minify other images here?
-	# @todo SVG Sprite rm -rf $npm_package_config_basepath_dest_img/**/sprite.css.svg && svg-sprite --symbol --symbol-dest $npm_package_config_basepath_dest_img $npm_package_config_basepath_dest_img/**/*
+	@rm -rf $(BASEPATH_DEST_IMG)/**/sprite.css.svg
+	@$(SVG_SPRITE) --symbol --symbol-dest $(BASEPATH_DEST_IMG) $(BASEPATH_DEST_IMG)/**/*
 	@echo 'Finished copying images'
 
-js: lint
+js:
 	@echo 'Building JS'
 	@mkdir -p $(BASEPATH_DEST_JS)
 	@cat `find $(BASEPATH_SRC_JS) -type f -name "*.js"` > $(BASEPATH_DEST_JS)/app.js
 	@$(UGLIFY_JS) $(BASEPATH_DEST_JS)/app.js -o $(BASEPATH_DEST_JS)/app.js --screw-ie8 --source-map $(BASEPATH_DEST_JS)/app.js.map --source-map-url /_js/app.js.map
 	@echo 'Finished building JS'
 
-lint:
+js_lint:
 	@echo 'Linting'
 	@$(ESLINT) $(BASEPATH_SRC_JS)/**/*.js -c .eslintrc
 	@echo 'Finished linting'
@@ -63,6 +68,10 @@ partials:
 	@mkdir -p $(BASEPATH_DEST_PARTIALS)
 	@cp -a $(BASEPATH_SRC_PARTIALS)/. $(BASEPATH_DEST_PARTIALS) || :
 	@echo 'Finished copying partials'
+
+watch:
+	@echo 'Watching all files (CSS, JS, Images, Partials)'
+	@node scripts/watch.js "$(BASEPATH_SRC_PARTIALS)/**/*" "$(BASEPATH_SRC_JS)/**/*" "$(BASEPATH_SRC_IMG)/**/*" "$(BASEPATH_SRC_CSS)/**/*"
 
 # Build Vendor JS (concat & uglify)
 # Hashbust and Asset Injector
