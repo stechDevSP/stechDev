@@ -6,36 +6,7 @@
     "type": "git",
     "url": "https://github.com/golincode/starterpack.git"
   },
-  "config": {
-    "basepath": {
-      "src": {
-        "img": "assets/img",
-        "js": "assets/js",
-        "css": "assets/css"
-      },
-      "dest": {
-        "img": "public/_img",
-        "js": "public/_js",
-        "css": "public/_css"
-      }
-    }
-  },
-  "scripts": {
-    "build": "npm run build:css && npm run build:js && npm run build:images",
-    "postbuild": "node scripts/build.hashbust.js && node scripts/build.injector.js",
-    "prebuild:css": "rm -rf $npm_package_config_basepath_dest_css && mkdir -p $npm_package_config_basepath_dest_css",
-    "build:css": "node-sass $npm_package_config_basepath_src_css -o $npm_package_config_basepath_dest_css --source-map $npm_package_config_basepath_dest_css",
-    "postbuild:css": "node scripts/build.css.post.js --directory $npm_package_config_basepath_dest_css/**/*",
-    "prebuild:images": "rm -rf $npm_package_config_basepath_dest_img && mkdir -p $npm_package_config_basepath_dest_img",
-    "build:images": "npm run build:images:minify && npm run build:images:svgsprite",
-    "build:images:minify": "node scripts/build.images.js --directory $npm_package_config_basepath_src_img --output $npm_package_config_basepath_dest_img",
-    "build:images:svgsprite": "rm -rf $npm_package_config_basepath_dest_img/**/sprite.css.svg && svg-sprite --symbol --symbol-dest $npm_package_config_basepath_dest_img $npm_package_config_basepath_dest_img/**/*",
-    "prebuild:js": "npm run lint:js && rm -rf $npm_package_config_basepath_dest_js && mkdir -p $npm_package_config_basepath_dest_js",
-    "build:js": "cat `find $npm_package_config_basepath_src_js -name '*.js' | sort -r` > $npm_package_config_basepath_dest_js/app.js",
-    "postbuild:js": "uglifyjs $npm_package_config_basepath_dest_js/app.js -o $npm_package_config_basepath_dest_js/app.js --screw-ie8 --source-map $npm_package_config_basepath_dest_js/app.js.map --source-map-url /_js/app.js.map",
-    "lint": "npm run lint:js",
-    "lint:js": "eslint $npm_package_config_basepath_src_js/**/*.js -c .eslintrc"
-  },
+  "scripts": {},
   "author": "Jake Mulley <jmulley@golin.com>",
   "license": "Unlicense",
   "bugs": {
@@ -49,13 +20,14 @@
     "es6-promise": "^3.1.2",
     "glob": "^7.0.3",
     "hashbuster": "^1.0.1",
-    "imagemin": "^4.0.0",
+    "imagemin": "^5.0.0",
     "minimist": "^1.2.0",
     "node-sass": "^3.6.0",
     "postcss": "^5.0.19",
     "postcss-flexbugs-fixes": "^2.0.0",
     "postcss-pxtorem": "^3.3.1",
     "svg-sprite": "^1.2.19",
+    "svgo": "^0.6.6",
     "uglifyjs": "^2.4.10"
   },
   "devDependencies": {
