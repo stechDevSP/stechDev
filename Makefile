@@ -57,8 +57,7 @@ images:
 js:
 	@echo 'Building JS'
 	@mkdir -p $(BASEPATH_DEST_JS)
-	@cat `find $(BASEPATH_SRC_JS) -type f -name "*.js"` > $(BASEPATH_DEST_JS)/app.js
-	@$(UGLIFY_JS) $(BASEPATH_DEST_JS)/app.js -o $(BASEPATH_DEST_JS)/app.js --screw-ie8 --source-map $(BASEPATH_DEST_JS)/app.js.map --source-map-url /_js/app.js.map
+	@$(UGLIFY_JS) `find $(BASEPATH_SRC_JS) -type f -name "*.js"` --screw-ie8 -o $(BASEPATH_DEST_JS)/app.js --source-map $(BASEPATH_DEST_JS)/app.js.map --source-map-url /_js/app.js.map --source-map-root .. --prefix 1
 	@echo 'Finished building JS'
 
 js_lint:
@@ -69,8 +68,7 @@ js_lint:
 js_vendor:
 	@echo 'Building vendor JS'
 	@mkdir -p $(BASEPATH_DEST_JS)
-	@cat $(VENDOR_JQUERY) > $(BASEPATH_DEST_JS)/vendor.js
-	@$(UGLIFY_JS) $(BASEPATH_DEST_JS)/vendor.js -o $(BASEPATH_DEST_JS)/vendor.js --screw-ie8
+	@$(UGLIFY_JS) $(VENDOR_JQUERY) --screw-ie8 -o $(BASEPATH_DEST_JS)/vendor.js --source-map $(BASEPATH_DEST_JS)/vendor.js.map --source-map-url /_js/vendor.js.map --source-map-root .. --prefix 1
 
 partials:
 	@echo 'Copying partials'
