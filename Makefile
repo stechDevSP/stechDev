@@ -69,6 +69,7 @@ js_vendor:
 	@echo 'Building vendor JS'
 	@mkdir -p $(BASEPATH_DEST_JS)
 	@$(UGLIFY_JS) $(VENDOR_JQUERY) --screw-ie8 -o $(BASEPATH_DEST_JS)/vendor.js --source-map $(BASEPATH_DEST_JS)/vendor.js.map --source-map-url /_js/vendor.js.map --source-map-root .. --prefix 1
+	@echo 'Finished building vendor JS'
 
 partials:
 	@echo 'Copying partials'
