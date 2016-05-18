@@ -109,4 +109,3 @@ Please make an effort to stop using jQuery for animations, changing CSS properti
 - Create package to cache minified images, speeding up Imagemin in the process
 - Include package to automatically generate styleguide (that works)
 - Write Sourcemap tutorial
-- Sourcemap Check
