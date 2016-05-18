@@ -1,4 +1,4 @@
-var argv     = require('minimist')(process.argv.slice(2));
+var argv = require('minimist')(process.argv.slice(2));
 var gaze = require('gaze');
 var exec = require('child_process').exec;
 
