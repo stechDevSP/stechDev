@@ -93,7 +93,7 @@ The `watch` task will do the following:
 ## Cachebusting
 A major issue with clients is having them to forcibly clear cache. For non-tech savvy clients, this can prove a problem. Therefore, I have built two NPM modules that will automatically append a hash to a filename based on contents, and then inject the reference into `index.php`.
 
-**Please note: this does not currently work on older servers due to limitations (i.e. we run an old Node version, and how it's done is not supporting in Node 0.10). The task is currently removed from the Makefile. If you would like to implement this, please let me know and I'll give you a hand.**
+**Please note: this does not currently work on older servers due to limitations (i.e. we run an old Node version, and how it's done is not supporting in Node 0.10). The task is currently removed from the Makefile. If you would like to implement this, please let me (Jake) know and I'll give you a hand.**
 
 ## Notes
 ### Updating the Starterpack
