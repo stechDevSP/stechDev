@@ -21,6 +21,7 @@
     "glob": "^7.0.3",
     "hashbuster": "^1.0.1",
     "imagemin": "^5.0.0",
+    "jquery": "^2.2.3",
     "minimist": "^1.2.0",
     "node-sass": "^3.6.0",
     "postcss": "^5.0.19",

@@ -21,8 +21,11 @@ BASEPATH_DEST_IMG=./public/_img
 BASEPATH_DEST_JS=./public/_js
 BASEPATH_DEST_PARTIALS=./public/_partials
 
-build: clean css images js_lint js partials
-build_prod: clean css images js partials
+# Vendor JS Files
+VENDOR_JQUERY=./node_modules/jquery/dist/jquery.js
+
+build: clean css images js_lint js_vendor js partials
+build_prod: clean css images js_vendor js partials
 
 init:
 	npm install
@@ -63,6 +66,12 @@ js_lint:
 	@$(ESLINT) $(BASEPATH_SRC_JS)/**/*.js -c .eslintrc
 	@echo 'Finished linting'
 
+js_vendor:
+	@echo 'Building vendor JS'
+	@mkdir -p $(BASEPATH_DEST_JS)
+	@cat $(VENDOR_JQUERY) > $(BASEPATH_DEST_JS)/vendor.js
+	@$(UGLIFY_JS) $(BASEPATH_DEST_JS)/vendor.js -o $(BASEPATH_DEST_JS)/vendor.js --screw-ie8
+
 partials:
 	@echo 'Copying partials'
 	@mkdir -p $(BASEPATH_DEST_PARTIALS)
@@ -70,9 +79,5 @@ partials:
 	@echo 'Finished copying partials'
 
 watch:
-	@echo 'Watching all files (CSS, JS, Images, Partials)'
-	@node scripts/watch.js "$(BASEPATH_SRC_PARTIALS)/**/*" "$(BASEPATH_SRC_JS)/**/*" "$(BASEPATH_SRC_IMG)/**/*" "$(BASEPATH_SRC_CSS)/**/*"
-
-# Build Vendor JS (concat & uglify)
-# Hashbust and Asset Injector
-# Watch Tasks
+	@echo 'Watching CSS and JS files'
+	@node scripts/watch.js "$(BASEPATH_SRC_JS)/**/*" "$(BASEPATH_SRC_CSS)/**/*"

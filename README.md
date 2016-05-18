@@ -37,28 +37,34 @@ The JavaScript structure depends on what your framework of choice is. If you are
 Please also make an effort to write docblocks. We have implemented them on all backend projects, and on some frontend projects. It makes it so much easier for someone to jump onto the project and understand it if they've never worked on it before.
 
 ### Images
-I've recently got into the habit of splitting images into folders based on type - svgs in one, pngs in another. You're welcome to do whatever you want here!
+I've recently got into the habit of splitting images into folders based on type - svgs in one, pngs in another. You're welcome to do whatever you want here (although you may have to change some tasks...)!
 
 ## Usage
-- Build everything: `npm run build` / `npm run build --production`
-- Build CSS: `npm run build:css`
-- Build JS: `npm run build:js`
-- Build Images: `npm run build:images`
-- Watch everything: `npm run watch`
+To install everything you need to start working with Starterpack, run `make init`. Then to:
+- Build everything: `make build` / `make build_prod`
+- Build CSS: `make css`
+- Build JS: `make js`
+- Build Images: `make images`
+- Watch CSS/JS: `make watch`
 
 ### Using the Production flag
-The production flag strips some tasks for being run on servers, such as linting JS and CSS, which are only ever installed as dev dependencies anyway.
+The production flag ("make build_prod") strips some tasks for being run on servers, such as linting JS, which are only ever installed as dev dependencies anyway.
 
 ### A note about Images
-PNGs, JPGs, etcetera, are all minified using Imagemin. Please note this may take a long time, so get a cuppa! SVGs are minified and then added to a single file (sprite.css.svg).
+PNGs, JPGs, etcetera, are just copied across. SVGs are minified and then added to a single file (sprite.css.svg). To "inject" these into a partial (best way to do it), which is then included in another file, add this to your `images` task:
+```
+@cat $(BASEPATH_DEST_IMG)/**/sprite.css.svg > $(SVG_DEFS_FILE)
+```
+You will need to create a variable at the top of the Makefile - simply: `SVG_DEFS_FILE=./path/to/svg/defs/file.php`.
 
 ## What does each task do?
 ### Build CSS
 The CSS task will do the following:
-- Lint CSS
+- Compile your Sass into a CSS file
 - Autoprefix properties to support browsers listed above
 - Convert typography declarations (line-height, font-size, letter-spacing) to use rem sizing, meaning you no longer have to use a mixin
 - Minify CSS using CSSNano
+- Automatically generates extra flexbox rules to stop IE being a bitch about it
 - Generate sourcemaps for your CSS files, removing the need to generate both a minified and unminified version
 
 This task will output a `screen.css` and `ie.css` as separate stylesheets.
@@ -66,26 +72,25 @@ This task will output a `screen.css` and `ie.css` as separate stylesheets.
 ### Build JS
 The JS task will do the following:
 - Lint JS
-- Concat all JS, including vendor-specific JS, into a single file
+- Concat all JS into a single file
 - Minify JS using UglifyJS2
 - Generate sourcemaps for your JS file, removing the need to generate both a minified and unminified version
 - Output into public folder
 
 ### Build Images
 The image task will do the following:
-- Compress images, including SVGs
+- Compress SVGs
 - Generate an SVG sprite
-- Inject SVG block into specified file
 - Output into public folder
 
 ### Watch
 The `watch` task will do the following:
-- Watch CSS, JS, Images and run each build task on change.
-
-You can also run `watch:css`, `watch:js`, `watch:images`, but I'll let you guess what they do.
+- Watch CSS and JS run each build task on change.
 
 ## Cachebusting
 A major issue with clients is having them to forcibly clear cache. For non-tech savvy clients, this can prove a problem. Therefore, I have built two NPM modules that will automatically append a hash to a filename based on contents, and then inject the reference into `index.php`.
+
+**Please note: this does not currently work on older servers due to limitations (i.e. we run an old Node version, and how it's done is not supporting in Node 0.10). The task is currently removed from the Makefile. If you would like to implement this, please let me know and I'll give you a hand.**
 
 ## Notes
 ### Updating the Starterpack
@@ -97,21 +102,8 @@ If you wish to add a task, or add features to a current task, please feel free. 
 ## Other notes
 Please make an effort to stop using jQuery for animations, changing CSS properties and doing anything CSS can do. Unless you're explicitly supporting IE 8, please create animations using CSS, which benefits the user by being able to use hardware accelleration to improve smoothness and speed of animations. Ideally, your project should be moving to a place where it doesn't rely on JS for animations, changing CSS properties or the like. I really can't think of any reason why you'd want to do that. It used to be easy using jQuery before CSS3 was implemented _literally everywhere_, but now it's a pain on the user and slows down sites massively.
 
-Please also stop using floats. Floats are _a fucking pain_ in the ass, and require a hack (see: clearfix) for it to work correctly. You know what's good? Flexbox. Flexbox is better than using floats. Plus, it's fucking easy to vertical align shit that's next to eachother. You can do it with one fucking line (see: `align-items: center`, `justify-content: center`). Oh, and you don't get that PESKY FUCKING SPACE inbetween divs like you do with `display: inline-block`.
-
-<!--
-### Watch
-To start watching files, run `npm run watch`. This will watch your CSS files, JavaScript files and images.
-
-# Todo
-- npm run build --production
-- Watch tasks
-- Sourcemap check
-- Hashbust and Inject - including SVGS
-- Remove lint from production task
- -->
-
 ## Todo
 - Create package to cache minified images, speeding up Imagemin in the process
 - Include package to automatically generate styleguide (that works)
 - Write Sourcemap tutorial
+- Sourcemap Check
