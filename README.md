@@ -36,6 +36,9 @@ The JavaScript structure depends on what your framework of choice is. If you are
 
 Please also make an effort to write docblocks. We have implemented them on all backend projects, and on some frontend projects. It makes it so much easier for someone to jump onto the project and understand it if they've never worked on it before.
 
+#### JavaScript Vendor Files
+To concat and uglify your vendor files, please use `npm` to install them. For example: `npm install angularjs`. When it has installed, create a variable at the top of the Makefile pointing to its location, e.g. `VENDOR_ANGULAR:./node_modules/angular/angular.js`, and place the reference in the `js_vendor` task on the line that starts with `@cat`. For example: `@cat $(VENDOR_ANGULAR) > $(BASEPATH_DEST_JS)/vendor.js`.
+
 ### Images
 I've recently got into the habit of splitting images into folders based on type - svgs in one, pngs in another. You're welcome to do whatever you want here (although you may have to change some tasks...)!
 
