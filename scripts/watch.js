@@ -15,7 +15,13 @@ gaze(argv._, function(err, watcher) {
         task = 'make js';
       }
       exec(task, function(error, stdout, stderr) {
-        console.log('Task:', task, 'run');
+        if(error === null) {
+          console.log(stderr);
+          console.log('Task "' + task + '" run successfully');
+        } else {
+          console.log('Task "' + task + '" failed:');
+          console.log(error);
+        }
       });
     });
 
