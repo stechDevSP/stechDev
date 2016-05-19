@@ -21,7 +21,6 @@ The CSS structure is based upon the [7-1 Pattern](http://sass-guidelin.es/#the-7
         /pages - Includes all page specific styles.
         /utils - Includes all Sass tools, helpers, etcetera. This should include every global variable, function, mixin and placeholder.
         /vendors - Includes all vendor files - if you didn't write it, it goes here.
-    ie.scss - Compiles a separate stylesheet for IE
     screen.scss - Compiles a separate stylesheet for screen
 ```
 
