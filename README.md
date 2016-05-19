@@ -25,7 +25,7 @@ The CSS structure is based upon the [7-1 Pattern](http://sass-guidelin.es/#the-7
 ```
 
 #### Print Specific Styles
- Please create another file, in the same folder as the original file, and suffix the filename with `.print.scss`. These specific stylesheets should be imported in the screen.scss, inside the `@media print` block.
+Please create another file, in the same folder as the original file, and suffix the filename with `.print.scss`. These specific stylesheets should be imported in the screen.scss, inside the `@media print` block.
 
 ### JavaScript
 The JavaScript structure depends on what your framework of choice is. If you are using AngularJS, please follow [John Papa's](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md) styleguide. If you're using anything else (including jQuery), please follow the [ESLint Code Conventions](http://eslint.org/docs/developer-guide/code-conventions). The linter is configured for the ESLint Code Conventions using their recommended rules. We do, however, indent JS files with 2 (instead of 4) spaces.
