@@ -18,6 +18,9 @@ gaze(argv._, function(err, watcher) {
         if(error === null) {
           console.log(stderr);
           console.log('Task "' + task + '" run successfully');
+          if(stdout) {
+            console.log(stdout);
+          }
         } else {
           console.log('Task "' + task + '" failed:');
           console.log(error);
