@@ -12,12 +12,12 @@ gaze(argv._, function(err, watcher) {
         task = 'make css';
       }
       if(fileext == 'js') {
-        task = 'make js_lint && make js';
+        task = 'make js_lint; make js';
       }
       exec(task, function(error, stdout, stderr) {
         if(error === null) {
           console.log(stderr);
-          console.log('Task "' + task + '" run successfully');
+          console.log('Task "' + task + '" run successfully:', stdout);
         } else {
           console.log('Task "' + task + '" failed:');
           console.log(error);
