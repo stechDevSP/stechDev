@@ -12,7 +12,7 @@ gaze(argv._, function(err, watcher) {
         task = 'make css';
       }
       if(fileext == 'js') {
-        task = 'make js';
+        task = 'make js_lint && make js';
       }
       exec(task, function(error, stdout, stderr) {
         if(error === null) {
