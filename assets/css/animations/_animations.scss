@@ -1,3 +1,4 @@
+// Attention Seekers
 @import 'attention_seekers/bounce';
 @import 'attention_seekers/flash';
 @import 'attention_seekers/headshake';
@@ -8,3 +9,17 @@
 @import 'attention_seekers/swing';
 @import 'attention_seekers/tada';
 @import 'attention_seekers/wobble';
+
+// Bouncing Entrances
+@import 'bouncing_entrances/bouncein';
+@import 'bouncing_entrances/bounceindown';
+@import 'bouncing_entrances/bounceinleft';
+@import 'bouncing_entrances/bounceinright';
+@import 'bouncing_entrances/bounceinup';
+
+// Bouncing Exits
+@import 'bouncing_exits/bounceout';
+@import 'bouncing_exits/bounceoutdown';
+@import 'bouncing_exits/bounceoutleft';
+@import 'bouncing_exits/bounceoutright';
+@import 'bouncing_exits/bounceoutup';
