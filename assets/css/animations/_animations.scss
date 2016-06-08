@@ -23,3 +23,32 @@
 @import 'bouncing_exits/bounceoutleft';
 @import 'bouncing_exits/bounceoutright';
 @import 'bouncing_exits/bounceoutup';
+
+// Fading Entrances
+@import 'fading_entrances/fadein';
+@import 'fading_entrances/fadeindown';
+@import 'fading_entrances/fadeindownbig';
+@import 'fading_entrances/fadeinleft';
+@import 'fading_entrances/fadeinleftbig';
+@import 'fading_entrances/fadeinright';
+@import 'fading_entrances/fadeinrightbig';
+@import 'fading_entrances/fadeinup';
+@import 'fading_entrances/fadeinupbig';
+
+// Fading Exits
+@import 'fading_exits/fadeout';
+@import 'fading_exits/fadeoutdown';
+@import 'fading_exits/fadeoutdownbig';
+@import 'fading_exits/fadeoutleft';
+@import 'fading_exits/fadeoutleftbig';
+@import 'fading_exits/fadeoutright';
+@import 'fading_exits/fadeoutrightbig';
+@import 'fading_exits/fadeoutup';
+@import 'fading_exits/fadeoutupbig';
+
+// Flippers
+@import 'flippers/flip';
+@import 'flippers/flipinx';
+@import 'flippers/flipiny';
+@import 'flippers/flipoutx';
+@import 'flippers/flipouty';
