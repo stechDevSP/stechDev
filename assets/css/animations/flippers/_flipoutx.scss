@@ -18,7 +18,9 @@
         }
     }
 
+    animation-fill-mode: both;
     animation-name: flipoutx;
     backface-visibility: visible !important;
+    animation-duration: .75s;
 
 }

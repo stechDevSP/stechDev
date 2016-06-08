@@ -28,7 +28,8 @@
         }
     }
 
-    animation-timing-function: ease-in-out;
+    animation-fill-mode: both;
     animation-name: headshake;
+    animation-timing-function: ease-in-out;
 
 }

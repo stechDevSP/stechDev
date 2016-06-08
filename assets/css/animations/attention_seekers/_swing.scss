@@ -24,7 +24,8 @@
         }
     }
 
-    transform-origin: top center;
+    animation-fill-mode: both;
     animation-name: swing;
+    transform-origin: top center;
 
 }

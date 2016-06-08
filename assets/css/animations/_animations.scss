@@ -71,7 +71,33 @@
 @import 'rotating_exits/rotateoutupleft';
 @import 'rotating_exits/rotateoutupright';
 
+// Sliding Entrances
+@import 'sliding_entrances/slideindown';
+@import 'sliding_entrances/slideinleft';
+@import 'sliding_entrances/slideinright';
+@import 'sliding_entrances/slideinup';
+
+// Sliding Exits
+@import 'sliding_exits/slideoutdown';
+@import 'sliding_exits/slideoutleft';
+@import 'sliding_exits/slideoutright';
+@import 'sliding_exits/slideoutup';
+
 // Specials
 @import 'specials/hinge';
 @import 'specials/rollin';
 @import 'specials/rollout';
+
+// Zooming Entrances
+@import 'zooming_entrances/zoomin';
+@import 'zooming_entrances/zoomindown';
+@import 'zooming_entrances/zoominleft';
+@import 'zooming_entrances/zoominright';
+@import 'zooming_entrances/zoominup';
+
+// Zooming Exits
+@import 'zooming_exits/zoomout';
+@import 'zooming_exits/zoomoutdown';
+@import 'zooming_exits/zoomoutleft';
+@import 'zooming_exits/zoomoutright';
+@import 'zooming_exits/zoomoutup';
