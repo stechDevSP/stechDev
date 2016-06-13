@@ -29,13 +29,13 @@ The CSS structure is based upon the [7-1 Pattern](http://sass-guidelin.es/#the-7
 Animations are taken from Animate.css and rewritten as CSS mixins, meaning they will only be compiled if they are used. Use the animations as a mixin and all appropriate keyframes will be compiled alongside typical setting of animations on the CSS elements.
 
 For example, to use the "lightspeed out" animation, do this:
-```
+```css
 .element {
     @include lightspeedout();
 }
 ```
 which will subsequently output:
-```
+```css
 .element {
   -webkit-animation-fill-mode: both;
           animation-fill-mode: both;
@@ -62,6 +62,7 @@ which will subsequently output:
 ```
 
 **Please note:** @keyframe definitions are only output once. If used twice, the last declaration takes priority. Please bear this in mind if you create another keyframe by the same name and then use a mixin called the same.
+**Please note:** You will have to specify animation duration each time you use a mixin. Recommended is either 1s or 0.75s. However, hinge is already set at 2s as it's a special case.
 
 #### Print Specific Styles
 Please create another file, in the same folder as the original file, and suffix the filename with `.print.scss`. These specific stylesheets should be imported in the screen.scss, inside the `@media print` block.
