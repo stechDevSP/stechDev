@@ -28,6 +28,41 @@ The CSS structure is based upon the [7-1 Pattern](http://sass-guidelin.es/#the-7
 #### Using Animations
 Animations are taken from Animate.css and rewritten as CSS mixins, meaning they will only be compiled if they are used. Use the animations as a mixin and all appropriate keyframes will be compiled alongside typical setting of animations on the CSS elements.
 
+For example, to use the "lightspeed out" animation, do this:
+```
+.element {
+    @include lightspeedout();
+}
+```
+which will subsequently output:
+```
+.element {
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+  -webkit-animation-name: lightspeedout;
+          animation-name: lightspeedout;
+  -webkit-animation-timing-function: ease-out;
+          animation-timing-function: ease-out; }
+
+@-webkit-keyframes lightspeedout {
+  from {
+    opacity: 1; }
+  to {
+    -webkit-transform: translate3d(100%, 0, 0) skewX(30deg);
+            transform: translate3d(100%, 0, 0) skewX(30deg);
+    opacity: 0; } }
+
+@keyframes lightspeedout {
+  from {
+    opacity: 1; }
+  to {
+    -webkit-transform: translate3d(100%, 0, 0) skewX(30deg);
+            transform: translate3d(100%, 0, 0) skewX(30deg);
+    opacity: 0; } }
+```
+
+**Please note:** @keyframe definitions are only output once. If used twice, the last declaration takes priority. Please bear this in mind if you create another keyframe by the same name and then use a mixin called the same.
+
 #### Print Specific Styles
 Please create another file, in the same folder as the original file, and suffix the filename with `.print.scss`. These specific stylesheets should be imported in the screen.scss, inside the `@media print` block.
 
