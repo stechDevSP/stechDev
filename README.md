@@ -15,6 +15,7 @@ The CSS structure is based upon the [7-1 Pattern](http://sass-guidelin.es/#the-7
 ```
 /assets
     /scss
+        /animations - Includes stock Animate.css animations as mixins
         /base - Includes all boilerplate code. Global styles, such as setting a body background colour, should go in here. This is also true for typography, which has its own stylesheet in here.
         /components - Includes all component styles. Button styles, media blocks, carousels, thumbnail, etc. styles should go in here.
         /layout - Includes all styles that create a layout for the page. Header, footer, sidebar, forms, navigation, etc. styles should go in here.
@@ -23,6 +24,9 @@ The CSS structure is based upon the [7-1 Pattern](http://sass-guidelin.es/#the-7
         /vendors - Includes all vendor files - if you didn't write it, it goes here.
     screen.scss - Compiles a separate stylesheet for screen
 ```
+
+#### Using Animations
+Animations are taken from Animate.css and rewritten as CSS mixins, meaning they will only be compiled if they are used. Use the animations as a mixin and all appropriate keyframes will be compiled alongside typical setting of animations on the CSS elements.
 
 #### Print Specific Styles
 Please create another file, in the same folder as the original file, and suffix the filename with `.print.scss`. These specific stylesheets should be imported in the screen.scss, inside the `@media print` block.
