@@ -15,23 +15,23 @@
   "homepage": "https://github.com/golincode/starterpack#readme",
   "dependencies": {
     "assetinjector": "^1.0.0",
-    "autoprefixer": "^6.3.6",
-    "cssnano": "^3.7.1",
+    "autoprefixer": "^6.3.7",
+    "cssnano": "^3.7.3",
     "es6-promise": "^3.2.1",
     "glob": "^7.0.5",
     "hashbuster": "^1.0.1",
-    "jquery": "^3.0.0",
+    "jquery": "^3.1.0",
     "minimist": "^1.2.0",
     "node-sass": "^3.8.0",
-    "postcss": "^5.0.21",
+    "postcss": "^5.1.0",
     "postcss-flexbugs-fixes": "^2.0.0",
     "postcss-pxtorem": "^3.3.1",
-    "svg-sprite": "^1.3.1",
+    "svg-sprite": "^1.3.3",
     "svgo": "^0.6.6",
-    "uglify-js": "^2.6.4"
+    "uglify-js": "^2.7.0"
   },
   "devDependencies": {
-    "eslint": "^2.13.1",
-    "gaze": "^1.0.0"
+    "eslint": "^3.1.1",
+    "gaze": "^1.1.0"
   }
 }
