@@ -23,6 +23,7 @@ BASEPATH_DEST_PARTIALS=./public/_partials
 
 # Vendor JS Files
 VENDOR_JQUERY=./node_modules/jquery/dist/jquery.js
+VENDOR_SPOC=./node_modules/SPOC/public/js/SPOC.js
 
 build: clean css images js_lint js_vendor js partials
 build_prod: clean css images js_vendor js partials
@@ -68,7 +69,7 @@ js_lint:
 js_vendor:
 	@echo 'Building vendor JS'
 	@mkdir -p $(BASEPATH_DEST_JS)
-	@$(UGLIFY_JS) $(VENDOR_JQUERY) --screw-ie8 -o $(BASEPATH_DEST_JS)/vendor.js --source-map $(BASEPATH_DEST_JS)/vendor.js.map --source-map-url /_js/vendor.js.map --source-map-root .. --prefix 1
+	@$(UGLIFY_JS) $(VENDOR_SPOC) $(VENDOR_JQUERY) --screw-ie8 -o $(BASEPATH_DEST_JS)/vendor.js --source-map $(BASEPATH_DEST_JS)/vendor.js.map --source-map-url /_js/vendor.js.map --source-map-root .. --prefix 1
 	@echo 'Finished building vendor JS'
 
 partials:

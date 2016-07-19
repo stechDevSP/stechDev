@@ -14,6 +14,7 @@
   },
   "homepage": "https://github.com/golincode/starterpack#readme",
   "dependencies": {
+    "SPOC": "git+https://github.com/wearearchitect/SPOC.git",
     "assetinjector": "^1.0.0",
     "autoprefixer": "^6.3.6",
     "cssnano": "^3.6.2",
