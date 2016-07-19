@@ -9,7 +9,7 @@
 /**
  * Wrap inside container class to avoid SharePoint conflicts
  */
-// 
+//
 .golin {
 /**
  * Import vendor CSS files
@@ -24,6 +24,15 @@
 @import 'base/base';
 @import 'base/typography';
 @import 'base/helpers';
+
+/**
+ * Import all animations
+ */
+@import 'animations/animations';
+
+/**
+ * Import all layout files
+ */
 
 /**
  * Import all component files
