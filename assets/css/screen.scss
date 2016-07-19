@@ -7,11 +7,6 @@
 @import 'utils/placeholders';
 
 /**
- * Import vendor CSS files that should be applied on the whole page
- */
-
-
-/**
  * Wrap inside container class to avoid SharePoint conflicts
  */
 // 
@@ -31,10 +26,6 @@
 @import 'base/helpers';
 
 /**
- * Import all layout files
- */
-
-/**
  * Import all component files
  */
 @import 'components/button';
@@ -48,7 +39,7 @@
 /**
  * Import print styles (if necessary)
  */
- @media print {
+@media print {
 
  }
 
