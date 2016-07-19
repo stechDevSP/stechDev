@@ -7,7 +7,12 @@
 @import 'utils/placeholders';
 
 /**
- * Import all vendor CSS files
+ * Wrap inside container class to avoid SharePoint conflicts
+ */
+// 
+.golin {
+/**
+ * Import vendor CSS files
  */
 @import 'vendors/normalize';
 
@@ -21,10 +26,6 @@
 @import 'base/helpers';
 
 /**
- * Import all layout files
- */
-
-/**
  * Import all component files
  */
 @import 'components/button';
@@ -34,9 +35,17 @@
  */
 @import 'pages/home';
 
+
 /**
  * Import print styles (if necessary)
  */
 @media print {
 
+ }
+
 }
+
+ /**
+ * Import element CSS files that should be applied on the whole page
+ */
+@import 'components/external';
