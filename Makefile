@@ -2,8 +2,10 @@
 NODE_SASS=node ./node_modules/.bin/node-sass
 
 # Node Modules for JS
-UGLIFY_JS=node ./node_modules/.bin/uglifyjs
+BROWSERIFY=node ./node_modules/.bin/browserify
+BABEL=node ./node_modules/.bin/babel
 ESLINT=node ./node_modules/.bin/eslint
+SPSAVE=node ./scripts/spsave
 
 # Node Modules for Images
 SVGO=node ./node_modules/.bin/svgo
@@ -22,13 +24,25 @@ BASEPATH_DEST_JS=./public/_js
 BASEPATH_DEST_PARTIALS=./public/_partials
 
 # Vendor JS Files
-VENDOR_JQUERY=./node_modules/jquery/dist/jquery.js
+VENDOR_REACT=./node_modules/react/dist/react.js
+VENDOR_REACT_DOM=./node_modules/react-dom/dist/react-dom.js
 VENDOR_SPOC=./node_modules/SPOC/public/js/SPOC.js
+VENDOR_JQUERY=./node_modules/jquery/dist/jquery.js
+
+# SharePOint Info
+SITE_URL = https://stepstonecore.sharepoint.com/sites/TJGINtranet-Dev
+USERNAME = TJGsharepoint@stepstonecore.onmicrosoft.com
+PASSWORD = TJG1ntr4N3t
 
 build: clean css images js_lint js_vendor js partials
 build_prod: clean css images js_vendor js partials
 
+buildup: clean css images js_lint js_vendor js partials up_js up_vendor_js up_screen_css up_ie_css
+
 init:
+	npm install --production
+
+initdev:
 	npm install
 
 clean:
@@ -58,7 +72,7 @@ images:
 js:
 	@echo 'Building JS'
 	@mkdir -p $(BASEPATH_DEST_JS)
-	@$(UGLIFY_JS) `find $(BASEPATH_SRC_JS) -type f -name "*.js"` --screw-ie8 -o $(BASEPATH_DEST_JS)/app.js --source-map $(BASEPATH_DEST_JS)/app.js.map --source-map-url /_js/app.js.map --source-map-root .. --prefix 1
+	@$(BROWSERIFY) `find $(BASEPATH_SRC_JS) -type f -name "*.js" -o -name "*.jsx"` -o $(BASEPATH_DEST_JS)/app.js -t babelify -t uglifyify --presets --debug 
 	@echo 'Finished building JS'
 
 js_lint:
@@ -69,8 +83,20 @@ js_lint:
 js_vendor:
 	@echo 'Building vendor JS'
 	@mkdir -p $(BASEPATH_DEST_JS)
-	@$(UGLIFY_JS) $(VENDOR_SPOC) $(VENDOR_JQUERY) --screw-ie8 -o $(BASEPATH_DEST_JS)/vendor.js --source-map $(BASEPATH_DEST_JS)/vendor.js.map --source-map-url /_js/vendor.js.map --source-map-root .. --prefix 1
+	@$(BABEL) $(VENDOR_REACT) $(VENDOR_REACT_DOM) $(VENDOR_SPOC) $(VENDOR_JQUERY) --out-file $(BASEPATH_DEST_JS)/vendor.js --minified
 	@echo 'Finished building vendor JS'
+
+up_js:
+	@$(SPSAVE) $(SITE_URL) $(USERNAME) $(PASSWORD) js $(BASEPATH_DEST_JS) app.js
+
+up_vendor_js:
+	@$(SPSAVE) $(SITE_URL) $(USERNAME) $(PASSWORD) js $(BASEPATH_DEST_JS) vendor.js
+
+up_screen_css:
+	@$(SPSAVE) $(SITE_URL) $(USERNAME) $(PASSWORD) css $(BASEPATH_DEST_CSS) screen.css
+
+up_ie_css:
+	@$(SPSAVE) $(SITE_URL) $(USERNAME) $(PASSWORD) css $(BASEPATH_DEST_CSS) ie.css
 
 partials:
 	@echo 'Copying partials'
