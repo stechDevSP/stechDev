@@ -29,10 +29,10 @@ VENDOR_REACT_DOM=./node_modules/react-dom/dist/react-dom.js
 VENDOR_SPOC=./node_modules/SPOC/public/js/SPOC.js
 VENDOR_JQUERY=./node_modules/jquery/dist/jquery.js
 
-# SharePOint Info
-SITE_URL = https://stepstonecore.sharepoint.com/sites/TJGINtranet-Dev
-USERNAME = TJGsharepoint@stepstonecore.onmicrosoft.com
-PASSWORD = TJG1ntr4N3t
+# SharePoint Info
+SITE_URL = siteCollectionUrl
+USERNAME = username
+PASSWORD = password
 
 build: clean css images js_lint js_vendor js partials
 build_prod: clean css images js_vendor js partials
