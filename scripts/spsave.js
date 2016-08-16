@@ -38,5 +38,3 @@ function saveToSp(BASEPATH_SP_FOLDER, BASEPATH_DEST_FILE, FILE) {
         console.log('Error occurred');
     });
 }
-
-
