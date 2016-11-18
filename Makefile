@@ -23,21 +23,15 @@ BASEPATH_DEST_IMG=./public/_img
 BASEPATH_DEST_JS=./public/_js
 BASEPATH_DEST_PARTIALS=./public/_partials
 
-# Vendor JS Files
-VENDOR_REACT=./node_modules/react/dist/react.js
-VENDOR_REACT_DOM=./node_modules/react-dom/dist/react-dom.js
-VENDOR_SPOC=./node_modules/SPOC/public/js/SPOC.js
-VENDOR_JQUERY=./node_modules/jquery/dist/jquery.js
-
 # SharePoint Info
 SITE_URL = siteCollectionUrl
 USERNAME = username
 PASSWORD = password
 
-build: clean css images js_lint js_vendor js partials
-build_prod: clean css images js_vendor js partials
+build: clean css images js_lint js partials
+build_prod: clean css images js partials
 
-buildup: clean css images js_lint js_vendor js partials up_js up_vendor_js up_screen_css up_ie_css
+buildup: clean css images js_lint js partials up_js up_screen_css up_ie_css
 
 init:
 	npm install --production
@@ -80,17 +74,8 @@ js_lint:
 	@$(ESLINT) $(BASEPATH_SRC_JS)/**/*.js -c .eslintrc
 	@echo 'Finished linting'
 
-js_vendor:
-	@echo 'Building vendor JS'
-	@mkdir -p $(BASEPATH_DEST_JS)
-	@$(BABEL) $(VENDOR_REACT) $(VENDOR_REACT_DOM) $(VENDOR_SPOC) $(VENDOR_JQUERY) --out-file $(BASEPATH_DEST_JS)/vendor.js --minified
-	@echo 'Finished building vendor JS'
-
 up_js:
 	@$(SPSAVE) $(SITE_URL) $(USERNAME) $(PASSWORD) js $(BASEPATH_DEST_JS) app.js
-
-up_vendor_js:
-	@$(SPSAVE) $(SITE_URL) $(USERNAME) $(PASSWORD) js $(BASEPATH_DEST_JS) vendor.js
 
 up_screen_css:
 	@$(SPSAVE) $(SITE_URL) $(USERNAME) $(PASSWORD) css $(BASEPATH_DEST_CSS) screen.css

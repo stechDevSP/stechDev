@@ -11,5 +11,8 @@
   "globals":{
     "SPOC": false,
     "SP": false
-  }
+  },
+  "parserOptions": {
+        "sourceType": "module",
+    }
 }
