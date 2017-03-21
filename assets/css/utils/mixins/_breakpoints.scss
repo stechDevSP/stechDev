@@ -21,3 +21,8 @@
 @mixin tweakpoint($canvas) {
     @media only screen and (min-width: $canvas) { @content; }
 }
+
+@mixin respond-to($breakpoint) {
+    @media only screen and (max-width: $breakpoint) { @content; }
+}
+

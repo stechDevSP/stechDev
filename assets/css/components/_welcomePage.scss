@@ -1,0 +1,544 @@
+body {
+    background-color: #0072c6;
+}
+
+.header {
+    width: 100%;
+    height: 100px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: white;
+    .logo {
+        position: absolute;
+        top: 25px;
+        left: 15px;
+        border-radius: 80px;
+        width: 150px;
+        height: 150px;
+        border: 1px solid black;
+        background-color: white;
+        img {
+            position: relative;
+            top: 15px;
+            left: 35px;
+        }
+    }
+    .profile-drop {
+        position: absolute;
+        cursor: pointer;
+        top: 35px;
+        right: 220px;
+    }
+    .select-language {
+        position: absolute;
+        cursor: pointer;
+        top: 35px;
+        right: 155px;
+        select {
+            height: 41px !important;
+            font-family: Open Sans, sans-serif !important;
+        }
+    }
+    .select-currency {
+        position: absolute;
+        cursor: pointer;
+        top: 35px;
+        right: 112px;
+        select {
+            height: 41px !important;
+            font-family: Open Sans, sans-serif !important;
+        }
+    }
+    .cart-icon {
+        display: none;
+        position: absolute;
+        cursor: pointer;
+        top: 25px;
+        right: 30px;
+        .orderNumber {
+            background-color: red;
+            color: white;
+            border-radius: 13px;
+            position: absolute;
+            top: 5px;
+            left: 25px;
+            height: 20px;
+            width: 20px;
+            text-align: center;
+            padding-top: 2px;
+        }
+    }
+}
+
+.select-apps-zone {
+    display: none;
+    .title-select-apps {
+        font-size: 50px;
+        padding-top: 50px;
+        padding-bottom: 30px;
+        color: white;
+    }
+}
+
+.welcome-zone {
+    text-align: center;
+    padding-top: 60px;
+    color: white;
+    .welcomeTo {
+        font-size: 40px;
+        padding-bottom: 20px;
+        animation-delay: 1s !important;
+    }
+    .welcomeToName {
+        font-size: 80px;
+        @include respond-to($breakpoint-small) {
+            font-size: 50px;
+        }
+        padding-bottom: 20px;
+        font-weight: bold;
+        animation-delay: 2s !important;
+        word-wrap: break-word;
+    }
+    .welcomeToDescr {
+        padding-bottom: 20px;
+        animation-delay: 3s !important;
+    }
+    .continue-select {
+        width: 300px !important;
+        margin: auto;
+        animation-delay: 4s !important;
+    }
+    .login-select {
+        width: 300px !important;
+        margin: auto;
+        margin-top: 10px;
+        animation-delay: 4s !important;
+    }
+}
+
+.register-form {
+    color: white !important;
+    padding-left: 40px;
+    small {
+        color: white !important;
+    }
+    .titleRegister {
+        font-size: 50px;
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+    .alert {
+        display: none;
+        margin-bottom: 5px !important;
+    }
+    .nameCompany,
+    .locationCompany,
+    .emailCompany,
+    .passwordCompany,
+    .confirmPassCompany {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .clean-register {
+        color: black !important;
+        border: 1px solid white !important;
+    }
+}
+
+.login-form {
+    display: none;
+    color: white !important;
+    padding-left: 40px;
+    .titleRegister {
+        font-size: 50px;
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+    .titleInput {
+        font-size: 20px;
+        padding-bottom: 5px;
+        padding-top: 5px;
+    }
+    .alert {
+        display: none;
+        width: 50%;
+        margin-bottom: 5px !important;
+    }
+    .passwordCompany {
+        padding-top: 30px;
+        padding-bottom: 20px;
+    }
+    .loginCompanyNameAlert {
+        padding-top: 30px;
+        padding-bottom: 20px;
+    }
+    .form-control,
+    .finish-login {
+        width: 50% !important;
+    }
+    .finish-login {
+        border-radius: 6px !important;
+        margin-left: 0px !important;
+    }
+}
+
+.footer {
+    width: 100%;
+    height: 60px;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    background-color: white;
+}
+
+#welcome-panel {
+    font-family: "Open Sans", sans-serif;
+    margin-top: 100px;
+}
+
+.ST-CheckUp {
+    background-image: url('../_img/png/assessIcon.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 1;
+    background-color: white;
+}
+
+.ST-IPdf {
+    background-image: url('../_img/png/pdfIcon.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 1;
+    background-color: white;
+}
+
+.ST-HelpDesk {
+    background-image: url('../_img/png/helpdeskIcon.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 1;
+    background-color: white;
+}
+
+.ST-HR {
+    background-image: url('../_img/png/hrIcon.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 1;
+    background-color: white;
+}
+
+.ST-Intraweb {
+    background-image: url('../_img/png/intranetIcon.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 1;
+    background-color: white;
+}
+
+.card_0 {
+    animation-delay: 1s !important;
+}
+
+.card_1 {
+    animation-delay: 2s !important;
+}
+
+.card_2 {
+    animation-delay: 3s !important;
+}
+
+.card_3 {
+    animation-delay: 4s !important;
+}
+
+.card_4 {
+    animation-delay: 5s !important;
+}
+
+.card_5 {
+    animation-delay: 6s !important;
+}
+
+.card_6 {
+    animation-delay: 7s !important;
+}
+
+.card_7 {
+    animation-delay: 8s !important;
+}
+
+.titleCard {
+    font-weight: bold;
+    text-align: center;
+    font-size: 20px;
+    color: white;
+    padding-top: 20px;
+}
+
+//FLIP ORIZZONTALE
+.flip-container {
+    margin-bottom: 40px;
+}
+
+.flip-container:hover .flipper,
+.flip-container.hover .flipper {
+    transform: rotateY(-180deg);
+}
+
+.flip-container,
+.front,
+.back {
+    padding: 20px;
+    height: 150px;
+    width: 100%;
+    font-size: 13px;
+}
+
+.flipper {
+    transition: 1.5s;
+    transform-style: preserve-3d;
+    position: relative;
+    height: 150px;
+}
+
+.front,
+.back {
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 5px;
+    box-shadow: 4px 4px 5px #222;
+}
+
+.front {
+    z-index: 2;
+    /* for firefox 31 */
+    transform: rotateY(0deg);
+}
+
+.back {
+    background-color: black;
+    color: white;
+    transform: rotateY(-180deg);
+}
+
+//FINE FLIP
+.btn-welcome {
+    border: 1px solid black;
+    color: #0072c6;
+    background-color: #eee;
+    cursor: pointer;
+    height: 30px;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding-top: 6px;
+    font-weight: bold;
+    font-size: 14px;
+    text-transform: uppercase;
+    border-radius: 8px !important;
+    &:hover {
+        background-color: #ccc;
+    }
+}
+
+.select-version {
+    .container-packages {
+        margin-bottom: 30px;
+        overflow: hidden;
+    }
+    .package {
+        background-color: white;
+        border-radius: 5px;
+        border: 1px solid #888;
+        box-shadow: 4px 4px 5px #222;
+        overflow: hidden;
+        padding: 10px;
+        margin: 20px;
+        &.packageSel {
+            border: 3px solid red;
+        }
+    }
+    .title-select-version {
+        font-size: 50px;
+        padding-top: 10px;
+        padding-bottom: 30px;
+        color: white;
+    }
+    .standard {
+        animation-delay: 1s !important;
+    }
+    .enterprise {
+        animation-delay: 2s !important;
+    }
+    .premium {
+        animation-delay: 3s !important;
+    }
+    .nameVersion {
+        font-size: 20px;
+        color: black;
+        padding-bottom: 5px;
+    }
+    .detailsVersion {
+        font-size: 13px;
+        color: black;
+        padding-bottom: 5px;
+    }
+    .priceVersion {
+        color: black;
+        padding-bottom: 5px;
+        font-weight: bold;
+        font-size: 30px;
+    }
+    .subPriceVersion {
+        color: black;
+        padding-bottom: 5px;
+        .titlePrice {
+            font-size: 13px;
+            padding-right: 4px;
+            float: left;
+        }
+        .valuePrice {
+            font-size: 14px;
+            font-weight: bold;
+            float: left;
+        }
+    }
+    .clean-version {
+        color: black !important;
+        border: 1px solid white !important;
+    }
+    .confirm-version,
+    .clean-version {
+        display: none;
+        border: 1px solid black;
+        color: #0072c6;
+        background-color: #eee;
+        cursor: pointer;
+        height: 30px;
+        text-align: center;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding-top: 6px;
+        font-weight: bold;
+        font-size: 14px;
+        text-transform: uppercase;
+        border-radius: 17px;
+        &:hover {
+            background-color: #ccc;
+        }
+    }
+}
+
+.cart-details {
+    padding-top: 30px !important;
+}
+
+.goBack-apps,
+.goBack-package,
+.goBack-cart {
+    margin-top: 50px !important;
+}
+
+.cart-details,
+.payment-zone,
+.register-form,
+.select-version,
+.select-apps-zone {
+    display: none;
+    padding-top: 30px !important;
+    .goBack-package {
+        width: 170px !important;
+    }
+    .goBack-apps,
+    .goBack-cart,
+    .goBack-package {
+        cursor: pointer;
+        position: relative;
+        margin-bottom: 10px;
+        border: 1px solid white;
+        width: 150px;
+        margin-top: 10px;
+        .backLabel {
+            position: absolute;
+            top: 5px;
+            left: 27px;
+            color: white;
+        }
+    }
+    .cart,
+    .cart-buttons {
+        color: white;
+        .cart-title {
+            font-size: 50px;
+            padding-top: 10px;
+            padding-bottom: 30px;
+            color: white;
+        }
+        .confirm-cart,
+        .confirm-sel-cart {
+            display: none;
+        }
+        .totale-cart {
+            display: none;
+            font-weight: bold;
+            font-size: 20px;
+            color: white;
+            border-top: 1px solid #000;
+            border-bottom: 1px solid white;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+        .clean-cart,
+        .clean-sel-cart {
+            color: black !important;
+            border: 1px solid white !important;
+            display: none;
+        }
+        .numberPackages {
+            font-size: 20px;
+            color: white;
+        }
+        .cart-container,
+        .payment-container {
+            position: relative;
+            .infoCardAdded {
+                position: relative;
+                margin-bottom: 10px;
+                top: -20px;
+                border-bottom: 1px dotted white;
+                padding-bottom: 30px;
+                .titleCard {
+                    font-weight: bold;
+                    text-align: left !important;
+                    padding-bottom: 10px;
+                }
+                .descriptionCard {
+                    font-size: 12px;
+                    padding-bottom: 5px;
+                }
+                .deleteCard {
+                    cursor: pointer;
+                    position: absolute;
+                    right: 10px;
+                    top: 20px;
+                }
+            }
+        }
+    }
+}
+
+.priceSel {
+    display: none;
+}
+
+.popUpInfo {
+    display: none;
+}

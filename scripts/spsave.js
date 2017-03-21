@@ -5,9 +5,10 @@ var fs = require("fs");
 
 var args = process.argv.slice(2);
 
-var BASEPATH_SP_PATH = '/Style Library/TJG/',
-    BASEPATH_SP_JS = BASEPATH_SP_PATH + '_js',
-    BASEPATH_SP_CSS = BASEPATH_SP_PATH + '_css';
+var BASEPATH_SP_PATH = '/AppsReact/',
+    BASEPATH_SP_JS = BASEPATH_SP_PATH + 'js',
+    BASEPATH_SP_TEMPLATE = BASEPATH_SP_PATH + 'template',
+    BASEPATH_SP_CSS = BASEPATH_SP_PATH + 'css';
 
 switch (args[3]) {
     case 'js':        
@@ -15,6 +16,9 @@ switch (args[3]) {
         break;
     case 'css':
         saveToSp(BASEPATH_SP_CSS, args[4], args[5]); 
+        break;
+    case 'template':
+        saveToSp(BASEPATH_SP_TEMPLATE, args[4], args[5]); 
         break;
     default:
         console.log('Sorry, that is not something I know how to do.');

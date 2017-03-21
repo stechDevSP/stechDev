@@ -22,11 +22,12 @@ BASEPATH_DEST_CSS=./public/_css
 BASEPATH_DEST_IMG=./public/_img
 BASEPATH_DEST_JS=./public/_js
 BASEPATH_DEST_PARTIALS=./public/_partials
+BASEPATH_DEST_TEMPLATE=./public/_templates
 
 # SharePoint Info
-SITE_URL = siteCollectionUrl
-USERNAME = username
-PASSWORD = password
+SITE_URL = 'https://demopry.sharepoint.com/sites/DemoLayout/'
+USERNAME = 'dev_prysmian@demoPry.onmicrosoft.com'
+PASSWORD = "testOnline365."
 
 build: clean css images js_lint js partials
 build_prod: clean css images js partials
@@ -67,6 +68,7 @@ js:
 	@echo 'Building JS'
 	@mkdir -p $(BASEPATH_DEST_JS)
 	@$(BROWSERIFY) `find $(BASEPATH_SRC_JS) -type f -name "*.js" -o -name "*.jsx"` -o $(BASEPATH_DEST_JS)/app.js -t babelify -t uglifyify --presets --debug 
+	@$(BROWSERIFY) `find $(BASEPATH_SRC_JS) -type f -name "*.js" -o -name "*.jsx"` -o $(BASEPATH_DEST_JS)/appFull.js -t babelify --presets --debug
 	@echo 'Finished building JS'
 
 js_lint:
@@ -75,13 +77,26 @@ js_lint:
 	@echo 'Finished linting'
 
 up_js:
-	@$(SPSAVE) $(SITE_URL) $(USERNAME) $(PASSWORD) js $(BASEPATH_DEST_JS) app.js
+	@$(SPSAVE) $(SITE_URL) $(USERNAME) $(PASSWORD) js $(BASEPATH_DEST_JS) appFull.js
 
 up_screen_css:
 	@$(SPSAVE) $(SITE_URL) $(USERNAME) $(PASSWORD) css $(BASEPATH_DEST_CSS) screen.css
 
+up_template:
+	@$(SPSAVE) $(SITE_URL) $(USERNAME) $(PASSWORD) template $(BASEPATH_DEST_TEMPLATE) testLink.html
+
 up_ie_css:
 	@$(SPSAVE) $(SITE_URL) $(USERNAME) $(PASSWORD) css $(BASEPATH_DEST_CSS) ie.css
+
+public_all:
+	@echo 'Start upload files on Sharepoint'
+	@echo $(SITE_URL)
+
+	@$(SPSAVE) $(SITE_URL) $(USERNAME) $(PASSWORD) js $(BASEPATH_DEST_JS) appFull.js
+	@$(SPSAVE) $(SITE_URL) $(USERNAME) $(PASSWORD) css $(BASEPATH_DEST_CSS) screen.css
+	@$(SPSAVE) $(SITE_URL) $(USERNAME) $(PASSWORD) template $(BASEPATH_DEST_TEMPLATE) testLink.html
+
+	@echo 'Finished uploading on Sharepoint'
 
 partials:
 	@echo 'Copying partials'

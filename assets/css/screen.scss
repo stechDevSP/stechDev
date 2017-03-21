@@ -10,11 +10,16 @@
  * Wrap inside container class to avoid SharePoint conflicts
  */
 //
-.golin {
+.reactTest {
 /**
  * Import vendor CSS files
  */
+@import 'vendors/animate';
+@import 'vendors/font-awesome';
 @import 'vendors/normalize';
+@import 'vendors/bootstrap';
+@import 'vendors/fancybox';
+@import 'vendors/c3';
 
 /**
  * Import all base files
@@ -28,7 +33,7 @@
 /**
  * Import all animations
  */
-@import 'animations/animations';
+
 
 /**
  * Import all layout files
@@ -58,3 +63,5 @@
  * Import element CSS files that should be applied on the whole page
  */
 @import 'components/external';
+@import 'components/welcomePage';
+@import 'components/services';
