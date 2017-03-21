@@ -20,12 +20,6 @@ scss-lint-report.xml
 /bootstrap/compiled.php
 /app/config/local
 
-# Hide generated files
-/public/_*
-/public/*.css
-!/public/_img # This is not ignored.
-/public/var/*
-/public/packages/*
 
 # Testing
 /report
