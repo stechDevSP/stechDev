@@ -15,14 +15,13 @@ SVG_SPRITE=node ./node_modules/.bin/svg-sprite
 BASEPATH_SRC_CSS=./assets/css
 BASEPATH_SRC_IMG=./assets/img
 BASEPATH_SRC_JS=./assets/js
-BASEPATH_SRC_PARTIALS=./assets/partials
+BASEPATH_SRC_PARTIALS=./assets/templates
 
 # Basepath Destinations
 BASEPATH_DEST_CSS=./public/_css
 BASEPATH_DEST_IMG=./public/_img
 BASEPATH_DEST_JS=./public/_js
-BASEPATH_DEST_PARTIALS=./public/_partials
-BASEPATH_DEST_TEMPLATE=./public/_templates
+BASEPATH_DEST_PARTIALS=./public/_templates
 
 # SharePoint Info
 SITE_URL = 'https://demopry.sharepoint.com/sites/DemoLayout/'
@@ -94,15 +93,15 @@ public_all:
 
 	@$(SPSAVE) $(SITE_URL) $(USERNAME) $(PASSWORD) js $(BASEPATH_DEST_JS) appFull.js
 	@$(SPSAVE) $(SITE_URL) $(USERNAME) $(PASSWORD) css $(BASEPATH_DEST_CSS) screen.css
-	@$(SPSAVE) $(SITE_URL) $(USERNAME) $(PASSWORD) template $(BASEPATH_DEST_TEMPLATE) testLink.html
+	@$(SPSAVE) $(SITE_URL) $(USERNAME) $(PASSWORD) template $(BASEPATH_DEST_PARTIALS) testLink.html
 
 	@echo 'Finished uploading on Sharepoint'
 
 partials:
-	@echo 'Copying partials'
+	@echo 'Copying templates'
 	@mkdir -p $(BASEPATH_DEST_PARTIALS)
 	@cp -a $(BASEPATH_SRC_PARTIALS)/. $(BASEPATH_DEST_PARTIALS) || :
-	@echo 'Finished copying partials'
+	@echo 'Finished copying templates'
 
 watch:
 	@echo 'Watching CSS and JS files'
