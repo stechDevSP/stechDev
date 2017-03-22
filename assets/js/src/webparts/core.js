@@ -8,9 +8,11 @@ import { StartPage } from '../webparts/_startPage.js';
 import { Registration } from '../webparts/_registration.js';
 import { Login } from '../webparts/_login.js';
 import { Apps } from '../webparts/_apps.js';
+import { MyApps } from '../webparts/_myApps.js';
 import { CartDetails } from '../webparts/_cartDetails.js';
 import { Version } from '../webparts/_version.js';
 import { Payment } from '../webparts/_payment.js';
+import { ResetPassword } from '../webparts/_resetPassword.js';
 
 
 
@@ -20,11 +22,13 @@ var WelcomePage = React.createClass({
             <div className="container">
                 <StartPage />
                 <Login />
+                <MyApps />
                 <Registration />
                 <Apps />
                 <CartDetails />
                 <Version />
                 <Payment />
+                <ResetPassword />
             </div>
         );
     }
@@ -35,6 +39,7 @@ ReactDOM.render(
     document.getElementById('welcome-panel')
 );
 
+mainEvents();
 appsEvents();
 cartDetailsEvents();
 loginEvents();
@@ -42,6 +47,55 @@ paymentEvents();
 registrationEvents();
 startPageEvents();
 versionEvents();
+
+function savePassword(){
+    return true;
+}
+
+function mainEvents(){
+    $(".logo").click(function() {
+        $(".welcome-component").slideUp(); 
+        $(".welcome-zone").slideDown();
+    });
+
+    $(".go-resetPassword").click(function() {
+        $(".welcome-component").slideUp(); 
+        $(".reset-password").slideDown();
+    });
+
+
+    $(".go-upgradeSub").click(function() {
+        $(".welcome-component").slideUp(); 
+        $(".goBack-cart").hide();
+        $(".select-version").slideDown();
+    });
+
+    $(".finish-resetPass").click(function() {
+        var correctSave = savePassword();
+        if(correctSave){
+            $(".welcome-component").slideUp(); 
+            $(".welcome-zone").slideDown();
+        }
+    });
+}
+
+function getQueryString(variable, query) {
+    // Returns query string value from URL.
+    // Can pass in a URL string via query parm
+    if (query) {
+        query = query.split('?')[1];
+    } else {
+        query = window.location.search.substring(1);
+    }
+    var vars = query.split("&");
+    for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split("=");
+        if (pair[0] == variable) {
+            return unescape(pair[1]);
+        }
+    }
+}
+
 
 
 function appsEvents() {
@@ -132,12 +186,38 @@ function cartDetailsEvents() {
     });
 }
 
+
+function checkLoginReturn() {
+    return true;
+}
+
 function loginEvents() {
     $(".login-select").click(function() {
         $(".welcome-zone").slideUp();
         $(".login-form").slideDown();
     });
+
+    $(".finish-login").click(function() {
+        var checkLogin = checkLoginReturn();
+        if (checkLogin) {
+            $(".loginFailed").hide();
+            $(".login-form").slideUp();
+            $(".my-select-apps-zone").slideDown();
+        } else {
+            $(".loginFailed").show();
+        }
+    });
+
+    $(".go-shop").click(function() {
+        $(".my-select-apps-zone").slideUp();
+        $(".select-apps-zone").slideDown();
+        $(".cart-icon").show();
+        $(".start-apps").hide();
+        $(".suggested-apps").show();
+    });
 }
+
+
 
 function paymentEvents() {
     $(".goBack-package").click(function() {
@@ -149,11 +229,20 @@ function paymentEvents() {
         var r = confirm("Are you sure to pay these apps?");
         if (r == true) {
             console.log("Finish payment...You pressed OK!");
+            var companyName = $(".companyEmail").html();
+            var urlSite = getQueryString("SPUrl");
+            storePaymentApps(companyName, urlSite);
         } else {
             console.log("You pressed Cancel!");
         }
     });
 }
+
+function storePaymentApps(companyName, urlSite) {
+    console.log("Your apps is stored");
+
+}
+
 
 function registrationEvents() {
     $(".finish-register").click(function() {

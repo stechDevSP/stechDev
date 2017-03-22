@@ -5,7 +5,7 @@ export class Registration extends React.Component {
     
     render() {
         return (
-            <div className="col-md-12 register-form form-group">
+            <div className="col-md-12 welcome-component register-form form-group">
                     <div className="titleRegister">Registration form</div>
                     <div className="col-md-12">
                         <div className="nameCompany col-md-6 col-xs-12">

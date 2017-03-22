@@ -18,6 +18,8 @@ body {
         height: 150px;
         border: 1px solid black;
         background-color: white;
+        cursor: pointer;
+        
         img {
             position: relative;
             top: 15px;
@@ -71,7 +73,11 @@ body {
     }
 }
 
-.select-apps-zone {
+.noElements{
+    text-align: center;
+}
+
+.select-apps-zone, .my-select-apps-zone {
     display: none;
     .title-select-apps {
         font-size: 50px;
@@ -79,6 +85,25 @@ body {
         padding-bottom: 30px;
         color: white;
     }
+
+    .suggested-apps{
+        display: none;
+    }
+}
+
+.my-select-apps-zone{
+    .title-select-apps {
+        padding-bottom: 0px !important;
+    }
+}
+
+.title-sugg{
+    padding-top: 100px !important;
+    padding-bottom: 0px !important; 
+}
+
+.btn-suggested{
+    padding-top: 70px;
 }
 
 .welcome-zone {
@@ -146,10 +171,18 @@ body {
     }
 }
 
-.login-form {
+.dropdown-menu{
+    div{
+        padding: 10px;
+    }
+}
+
+.login-form, .reset-password {
     display: none;
     color: white !important;
     padding-left: 40px;
+    text-align: center;
+
     .titleRegister {
         font-size: 50px;
         padding-top: 30px;
@@ -163,23 +196,28 @@ body {
     .alert {
         display: none;
         width: 50%;
+        margin: auto;
         margin-bottom: 5px !important;
     }
+
     .passwordCompany {
-        padding-top: 30px;
-        padding-bottom: 20px;
+        padding-top: 15px;
+        padding-bottom: 10px;
     }
-    .loginCompanyNameAlert {
+    .resetOldPassAlert {
         padding-top: 30px;
         padding-bottom: 20px;
     }
     .form-control,
-    .finish-login {
+    .finish-resetPass {
+        margin: auto;
         width: 50% !important;
     }
-    .finish-login {
+
+    .finish-resetPass {
         border-radius: 6px !important;
-        margin-left: 0px !important;
+        width: 300px !important;
+        margin: auto;
     }
 }
 
@@ -299,6 +337,12 @@ body {
 .flipper {
     transition: 1.5s;
     transform-style: preserve-3d;
+    position: relative;
+    height: 150px;
+}
+
+.myCard{
+    margin-top: 20px;
     position: relative;
     height: 150px;
 }
@@ -449,7 +493,8 @@ body {
 .payment-zone,
 .register-form,
 .select-version,
-.select-apps-zone {
+.select-apps-zone,
+.my-select-apps-zone {
     display: none;
     padding-top: 30px !important;
     .goBack-package {

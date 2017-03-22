@@ -13,6 +13,9 @@ export class Apps extends React.Component {
         super(props);
         var self = this;
 
+
+        //get my apps, if my login is empty get all
+
         var appsArray = [{
             "Name": "ST-CheckUp",
             "Description": "Assessment of your site collection",
@@ -58,7 +61,7 @@ export class Apps extends React.Component {
 
         var items = this.state.apps.map(function(item, i) {
             var app = (
-                <div className={"col-md-3 animated fadeindown card card_" + i} key={i}>
+                <div className={"col-md-3 card card_" + i} key={i}>
                     <div className={"titleCard cardTitle_" + i}>{item.Name}</div>
                         <div className="flip-container">
                             <div className="flipper">
@@ -75,24 +78,28 @@ export class Apps extends React.Component {
                 </div>
             );
             return app;
+
+            if(!this.state.apps.length){
+                items = "<div className='noElements'>No apps found</div>";
+            }
         });
 
         return (
-            <div className="col-md-12 select-apps-zone">
-                    <div className="col-md-12 title-select-apps">Select your apps</div>
-                    <div className="col-md-12">{items}</div>
-                    <div className="cart-buttons">
-
-                        <div className="col-md-12">
-                            <div className="col-md-6 col-xs-12">
-                                <div className="btn-welcome clean-sel-cart">Clean</div>
-                            </div>
-                            <div className="col-md-6 col-xs-12">
-                                <div className="btn-welcome confirm-sel-cart">Go to cart</div>
-                            </div>
+            <div className="col-md-12 select-apps-zone welcome-component">
+                <div className="col-md-12 title-select-apps start-apps">Select your apps</div>
+                <div className="col-md-12 title-select-apps suggested-apps">Suggested apps</div>
+                <div className="col-md-12">{items}</div>
+                <div className="cart-buttons">
+                    <div className="col-md-12">
+                        <div className="col-md-6 col-xs-12">
+                            <div className="btn-welcome clean-sel-cart">Clean</div>
+                        </div>
+                        <div className="col-md-6 col-xs-12">
+                            <div className="btn-welcome confirm-sel-cart">Go to cart</div>
                         </div>
                     </div>
                 </div>
+            </div>
         );
     }
 }
