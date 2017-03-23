@@ -232,6 +232,7 @@ function loginEvents() {
         $(".packageVersions").hide();
         var versionSelected = sessionStorage.getItem("PackageSelected");
         $("." + versionSelected).show();
+        $("." + versionSelected).addClass("packageSel");
     });
 }
 
@@ -374,8 +375,8 @@ function versionEvents() {
         $(".clean-version").show();
         $(".confirm-version").show();
 
-        $(".pricePackageSel").html($(this).find(".priceVersion").html() + "€");
-        $(".subPackageSel").html($(this).find(".valuePrice").html() + "€");
+        $(".pricePackageSel").html($(this).find(".priceVersion").html());
+        $(".subPackageSel").html($(this).find(".valuePrice").html());
         $(".packageSelected").html($(this).find(".nameVersion").html());
     });
 
@@ -389,7 +390,7 @@ function versionEvents() {
         if (r == true) {
             console.log("Go to the payment...You pressed OK!");
             var totalToPay = parseInt($(".pricePackageSel").html()) + parseInt($(".subPackageSel").html());
-            var divPayment = "<div class='packageBusiness'>Your business plan: <b>" + $(".packageSelected").html() + "</b></div><div class='startPricePay'>Start bundle: " + $(".pricePackageSel").html() + " €</div><div class='subPricePay'>Monthly Subscription:" + $(".subPackageSel").html() + " €</div><div class='totalToPay'>Total = " + totalToPay + " €</div>";
+            var divPayment = "<div class='packageBusiness'>Your business plan: <b>" + $(".packageSelected").html() + "</b></div><div class='startPricePay'>Start bundle: " + $(".pricePackageSel").html() + " €</div><div class='subPricePay'>Monthly Subscription: " + $(".subPackageSel").html() + " €</div><div class='totalToPay'>Total = " + totalToPay + " €</div>";
             $(".payment-container").html(divPayment);
             $(".numberPackages").html($(".orderNumber").html());
 

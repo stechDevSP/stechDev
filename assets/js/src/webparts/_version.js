@@ -27,7 +27,7 @@ export class Version extends React.Component {
                                 <div className="subPriceVersion">
                                     <div className="titlePrice">Subscription</div>
                                     <div className="valuePrice"></div>
-                                    <div className="titlePrice">monthly</div>
+                                    <div className="titlePrice"> monthly</div>
                                 </div>
                             </div>
                         </div>
@@ -46,7 +46,7 @@ export class Version extends React.Component {
                                 <div className="subPriceVersion">
                                     <div className="titlePrice">Subscription</div>
                                     <div className="valuePrice"></div>
-                                    <div className="titlePrice">monthly</div>
+                                    <div className="titlePrice"> monthly</div>
                                 </div>
                             </div>
                         </div>
@@ -64,7 +64,7 @@ export class Version extends React.Component {
                                 <div className="subPriceVersion">
                                     <div className="titlePrice">Subscription</div>
                                     <div className="valuePrice"></div>
-                                    <div className="titlePrice">monthly</div>
+                                    <div className="titlePrice"> monthly</div>
                                 </div>
                             </div>
                         </div>

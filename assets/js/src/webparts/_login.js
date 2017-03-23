@@ -15,7 +15,7 @@ export class Login extends React.Component {
                     <div className="passwordCompany">
                         <div className="alert alert-danger loginPasswordAlert" role="alert">Please insert a password</div>
                         <div className="form-group">
-                            <label for="pwd titleInput">Password (*):</label>
+                            <label>Password (*):</label>
                             <input type="password" className="form-control" id="pwdLogin" placeholder="Enter password" />
                         </div>
                     </div>

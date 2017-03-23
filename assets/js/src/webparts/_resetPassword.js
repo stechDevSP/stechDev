@@ -15,14 +15,14 @@ export class ResetPassword extends React.Component {
                     <div className="passwordCompany">
                         <div className="alert alert-danger resetPasswordAlert" role="alert">Please insert a password</div>
                         <div className="form-group">
-                            <label for="pwd titleInput">Password (*):</label>
+                            <label htmlFor="pwd titleInput">Password (*):</label>
                             <input type="password" className="form-control" id="pwdReset" placeholder="Enter password" />
                         </div>
                     </div>
                     <div className="passwordCompany">
                         <div className="alert alert-danger resetConfirmPasswordAlert" role="alert">Please insert a confirm password</div>
                         <div className="form-group">
-                            <label for="pwd titleInput">Confirm Password (*):</label>
+                            <label htmlFor="pwd titleInput">Confirm Password (*):</label>
                             <input type="password" className="form-control" id="confirmPwdReset" placeholder="Confirm password" />
                         </div>
                     </div>
