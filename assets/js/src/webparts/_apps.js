@@ -17,6 +17,7 @@ export class Apps extends React.Component {
         var arrayStorage = sessionStorage.get("AppsSelected");
         if (arrayStorage) {
             appsArray = arrayStorage;
+            //test
         } else {
 
             //get my apps, if my login is empty get all
