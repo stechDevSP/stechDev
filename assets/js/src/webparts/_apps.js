@@ -12,47 +12,53 @@ export class Apps extends React.Component {
     constructor(props) {
         super(props);
         var self = this;
+        var appsArray = [];
 
+        var arrayStorage = sessionStorage.get("AppsSelected");
+        if (arrayStorage) {
+            appsArray = arrayStorage;
+        } else {
 
-        //get my apps, if my login is empty get all
+            //get my apps, if my login is empty get all
 
-        var appsArray = [{
-            "Name": "ST-CheckUp",
-            "Description": "Assessment of your site collection",
-            "DescriptionFull": "You could check how many librariers/lists you have in your site, how many users access to your pages and more other information",
-            "Pic1": "#",
-            "Pic2": "#",
-            "Pic3": "#",
-            "StartPrice": 400,
-            "MonthPrice": 10
-        }, {
-            "Name": "ST-IPdf",
-            "Description": "Create your pdf",
-            "DescriptionFull": "Create your custom pdf files with drag & drop all the information you need from a Sharepoint's list/library",
-            "Pic1": "#",
-            "Pic2": "#",
-            "Pic3": "#",
-            "StartPrice": 500,
-            "MonthPrice": 10
-        }, {
-            "Name": "ST-HelpDesk",
-            "Description": "Help your users",
-            "DescriptionFull": "You could help and support all your users about IT, General problems, HR, requests and much more",
-            "Pic1": "#",
-            "Pic2": "#",
-            "Pic3": "#",
-            "StartPrice": 200,
-            "MonthPrice": 10
-        }, {
-            "Name": "ST-HR",
-            "Description": "Manage your company, your users",
-            "DescriptionFull": "You could manage timesheets, tickets, customer companies, vacation requests, sickness",
-            "Pic1": "#",
-            "Pic2": "#",
-            "Pic3": "#",
-            "StartPrice": 400,
-            "MonthPrice": 10
-        }];
+            appsArray = [{
+                "Name": "ST-CheckUp",
+                "Description": "Assessment of your site collection",
+                "DescriptionFull": "You could check how many librariers/lists you have in your site, how many users access to your pages and more other information",
+                "Pic1": "#",
+                "Pic2": "#",
+                "Pic3": "#",
+                "StartPrice": 400,
+                "MonthPrice": 10
+            }, {
+                "Name": "ST-IPdf",
+                "Description": "Create your pdf",
+                "DescriptionFull": "Create your custom pdf files with drag & drop all the information you need from a Sharepoint's list/library",
+                "Pic1": "#",
+                "Pic2": "#",
+                "Pic3": "#",
+                "StartPrice": 500,
+                "MonthPrice": 10
+            }, {
+                "Name": "ST-HelpDesk",
+                "Description": "Help your users",
+                "DescriptionFull": "You could help and support all your users about IT, General problems, HR, requests and much more",
+                "Pic1": "#",
+                "Pic2": "#",
+                "Pic3": "#",
+                "StartPrice": 200,
+                "MonthPrice": 10
+            }, {
+                "Name": "ST-HR",
+                "Description": "Manage your company, your users",
+                "DescriptionFull": "You could manage timesheets, tickets, customer companies, vacation requests, sickness",
+                "Pic1": "#",
+                "Pic2": "#",
+                "Pic3": "#",
+                "StartPrice": 400,
+                "MonthPrice": 10
+            }];
+        }
 
         self.state = { apps: appsArray };
     }
@@ -79,7 +85,7 @@ export class Apps extends React.Component {
             );
             return app;
 
-            if(!this.state.apps.length){
+            if (!this.state.apps.length) {
                 items = "<div className='noElements'>No apps found</div>";
             }
         });

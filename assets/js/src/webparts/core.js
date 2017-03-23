@@ -48,32 +48,76 @@ registrationEvents();
 startPageEvents();
 versionEvents();
 
-function savePassword(){
+
+//STORAGE FUNCTIONS
+function storageAvailable() {
+    return (typeof(Storage) !== "undefined");
+}
+
+function setStorage(key, data, isLocal) {
+    if (storageAvailable()) {
+        var storageObj = isLocal ? localStorage : sessionStorage;
+        storageObj.setItem(key, (data === Object(data)) ? JSON.stringify(data) : data);
+    }
+}
+
+/**
+ * Checks if session and local storage is available
+ * @params  key String of key to retrieve
+ * @params  isLocal bool to set local storage rather than session
+ * @return  string | object | null
+ */
+function getStorage(key, isLocal) {
+    if (storageAvailable()) {
+        var storageObj = isLocal ? localStorage : sessionStorage;
+        return JSON.parse(storageObj.getItem(key));
+    } else {
+        return null;
+    }
+}
+
+
+/**
+ * Checks if session and local storage is available
+ * @params  key String of key to remove
+ * @params  isLocal bool to set local storage rather than session
+ * @return  void
+ */
+function removeStorage(key, isLocal) {
+    if (storageAvailable()) {
+        var storageObj = isLocal ? localStorage : sessionStorage;
+        storageObj.removeItem(key);
+    }
+}
+
+
+
+function savePassword() {
     return true;
 }
 
-function mainEvents(){
+function mainEvents() {
     $(".logo").click(function() {
-        $(".welcome-component").slideUp(); 
+        $(".welcome-component").slideUp();
         $(".welcome-zone").slideDown();
     });
 
     $(".go-resetPassword").click(function() {
-        $(".welcome-component").slideUp(); 
+        $(".welcome-component").slideUp();
         $(".reset-password").slideDown();
     });
 
 
     $(".go-upgradeSub").click(function() {
-        $(".welcome-component").slideUp(); 
+        $(".welcome-component").slideUp();
         $(".goBack-cart").hide();
         $(".select-version").slideDown();
     });
 
     $(".finish-resetPass").click(function() {
         var correctSave = savePassword();
-        if(correctSave){
-            $(".welcome-component").slideUp(); 
+        if (correctSave) {
+            $(".welcome-component").slideUp();
             $(".welcome-zone").slideDown();
         }
     });
