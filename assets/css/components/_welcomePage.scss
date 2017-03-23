@@ -19,7 +19,6 @@ body {
         border: 1px solid black;
         background-color: white;
         cursor: pointer;
-        
         img {
             position: relative;
             top: 15px;
@@ -31,6 +30,7 @@ body {
         cursor: pointer;
         top: 35px;
         right: 220px;
+        display: none;
     }
     .select-language {
         position: absolute;
@@ -73,11 +73,12 @@ body {
     }
 }
 
-.noElements{
+.noElements {
     text-align: center;
 }
 
-.select-apps-zone, .my-select-apps-zone {
+.select-apps-zone,
+.my-select-apps-zone {
     display: none;
     .title-select-apps {
         font-size: 50px;
@@ -85,24 +86,23 @@ body {
         padding-bottom: 30px;
         color: white;
     }
-
-    .suggested-apps{
+    .suggested-apps {
         display: none;
     }
 }
 
-.my-select-apps-zone{
+.my-select-apps-zone {
     .title-select-apps {
         padding-bottom: 0px !important;
     }
 }
 
-.title-sugg{
+.title-sugg {
     padding-top: 100px !important;
-    padding-bottom: 0px !important; 
+    padding-bottom: 0px !important;
 }
 
-.btn-suggested{
+.btn-suggested {
     padding-top: 70px;
 }
 
@@ -142,6 +142,8 @@ body {
     }
 }
 
+
+
 .register-form {
     color: white !important;
     padding-left: 40px;
@@ -171,18 +173,18 @@ body {
     }
 }
 
-.dropdown-menu{
-    div{
+.dropdown-menu {
+    div {
         padding: 10px;
     }
 }
 
-.login-form, .reset-password {
+.login-form,
+.reset-password {
     display: none;
     color: white !important;
     padding-left: 40px;
     text-align: center;
-
     .titleRegister {
         font-size: 50px;
         padding-top: 30px;
@@ -199,7 +201,6 @@ body {
         margin: auto;
         margin-bottom: 5px !important;
     }
-
     .passwordCompany {
         padding-top: 15px;
         padding-bottom: 10px;
@@ -213,8 +214,13 @@ body {
         margin: auto;
         width: 50% !important;
     }
-
     .finish-resetPass {
+        border-radius: 6px !important;
+        width: 300px !important;
+        margin: auto;
+    }
+
+    .finish-login{
         border-radius: 6px !important;
         width: 300px !important;
         margin: auto;
@@ -341,7 +347,7 @@ body {
     height: 150px;
 }
 
-.myCard{
+.myCard {
     margin-top: 20px;
     position: relative;
     height: 150px;
@@ -585,5 +591,9 @@ body {
 }
 
 .popUpInfo {
+    display: none;
+}
+
+.hiddenInfo {
     display: none;
 }

@@ -14,15 +14,16 @@ export class Apps extends React.Component {
         var self = this;
         var appsArray = [];
 
-        var arrayStorage = sessionStorage.get("AppsSelected");
+        var arrayStorage = sessionStorage.getItem("AllApps");
         if (arrayStorage) {
-            appsArray = arrayStorage;
+            appsArray = JSON.parse(arrayStorage);
             //test
         } else {
 
             //get my apps, if my login is empty get all
 
             appsArray = [{
+                "Id": 1,
                 "Name": "ST-CheckUp",
                 "Description": "Assessment of your site collection",
                 "DescriptionFull": "You could check how many librariers/lists you have in your site, how many users access to your pages and more other information",
@@ -32,6 +33,7 @@ export class Apps extends React.Component {
                 "StartPrice": 400,
                 "MonthPrice": 10
             }, {
+                "Id": 2,
                 "Name": "ST-IPdf",
                 "Description": "Create your pdf",
                 "DescriptionFull": "Create your custom pdf files with drag & drop all the information you need from a Sharepoint's list/library",
@@ -41,6 +43,7 @@ export class Apps extends React.Component {
                 "StartPrice": 500,
                 "MonthPrice": 10
             }, {
+                "Id": 3,
                 "Name": "ST-HelpDesk",
                 "Description": "Help your users",
                 "DescriptionFull": "You could help and support all your users about IT, General problems, HR, requests and much more",
@@ -50,6 +53,7 @@ export class Apps extends React.Component {
                 "StartPrice": 200,
                 "MonthPrice": 10
             }, {
+                "Id": 4,
                 "Name": "ST-HR",
                 "Description": "Manage your company, your users",
                 "DescriptionFull": "You could manage timesheets, tickets, customer companies, vacation requests, sickness",
@@ -59,6 +63,8 @@ export class Apps extends React.Component {
                 "StartPrice": 400,
                 "MonthPrice": 10
             }];
+
+            sessionStorage.setItem("AllApps", JSON.stringify(appsArray));
         }
 
         self.state = { apps: appsArray };
@@ -68,7 +74,7 @@ export class Apps extends React.Component {
 
         var items = this.state.apps.map(function(item, i) {
             var app = (
-                <div className={"col-md-3 card card_" + i} key={i}>
+                <div className={"col-md-3 card cardShop card_" + i + " cardId_" + item.Id} key={i}>
                     <div className={"titleCard cardTitle_" + i}>{item.Name}</div>
                         <div className="flip-container">
                             <div className="flipper">
@@ -77,6 +83,12 @@ export class Apps extends React.Component {
                                     <div className="description">{item.Description}</div>
                                     <div><b>Start Price</b> : <span className="priceCard">{item.StartPrice}</span>€ </div>
                                     <div><b>Monthly Subscription</b> : <span className="priceSub">{item.MonthPrice}</span>€ x month</div>
+                                    <div className="hiddenInfo">
+                                        <div className="descrFull">{item.DescriptionFull}</div>
+                                        <div className="pic1Card">{item.Pic1}</div>
+                                        <div className="pic2Card">{item.Pic2}</div>
+                                        <div className="pic3Card">{item.Pic3}</div>
+                                    </div>
                                 </div>  
                             </div>
                         </div>
@@ -94,7 +106,7 @@ export class Apps extends React.Component {
         return (
             <div className="col-md-12 select-apps-zone welcome-component">
                 <div className="col-md-12 title-select-apps start-apps">Select your apps</div>
-                <div className="col-md-12 title-select-apps suggested-apps">Suggested apps</div>
+                <div className="col-md-12 title-select-apps suggested-apps">Other suggested apps</div>
                 <div className="col-md-12">{items}</div>
                 <div className="cart-buttons">
                     <div className="col-md-12">

@@ -49,49 +49,6 @@ startPageEvents();
 versionEvents();
 
 
-//STORAGE FUNCTIONS
-function storageAvailable() {
-    return (typeof(Storage) !== "undefined");
-}
-
-function setStorage(key, data, isLocal) {
-    if (storageAvailable()) {
-        var storageObj = isLocal ? localStorage : sessionStorage;
-        storageObj.setItem(key, (data === Object(data)) ? JSON.stringify(data) : data);
-    }
-}
-
-/**
- * Checks if session and local storage is available
- * @params  key String of key to retrieve
- * @params  isLocal bool to set local storage rather than session
- * @return  string | object | null
- */
-function getStorage(key, isLocal) {
-    if (storageAvailable()) {
-        var storageObj = isLocal ? localStorage : sessionStorage;
-        return JSON.parse(storageObj.getItem(key));
-    } else {
-        return null;
-    }
-}
-
-
-/**
- * Checks if session and local storage is available
- * @params  key String of key to remove
- * @params  isLocal bool to set local storage rather than session
- * @return  void
- */
-function removeStorage(key, isLocal) {
-    if (storageAvailable()) {
-        var storageObj = isLocal ? localStorage : sessionStorage;
-        storageObj.removeItem(key);
-    }
-}
-
-
-
 function savePassword() {
     return true;
 }
@@ -149,7 +106,7 @@ function appsEvents() {
         }
 
         var idPackage = $(this).data("card-id");
-        var htmlCard = "<div class='infoCardAdded cardAdded_" + idPackage + "'><div class='titleCard'>" + $(".cardTitle_" + idPackage).html() + "</div><div class='descriptionCard'>" + $(".infoCard_" + idPackage).find(".description").html() + "</div><div class='priceCardDetails'>Standard package: <b>" + $(".infoCard_" + idPackage).find(".priceCard").html() + " euro</b></div><div class='priceSubDetails'>Standard package subscription: <b>" + $(".infoCard_" + idPackage).find(".priceSub").html() + " euro</b></div><div class='deleteCard' id='deleteCard_" + idPackage + "' data-card-id='" + idPackage + "'><img class='icon icons8-Delete' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAABEklEQVRIS+WWyxHCMAxEdzugA+gAqICkYkogdJB0QAl0IEaMPZOPLDk55BIfg60nrbQaiJ0Od+LgICAROQF4JVlbkl9P4pr7C+lGj24peA+gCKu9b4E6AI9ZBSbMgORnHcl2HMMCadCrIdUE5kD06UAyK/IPVZJOqyrCUhLaw0mw9H0A0Mz7ao53ytaDacxqiFlRliyAWUNoVpIvuoZdAXMhbkUrKgshtSDtxRPApWBa12e10ilEp0s3hXdCWLFHIlILyQm4sNJ4exDtiZ7Q1NFmiCBNCuCaOjSsiHwAnI2GTKYrMjXJe1SRtVTNEXZgb5K58upd5/rEgG3adZrNYkHOZR3BivcP8p8h2AKbft5Nuh8LOJobI3DWvwAAAABJRU5ErkJggg==' width='26' height='26' /></div></div>";
+        var htmlCard = "<div class='infoCardAdded cardAdded_" + idPackage + "'><div class='titleCard'>" + $(".cardTitle_" + idPackage).html() + "</div><div class='descriptionCard'>" + $(".infoCard_" + idPackage).find(".description").html() + "</div><div class='priceCardDetails'>Standard package: <b>" + $(".infoCard_" + idPackage).find(".priceCard").html() + " euro</b></div><div class='priceSubDetails'>Standard package subscription: <b>" + $(".infoCard_" + idPackage).find(".priceSub").html() + " euro</b></div><div class='hiddenInfo'><div class='pic1Details'>" + $(".infoCard_" + idPackage).find(".pic1Card").html() + "</div><div class='pic2Details'>" + $(".infoCard_" + idPackage).find(".pic2Card").html() + "</div><div class='pic3Details'>" + $(".infoCard_" + idPackage).find(".pic3Card").html() + "</div><div class='descrFullDetails'>" + $(".infoCard_" + idPackage).find(".descrFull").html() + "</div></div><div class='deleteCard' id='deleteCard_" + idPackage + "' data-card-id='" + idPackage + "'><img class='icon icons8-Delete' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAABEklEQVRIS+WWyxHCMAxEdzugA+gAqICkYkogdJB0QAl0IEaMPZOPLDk55BIfg60nrbQaiJ0Od+LgICAROQF4JVlbkl9P4pr7C+lGj24peA+gCKu9b4E6AI9ZBSbMgORnHcl2HMMCadCrIdUE5kD06UAyK/IPVZJOqyrCUhLaw0mw9H0A0Mz7ao53ytaDacxqiFlRliyAWUNoVpIvuoZdAXMhbkUrKgshtSDtxRPApWBa12e10ilEp0s3hXdCWLFHIlILyQm4sNJ4exDtiZ7Q1NFmiCBNCuCaOjSsiHwAnI2GTKYrMjXJe1SRtVTNEXZgb5K58upd5/rEgG3adZrNYkHOZR3BivcP8p8h2AKbft5Nuh8LOJobI3DWvwAAAABJRU5ErkJggg==' width='26' height='26' /></div></div>";
         $(".cart-container").append(htmlCard);
         $(".card_" + idPackage).hide();
         $(".confirm-cart, .clean-cart, .clean-sel-cart, .confirm-sel-cart").show();
@@ -247,7 +204,10 @@ function loginEvents() {
             $(".loginFailed").hide();
             $(".login-form").slideUp();
             $(".my-select-apps-zone").slideDown();
+            $(".profile-drop").show();
+            $(".cart-icon").hide();
         } else {
+            $(".profile-drop").hide();
             $(".loginFailed").show();
         }
     });
@@ -258,6 +218,20 @@ function loginEvents() {
         $(".cart-icon").show();
         $(".start-apps").hide();
         $(".suggested-apps").show();
+
+        $(".cardShop").hide();
+
+        var appsRemain = JSON.parse(sessionStorage.getItem("AppsShop"));
+        $.each(appsRemain, function(index, value){
+            $(".cardId_" + value.Id).show();
+        });
+
+        $(".cart-container").html("No apps selected");
+        $(".totale-cart-value, .totale-sub-value, .orderNumber").html(0);
+
+        $(".packageVersions").hide();
+        var versionSelected = sessionStorage.getItem("PackageSelected");
+        $("." + versionSelected).show();
     });
 }
 
@@ -273,18 +247,55 @@ function paymentEvents() {
         var r = confirm("Are you sure to pay these apps?");
         if (r == true) {
             console.log("Finish payment...You pressed OK!");
-            var companyName = $(".companyEmail").html();
+            var companyName = $(".companyName").html();
+            var packageSel = $(".packageSelected").html();
             var urlSite = getQueryString("SPUrl");
-            storePaymentApps(companyName, urlSite);
+
+            var storedApps = [];
+            var storedNameApps = [];
+
+            $.each($(".infoCardAdded"), function(index, value) {
+                var appName = $(this).find(".titleCard").html();
+                var appDescr = $(this).find(".descriptionCard").html();
+                var appDescriptionFull = $(this).find(".descrFull").html();
+                var appPic1 = $(this).find(".pic1Details").html();
+                var appPic2 = $(this).find(".pic2Details").html();
+                var appPic3 = $(this).find(".pic3Details").html();
+                var appStartPrice = $(this).find(".priceDetails").html();
+                var appMonthPrice = $(this).find(".priceSubDetails").html();
+
+                var appSelected = {
+                    "Name": appName,
+                    "Description": appDescr,
+                    "DescriptionFull": appDescriptionFull,
+                    "Pic1": appPic1,
+                    "Pic2": appPic2,
+                    "Pic3": appPic3,
+                    "StartPrice": appStartPrice,
+                    "MonthPrice": appMonthPrice
+                };
+
+                storedApps.push(appSelected);
+
+                storedNameApps.push(appName);
+
+            });
+
+            sessionStorage.setItem("AppsNames", JSON.stringify(storedNameApps));
+            storePaymentApps(companyName, urlSite, storedApps,packageSel);
         } else {
             console.log("You pressed Cancel!");
         }
     });
 }
 
-function storePaymentApps(companyName, urlSite) {
+function storePaymentApps(companyName, urlSite, storedApps, packageSel) {
     console.log("Your apps is stored");
 
+    sessionStorage.setItem("PackageSelected", packageSel);
+    sessionStorage.setItem("CompanyName", companyName);
+    sessionStorage.setItem("UrlSite", urlSite);
+    sessionStorage.setItem("AppsSelected", JSON.stringify(storedApps));
 }
 
 

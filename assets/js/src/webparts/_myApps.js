@@ -13,60 +13,52 @@ export class MyApps extends React.Component {
     constructor(props) {
         super(props);
         var self = this;
+        var appsArray = [];
+        var allApps = [];
 
-        //get my apps
-        var appsArray = [{
-            "Name": "ST-CheckUp",
-            "Description": "Assessment of your site collection",
-            "DescriptionFull": "You could check how many librariers/lists you have in your site, how many users access to your pages and more other information",
-            "Pic1": "#",
-            "Pic2": "#",
-            "Pic3": "#",
-            "StartPrice": 400,
-            "MonthPrice": 10
-        }, {
-            "Name": "ST-IPdf",
-            "Description": "Create your pdf",
-            "DescriptionFull": "Create your custom pdf files with drag & drop all the information you need from a Sharepoint's list/library",
-            "Pic1": "#",
-            "Pic2": "#",
-            "Pic3": "#",
-            "StartPrice": 500,
-            "MonthPrice": 10
-        }];
+        var arrayStorage = sessionStorage.getItem("AppsSelected");
+        if (arrayStorage) {
+            appsArray = JSON.parse(arrayStorage);
+            //test
+        } else {
+            //get my apps
 
-        //get all remain apps
-        var appsArray2 = [, {
-            "Name": "ST-HelpDesk",
-            "Description": "Help your users",
-            "DescriptionFull": "You could help and support all your users about IT, General problems, HR, requests and much more",
-            "Pic1": "#",
-            "Pic2": "#",
-            "Pic3": "#",
-            "StartPrice": 200,
-            "MonthPrice": 10
-        }, {
-            "Name": "ST-HR",
-            "Description": "Manage your company, your users",
-            "DescriptionFull": "You could manage timesheets, tickets, customer companies, vacation requests, sickness",
-            "Pic1": "#",
-            "Pic2": "#",
-            "Pic3": "#",
-            "StartPrice": 400,
-            "MonthPrice": 10
-        }];
+        }
 
-        self.state = { 
+        var allApps = JSON.parse(sessionStorage.getItem("AllApps"));
+        var appsArray2 = [];
+
+        if (appsArray.length && allApps.length) {
+            $.each(allApps, function(iAll, eAll) {
+                var find = false;
+                $.each(appsArray, function(iMy, eMy) {
+                    if (eMy.Name === eAll.Name) {
+                        find = true;
+                    }
+                });
+                if (!find) {
+                    appsArray2.push(eAll);
+                }
+            });
+        } else {
+            appsArray2 = allApps;
+        }
+
+        sessionStorage.setItem("AppsShop", JSON.stringify(appsArray2));
+
+        self.state = {
             apps: appsArray,
-            appsRemain: appsArray2 
+            appsRemain: appsArray2
         };
     }
     render() {
         var myObj = this;
 
-        var items = this.state.apps.map(function(item, i) {
-            var app = (
-                <div className="col-md-3 card" key={i}>
+        var items;
+        if (this.state.apps) {
+            items = this.state.apps.map(function(item, i) {
+                var app = (
+                    <div className="col-md-3 card" key={i}>
                     <div className="flip-container">
                         <div className={"titleCard cardTitle_" + i}>{item.Name}</div>
                         <div className="myCard">
@@ -74,17 +66,19 @@ export class MyApps extends React.Component {
                         </div>
                     </div>
                 </div>
-            );
-            return app;
-        });
-
-        if(!this.state.apps.length){
+                );
+                return app;
+            });
+        } else {
             items = "<div className='noElements'>No apps found</div>";
         }
 
-        var otherItems = this.state.appsRemain.map(function(item, i) {
-            var app2 = (
-                <div className="col-md-3 card" key={i}>
+
+        var otherItems;
+        if (this.state.appsRemain) {
+            otherItems = this.state.appsRemain.map(function(item, i) {
+                var app2 = (
+                    <div className="col-md-3 card" key={i}>
                     <div className="flip-container">
                         <div className={"titleCard cardTitle_" + i}>{item.Name}</div>
                         <div className="myCard">
@@ -92,11 +86,10 @@ export class MyApps extends React.Component {
                         </div>
                     </div>
                 </div>
-            );
-            return app2;
-        });
-
-        if(!this.state.appsRemain.length){
+                );
+                return app2;
+            });
+        } else {
             otherItems = "<div className='noElements'>No apps suggested</div>";
         }
 
@@ -107,7 +100,7 @@ export class MyApps extends React.Component {
                     <div className="col-md-12">{items}</div>
                     <hr />
                     <div className="col-md-12 title-select-apps title-sugg">Other suggested apps</div>
-                    <div className="col-md-12">{otherItems}</div>
+                    <div className="col-md-12 other-apps">{otherItems}</div>
                 </div>
                 <div className="col-md-12 btn-suggested">
                     <div className="col-md-9">&nbsp;</div>

@@ -13,7 +13,7 @@ export class Version extends React.Component {
                     </div>
                     <div className="title-select-version">Select your Business Plan</div>
                     <div className="col-md-12 container-packages">
-                        <div className="col-md-4 animated fadeindown standard">
+                        <div className="col-md-4 animated fadeindown packageVersions standard">
                             <div className="package">
                                 <div className="nameVersion">Standard</div>
                                 <div className="detailsVersion">
@@ -32,7 +32,7 @@ export class Version extends React.Component {
                             </div>
                         </div>
                     
-                        <div className="col-md-4 animated fadeindown enterprise">
+                        <div className="col-md-4 animated fadeindown packageVersions enterprise">
                             <div className="package">
                                 <div className="nameVersion">Enterprise</div>
                                 <div className="detailsVersion">
@@ -50,7 +50,7 @@ export class Version extends React.Component {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-4 animated fadeindown premium">
+                        <div className="col-md-4 animated fadeindown packageVersions premium">
                             <div className="package">
                                 <div className="nameVersion">Premium</div>
                                 <div className="detailsVersion">
