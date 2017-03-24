@@ -70,7 +70,7 @@ export class MyApps extends React.Component {
                 return app;
             });
         } else {
-            items = "<div className='noElements'>No apps found</div>";
+            items = "No apps found";
         }
 
 
@@ -90,14 +90,14 @@ export class MyApps extends React.Component {
                 return app2;
             });
         } else {
-            otherItems = "<div className='noElements'>No apps suggested</div>";
+            otherItems = "No apps suggested";
         }
 
         return (
             <div className="col-md-12 welcome-component my-select-apps-zone">
                 <div>
                     <div className="col-md-12 title-select-apps">My apps</div>
-                    <div className="col-md-12">{items}</div>
+                    <div className="col-md-12 myApps">{items}</div>
                     <hr />
                     <div className="col-md-12 title-select-apps title-sugg">Other suggested apps</div>
                     <div className="col-md-12 other-apps">{otherItems}</div>

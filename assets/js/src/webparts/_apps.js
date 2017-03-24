@@ -23,6 +23,7 @@ export class Apps extends React.Component {
             //get my apps, if my login is empty get all
 
             appsArray = [{
+                "Logo": "../_img/png/assessIcon.png",
                 "Id": 1,
                 "Name": "ST-CheckUp",
                 "Description": "Assessment of your site collection",
@@ -31,8 +32,13 @@ export class Apps extends React.Component {
                 "Pic2": "#",
                 "Pic3": "#",
                 "StartPrice": 400,
-                "MonthPrice": 10
+                "MonthPrice": 10, 
+                "StartDollarPrice": 360,
+                "MonthDollarPrice": 9,
+                "StartSterlinPrice": 520,
+                "MonthSterlinPrice": 14
             }, {
+                "Logo": "../_img/png/pdfIcon.png",
                 "Id": 2,
                 "Name": "ST-IPdf",
                 "Description": "Create your pdf",
@@ -41,8 +47,13 @@ export class Apps extends React.Component {
                 "Pic2": "#",
                 "Pic3": "#",
                 "StartPrice": 500,
-                "MonthPrice": 10
+                "MonthPrice": 10,
+                "StartDollarPrice": 450,
+                "MonthDollarPrice": 9,
+                "StartSterlinPrice": 650,
+                "MonthSterlinPrice": 14
             }, {
+                "Logo": "../_img/png/helpdeskIcon.png",
                 "Id": 3,
                 "Name": "ST-HelpDesk",
                 "Description": "Help your users",
@@ -51,8 +62,13 @@ export class Apps extends React.Component {
                 "Pic2": "#",
                 "Pic3": "#",
                 "StartPrice": 200,
-                "MonthPrice": 10
+                "MonthPrice": 10,
+                "StartDollarPrice": 180,
+                "MonthDollarPrice": 9,
+                "StartSterlinPrice": 260,
+                "MonthSterlinPrice": 14
             }, {
+                "Logo": "../_img/png/hrIcon.png",
                 "Id": 4,
                 "Name": "ST-HR",
                 "Description": "Manage your company, your users",
@@ -61,7 +77,11 @@ export class Apps extends React.Component {
                 "Pic2": "#",
                 "Pic3": "#",
                 "StartPrice": 400,
-                "MonthPrice": 10
+                "MonthPrice": 10,
+                "StartDollarPrice": 360,
+                "MonthDollarPrice": 9,
+                "StartSterlinPrice": 520,
+                "MonthSterlinPrice": 14
             }];
 
             sessionStorage.setItem("AllApps", JSON.stringify(appsArray));
@@ -81,9 +101,22 @@ export class Apps extends React.Component {
                                 <div className={"front " + item.Name}></div>
                                 <div className={'back boxInfo boxInfo_' + item.Name + " infoCard_" + i}>
                                     <div className="description">{item.Description}</div>
-                                    <div><b>Start Price</b> : <span className="priceCard">{item.StartPrice}</span>€ </div>
-                                    <div><b>Monthly Subscription</b> : <span className="priceSub">{item.MonthPrice}</span>€ x month</div>
+                                    <div className="euroPrice">
+                                        <div><b>Start Price</b> : <span className="priceCard">{item.StartPrice}</span>€ </div>
+                                        <div><b>Monthly Subscription</b> : <span className="priceSub">{item.MonthPrice}</span>€ x month</div>
+                                    </div>
+                                    <div className="dollarPrice">
+                                        <div><b>Start Price</b> : <span className="priceCard">{item.StartDollarPrice}</span>$ </div>
+                                        <div><b>Monthly Subscription</b> : <span className="priceSub">{item.MonthDollarPrice}</span>$ x month</div>
+                                    </div>
+                                    <div className="sterlinPrice">
+                                        <div><b>Start Price</b> : <span className="priceCard">{item.StartSterlinPrice}</span>£ </div>
+                                        <div><b>Monthly Subscription</b> : <span className="priceSub">{item.MonthSterlinPrice}</span>£ x month</div>
+                                    </div>
                                     <div className="hiddenInfo">
+                                        <div className="selectedPrice">{item.StartPrice}</div>
+                                        <div className="selectedSubPrice">{item.MonthPrice}</div>
+                                        <div className="logoCard">{item.Logo}</div>
                                         <div className="descrFull">{item.DescriptionFull}</div>
                                         <div className="pic1Card">{item.Pic1}</div>
                                         <div className="pic2Card">{item.Pic2}</div>
@@ -99,7 +132,7 @@ export class Apps extends React.Component {
             return app;
 
             if (!this.state.apps.length) {
-                items = "<div className='noElements'>No apps found</div>";
+                items = "No apps found";
             }
         });
 
@@ -107,7 +140,7 @@ export class Apps extends React.Component {
             <div className="col-md-12 select-apps-zone welcome-component">
                 <div className="col-md-12 title-select-apps start-apps">Select your apps</div>
                 <div className="col-md-12 title-select-apps suggested-apps">Other suggested apps</div>
-                <div className="col-md-12">{items}</div>
+                <div className="col-md-12 totalApps">{items}</div>
                 <div className="cart-buttons">
                     <div className="col-md-12">
                         <div className="col-md-6 col-xs-12">

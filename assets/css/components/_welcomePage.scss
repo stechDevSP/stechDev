@@ -43,6 +43,7 @@ body {
         }
     }
     .select-currency {
+        display: none;
         position: absolute;
         cursor: pointer;
         top: 35px;
@@ -77,13 +78,17 @@ body {
     text-align: center;
 }
 
+.sterlinPrice, .dollarPrice{
+    display: none;
+}
+
 .select-apps-zone,
 .my-select-apps-zone {
     display: none;
     .title-select-apps {
-        font-size: 50px;
+        font-size: 40px;
         padding-top: 50px;
-        padding-bottom: 30px;
+        padding-bottom: 10px;
         color: white;
     }
     .suggested-apps {
@@ -151,9 +156,9 @@ body {
         color: white !important;
     }
     .titleRegister {
-        font-size: 50px;
+        font-size: 40px;
         padding-top: 30px;
-        padding-bottom: 30px;
+        padding-bottom: 10px;
     }
     .alert {
         display: none;
@@ -186,9 +191,10 @@ body {
     padding-left: 40px;
     text-align: center;
     .titleRegister {
-        font-size: 50px;
+        font-size: 40px;
         padding-top: 30px;
-        padding-bottom: 30px;
+        padding-bottom: 10px;
+        
     }
     .titleInput {
         font-size: 20px;
@@ -225,6 +231,12 @@ body {
         width: 300px !important;
         margin: auto;
     }
+}
+
+.loader{
+    display: none;
+    color: white;
+    padding-bottom: 20px;
 }
 
 .footer {
@@ -336,7 +348,7 @@ body {
 .back {
     padding: 20px;
     height: 150px;
-    width: 100%;
+    width: 150px;
     font-size: 13px;
 }
 
@@ -345,12 +357,15 @@ body {
     transform-style: preserve-3d;
     position: relative;
     height: 150px;
+    width: 150px;
 }
 
 .myCard {
     margin-top: 20px;
     position: relative;
     height: 150px;
+    width: 150px;
+    cursor: pointer;
 }
 
 .front,
@@ -359,8 +374,8 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    border-radius: 5px;
-    box-shadow: 4px 4px 5px #222;
+    // border-radius: 5px;
+    // box-shadow: 4px 4px 5px #222;
 }
 
 .front {
@@ -404,20 +419,17 @@ body {
     }
     .package {
         background-color: white;
-        border-radius: 5px;
-        border: 1px solid #888;
-        box-shadow: 4px 4px 5px #222;
         overflow: hidden;
         padding: 10px;
         margin: 20px;
         &.packageSel {
-            border: 3px solid red;
+            border: 5px solid black;
         }
     }
     .title-select-version {
-        font-size: 50px;
+        font-size: 40px;
         padding-top: 10px;
-        padding-bottom: 30px;
+        padding-bottom: 10px;
         color: white;
     }
     .standard {
@@ -526,10 +538,15 @@ body {
     .cart-buttons {
         color: white;
         .cart-title {
-            font-size: 50px;
+            font-size: 40px;
             padding-top: 10px;
-            padding-bottom: 30px;
+            padding-bottom: 10px;
             color: white;
+        }
+
+        .numberPackages{
+            font-size: 40px;
+            font-weight: bold;
         }
         .confirm-cart,
         .confirm-sel-cart {
@@ -562,18 +579,30 @@ body {
             position: relative;
             .infoCardAdded {
                 position: relative;
-                margin-bottom: 10px;
-                top: -20px;
                 border-bottom: 1px dotted white;
-                padding-bottom: 30px;
+                padding-bottom: 10px;
+                padding-top: 10px;
+                overflow: hidden;
+
+                .logoDetails{
+                    img{
+                        background-color: white;
+                        width: 120px;
+                        float: left;
+                        height: 120px;
+                        margin-right: 20px;
+                    }
+                }
+
                 .titleCard {
                     font-weight: bold;
                     text-align: left !important;
                     padding-bottom: 10px;
+                    padding-top: 10px !important;
                 }
                 .descriptionCard {
                     font-size: 12px;
-                    padding-bottom: 5px;
+                    padding-bottom: 10px;
                 }
                 .deleteCard {
                     cursor: pointer;

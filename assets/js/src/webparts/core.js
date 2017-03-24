@@ -54,9 +54,111 @@ function savePassword() {
 }
 
 function mainEvents() {
+    if ($(".totalApps").html() == "No apps found") {
+        $(".totalApps").addClass("noElements");
+    }
+
+    if ($(".myApps").html() == "No apps found") {
+        $(".myApps").addClass("noElements");
+    }
+
+    if ($(".other-apps").html() == "No apps suggested") {
+        $(".other-apps").addClass("noElements");
+    }
+
+    $('#sel2').on('change', function() {
+        var priceStandard = parseInt($(".totale-cart-value").html());
+        var priceEnterprise = parseInt($(".totale-cart-value").html()) * 5;
+        var pricePremium = parseInt($(".totale-cart-value").html()) * 10;
+
+        var subStandard = parseInt($(".totale-sub-value").html());
+        var subEnterprise = parseInt($(".totale-sub-value").html()) * 5;
+        var subPremium = parseInt($(".totale-sub-value").html()) * 10;
+
+        if ($(this).val() === "€") {
+            // priceStandard = priceStandard;
+            // priceEnterprise = priceEnterprise;
+            // pricePremium = pricePremium;
+            // subStandard = subStandard;
+            // subEnterprise = subEnterprise;
+            // subPremium = subPremium;
+            // $(".standard").find(".priceVersion").html(priceStandard + $("#sel2").val());
+            // $(".standard").find(".valuePrice").html(subStandard + $("#sel2").val());
+
+            // $(".enterprise").find(".priceVersion").html(priceEnterprise + $("#sel2").val());
+            // $(".enterprise").find(".valuePrice").html(subEnterprise + $("#sel2").val());
+
+            // $(".premium").find(".priceVersion").html(pricePremium + $("#sel2").val());
+            // $(".premium").find(".valuePrice").html(subPremium + $("#sel2").val());
+
+            $(".dollarPrice").hide();
+            $(".sterlinPrice").hide();
+            $(".euroPrice").show();
+
+            $.each($(".euroPrice"), function(){
+                $(this).parent().find(".selectedPrice").html($(this).find(".priceCard").html());
+                $(this).parent().find(".selectedSubPrice").html($(this).find(".priceSub").html());
+            });
+
+        } else if ($(this).val() === "$") {
+            // priceStandard = priceStandard * 0.9;
+            // priceEnterprise = priceEnterprise * 0.9;
+            // pricePremium = pricePremium * 0.9;
+            // subStandard = subStandard * 0.9;
+            // subEnterprise = subEnterprise * 0.9;
+            // subPremium = subPremium * 0.9;
+            // $(".standard").find(".priceVersion").html(priceStandard + $("#sel2").val());
+            // $(".standard").find(".valuePrice").html(subStandard + $("#sel2").val());
+
+            // $(".enterprise").find(".priceVersion").html(priceEnterprise + $("#sel2").val());
+            // $(".enterprise").find(".valuePrice").html(subEnterprise + $("#sel2").val());
+
+            // $(".premium").find(".priceVersion").html(pricePremium + $("#sel2").val());
+            // $(".premium").find(".valuePrice").html(subPremium + $("#sel2").val());
+
+            $(".sterlinPrice").hide();
+            $(".euroPrice").hide();
+            $(".dollarPrice").show();
+
+            $.each($(".dollarPrice"), function(){
+                $(this).parent().find(".selectedPrice").html($(this).find(".priceCard").html());
+                $(this).parent().find(".selectedSubPrice").html($(this).find(".priceSub").html());
+            });
+
+        } else {
+            // priceStandard = priceStandard * 1.3;
+            // priceEnterprise = priceEnterprise * 1.3;
+            // pricePremium = pricePremium * 1.3;
+            // subStandard = subStandard * 1.3;
+            // subEnterprise = subEnterprise * 1.3;
+            // subPremium = subPremium * 1.3;
+            // $(".standard").find(".priceVersion").html(priceStandard + $("#sel2").val());
+            // $(".standard").find(".valuePrice").html(subStandard + $("#sel2").val());
+
+            // $(".enterprise").find(".priceVersion").html(priceEnterprise + $("#sel2").val());
+            // $(".enterprise").find(".valuePrice").html(subEnterprise + $("#sel2").val());
+
+            // $(".premium").find(".priceVersion").html(pricePremium + $("#sel2").val());
+            // $(".premium").find(".valuePrice").html(subPremium + $("#sel2").val());
+
+            $(".euroPrice").hide();
+            $(".dollarPrice").hide();
+            $(".sterlinPrice").show();
+
+            $.each($(".sterlinPrice"), function(){
+                $(this).parent().find(".selectedPrice").html($(this).find(".priceCard").html());
+                $(this).parent().find(".selectedSubPrice").html($(this).find(".priceSub").html());
+            });
+        }
+
+    });
+
     $(".logo").click(function() {
         $(".welcome-component").slideUp();
         $(".welcome-zone").slideDown();
+        $(".cart-icon").hide();
+        $(".profile-drop").hide();
+        $(".select-currency").hide();
     });
 
     $(".go-resetPassword").click(function() {
@@ -68,6 +170,7 @@ function mainEvents() {
     $(".go-upgradeSub").click(function() {
         $(".welcome-component").slideUp();
         $(".goBack-cart").hide();
+        $(".select-currency").show();
         $(".select-version").slideDown();
     });
 
@@ -106,18 +209,18 @@ function appsEvents() {
         }
 
         var idPackage = $(this).data("card-id");
-        var htmlCard = "<div class='infoCardAdded cardAdded_" + idPackage + "'><div class='titleCard'>" + $(".cardTitle_" + idPackage).html() + "</div><div class='descriptionCard'>" + $(".infoCard_" + idPackage).find(".description").html() + "</div><div class='priceCardDetails'>Standard package: <b>" + $(".infoCard_" + idPackage).find(".priceCard").html() + " euro</b></div><div class='priceSubDetails'>Standard package subscription: <b>" + $(".infoCard_" + idPackage).find(".priceSub").html() + " euro</b></div><div class='hiddenInfo'><div class='pic1Details'>" + $(".infoCard_" + idPackage).find(".pic1Card").html() + "</div><div class='pic2Details'>" + $(".infoCard_" + idPackage).find(".pic2Card").html() + "</div><div class='pic3Details'>" + $(".infoCard_" + idPackage).find(".pic3Card").html() + "</div><div class='descrFullDetails'>" + $(".infoCard_" + idPackage).find(".descrFull").html() + "</div></div><div class='deleteCard' id='deleteCard_" + idPackage + "' data-card-id='" + idPackage + "'><img class='icon icons8-Delete' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAABEklEQVRIS+WWyxHCMAxEdzugA+gAqICkYkogdJB0QAl0IEaMPZOPLDk55BIfg60nrbQaiJ0Od+LgICAROQF4JVlbkl9P4pr7C+lGj24peA+gCKu9b4E6AI9ZBSbMgORnHcl2HMMCadCrIdUE5kD06UAyK/IPVZJOqyrCUhLaw0mw9H0A0Mz7ao53ytaDacxqiFlRliyAWUNoVpIvuoZdAXMhbkUrKgshtSDtxRPApWBa12e10ilEp0s3hXdCWLFHIlILyQm4sNJ4exDtiZ7Q1NFmiCBNCuCaOjSsiHwAnI2GTKYrMjXJe1SRtVTNEXZgb5K58upd5/rEgG3adZrNYkHOZR3BivcP8p8h2AKbft5Nuh8LOJobI3DWvwAAAABJRU5ErkJggg==' width='26' height='26' /></div></div>";
+        var htmlCard = "<div class='infoCardAdded cardAdded_" + idPackage + "'><div class='logoDetails'><img src='" + $(".infoCard_" + idPackage).find(".logoCard").html() + "' /></div><div class='titleCard'>" + $(".cardTitle_" + idPackage).html() + "</div><div class='descriptionCard'>" + $(".infoCard_" + idPackage).find(".description").html() + "</div><div class='priceCardDetails'>Standard package: <b>" + $(".infoCard_" + idPackage).find(".selectedPrice").html() + "</b><span class='currencyDetail'>" + $("#sel2").val() + "</span></div><div class='priceSubDetails'>Standard package subscription: <b>" + $(".infoCard_" + idPackage).find(".selectedSubPrice").html() + "</b><span class='currencyDetail'>" + $("#sel2").val() + "</span></div><div class='hiddenInfo'><div class='pic1Details'>" + $(".infoCard_" + idPackage).find(".pic1Card").html() + "</div><div class='pic2Details'>" + $(".infoCard_" + idPackage).find(".pic2Card").html() + "</div><div class='pic3Details'>" + $(".infoCard_" + idPackage).find(".pic3Card").html() + "</div><div class='descrFullDetails'>" + $(".infoCard_" + idPackage).find(".descrFull").html() + "</div></div><div class='deleteCard' id='deleteCard_" + idPackage + "' data-card-id='" + idPackage + "'><img class='icon icons8-Delete' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAABEklEQVRIS+WWyxHCMAxEdzugA+gAqICkYkogdJB0QAl0IEaMPZOPLDk55BIfg60nrbQaiJ0Od+LgICAROQF4JVlbkl9P4pr7C+lGj24peA+gCKu9b4E6AI9ZBSbMgORnHcl2HMMCadCrIdUE5kD06UAyK/IPVZJOqyrCUhLaw0mw9H0A0Mz7ao53ytaDacxqiFlRliyAWUNoVpIvuoZdAXMhbkUrKgshtSDtxRPApWBa12e10ilEp0s3hXdCWLFHIlILyQm4sNJ4exDtiZ7Q1NFmiCBNCuCaOjSsiHwAnI2GTKYrMjXJe1SRtVTNEXZgb5K58upd5/rEgG3adZrNYkHOZR3BivcP8p8h2AKbft5Nuh8LOJobI3DWvwAAAABJRU5ErkJggg==' width='26' height='26' /></div></div>";
         $(".cart-container").append(htmlCard);
         $(".card_" + idPackage).hide();
-        $(".confirm-cart, .clean-cart, .clean-sel-cart, .confirm-sel-cart").show();
+        $(".cart-buttons, .confirm-cart, .clean-cart, .clean-sel-cart, .confirm-sel-cart").show();
 
         var newCounter = parseInt($(".orderNumber").html()) + 1;
         $(".orderNumber").html(newCounter);
 
-        var newTotal = parseInt($(".infoCard_" + idPackage).find(".priceCard").html()) + parseInt($(".totale-cart-value").html());
+        var newTotal = parseInt($(".infoCard_" + idPackage).find(".selectedPrice").html()) + parseInt($(".totale-cart-value").html());
         $(".totale-cart-value").html(newTotal);
 
-        var newSubTotal = parseInt($(".infoCard_" + idPackage).find(".priceSub").html()) + parseInt($(".totale-sub-value").html());
+        var newSubTotal = parseInt($(".infoCard_" + idPackage).find(".selectedSubPrice").html()) + parseInt($(".totale-sub-value").html());
         $(".totale-sub-value").html(newSubTotal);
 
         $("#deleteCard_" + idPackage).click(function(e) {
@@ -128,10 +231,10 @@ function appsEvents() {
             var newCounter = parseInt($(".orderNumber").html()) - 1;
             $(".orderNumber").html(newCounter);
 
-            var newTotal = parseInt($(".totale-cart-value").html()) - parseInt($(".infoCard_" + idPackage).find(".priceCard").html());
+            var newTotal = parseInt($(".totale-cart-value").html()) - parseInt($(".infoCard_" + idPackage).find(".selectedPrice").html());
             $(".totale-cart-value").html(newTotal);
 
-            var newSubTotal = parseInt($(".totale-sub-value").html()) - parseInt($(".infoCard_" + idPackage).find(".priceSub").html());
+            var newSubTotal = parseInt($(".totale-sub-value").html()) - parseInt($(".infoCard_" + idPackage).find(".selectedSubPrice").html());
             $(".totale-sub-value").html(newSubTotal);
 
             $(".card_" + idPackage).show();
@@ -148,6 +251,7 @@ function appsEvents() {
         $(".payment-zone").slideUp();
         $(".select-version").slideUp();
         $(".cart-details").slideDown();
+        $(".select-currency").show();
     });
 }
 
@@ -176,14 +280,14 @@ function cartDetailsEvents() {
         var subEnterprise = parseInt($(".totale-sub-value").html()) * 5;
         var subPremium = parseInt($(".totale-sub-value").html()) * 10;
 
-        $(".standard").find(".priceVersion").html(priceStandard + "€");
-        $(".standard").find(".valuePrice").html(subStandard + "€");
+        $(".standard").find(".priceVersion").html(priceStandard + $("#sel2").val());
+        $(".standard").find(".valuePrice").html(subStandard + $("#sel2").val());
 
-        $(".enterprise").find(".priceVersion").html(priceEnterprise + "€");
-        $(".enterprise").find(".valuePrice").html(subEnterprise + "€");
+        $(".enterprise").find(".priceVersion").html(priceEnterprise + $("#sel2").val());
+        $(".enterprise").find(".valuePrice").html(subEnterprise + $("#sel2").val());
 
-        $(".premium").find(".priceVersion").html(pricePremium + "€");
-        $(".premium").find(".valuePrice").html(subPremium + "€");
+        $(".premium").find(".priceVersion").html(pricePremium + $("#sel2").val());
+        $(".premium").find(".valuePrice").html(subPremium + $("#sel2").val());
     });
 }
 
@@ -206,6 +310,11 @@ function loginEvents() {
             $(".my-select-apps-zone").slideDown();
             $(".profile-drop").show();
             $(".cart-icon").hide();
+            $(".cart-buttons").hide();
+            $(".clean-cart").hide();
+            $(".confirm-cart").hide();
+            $(".clean-version").hide();
+            $(".confirm-version").hide();
         } else {
             $(".profile-drop").hide();
             $(".loginFailed").show();
@@ -222,7 +331,7 @@ function loginEvents() {
         $(".cardShop").hide();
 
         var appsRemain = JSON.parse(sessionStorage.getItem("AppsShop"));
-        $.each(appsRemain, function(index, value){
+        $.each(appsRemain, function(index, value) {
             $(".cardId_" + value.Id).show();
         });
 
@@ -283,7 +392,7 @@ function paymentEvents() {
             });
 
             sessionStorage.setItem("AppsNames", JSON.stringify(storedNameApps));
-            storePaymentApps(companyName, urlSite, storedApps,packageSel);
+            storePaymentApps(companyName, urlSite, storedApps, packageSel);
         } else {
             console.log("You pressed Cancel!");
         }
@@ -343,6 +452,7 @@ function registrationEvents() {
                 $(".companyPasswordAlert").hide();
                 $(".companyConfirmPassAlert").hide();
                 $(".companyConfirmPassAlert2").hide();
+                $(".select-currency").show();
             } else {
                 $(".companyConfirmPassAlert2").show();
             }
@@ -389,8 +499,8 @@ function versionEvents() {
         var r = confirm("Are you sure to buy these business plan?");
         if (r == true) {
             console.log("Go to the payment...You pressed OK!");
-            var totalToPay = parseInt($(".pricePackageSel").html()) + parseInt($(".subPackageSel").html());
-            var divPayment = "<div class='packageBusiness'>Your business plan: <b>" + $(".packageSelected").html() + "</b></div><div class='startPricePay'>Start bundle: " + $(".pricePackageSel").html() + " €</div><div class='subPricePay'>Monthly Subscription: " + $(".subPackageSel").html() + " €</div><div class='totalToPay'>Total = " + totalToPay + " €</div>";
+            var totalToPay = parseInt($(".pricePackageSel").html()) + parseInt($(".subPackageSel").html()) + $("#sel2").val();
+            var divPayment = "<div class='packageBusiness'>Your business plan: <b>" + $(".packageSelected").html() + "</b></div><div class='startPricePay'>Start bundle: " + $(".pricePackageSel").html() + "</div><div class='subPricePay'>Monthly Subscription: " + $(".subPackageSel").html() + "</div><div class='totalToPay'>Total = " + totalToPay + "</div>";
             $(".payment-container").html(divPayment);
             $(".numberPackages").html($(".orderNumber").html());
 
