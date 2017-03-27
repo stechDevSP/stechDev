@@ -58,7 +58,7 @@ export class MyApps extends React.Component {
         if (this.state.apps) {
             items = this.state.apps.map(function(item, i) {
                 var app = (
-                    <div className="col-md-3 card myCard" key={i}>
+                    <div className="col-md-3 card myCard" key={i} data-myApp={item.Name}>
                     <div className="flip-container">
                         <div className={"titleCard cardTitle_" + i}>{item.Name}</div>
                         <div className="myCard">

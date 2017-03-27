@@ -517,10 +517,8 @@ body {
     cursor: pointer;
     height: 30px;
     text-align: center;
-    margin-top: 10px;
+    margin-top: 20px;
     margin-bottom: 10px;
-    margin-left: 20px;
-    margin-right: 20px;
     padding-top: 6px;
     font-weight: bold;
     font-size: 14px;
@@ -764,4 +762,30 @@ body {
 
 .btn-suggested {
     padding-top: 50px;
+}
+
+
+.appST{
+    .goBack-selectApps {
+        cursor: pointer;
+        position: relative;
+        margin-bottom: 10px;
+        border: 1px solid black;
+        width: 150px;
+        margin-top: 10px;
+        
+        .backLabel {
+            position: absolute;
+            top: 5px;
+            left: 27px;
+            color: white;
+        }
+    }
+
+    .title-myApp {
+        font-size: 40px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        color: black;
+    }
 }
