@@ -21,12 +21,20 @@ export class Version extends React.Component {
                                         <li>Up to 1 site collection installation</li>
                                     </ul>
                                 </div>
-                                <div className="priceVersion">
+                                <div className="priceEuroVersion">
+                                    
+                                </div>
+                                <div className="priceSterlinVersion">
+                                    
+                                </div>
+                                <div className="priceDollarVersion">
                                     
                                 </div>
                                 <div className="subPriceVersion">
                                     <div className="titlePrice">Subscription</div>
-                                    <div className="valuePrice"></div>
+                                    <div className="valueEuroPrice"></div>
+                                    <div className="valueSterlinPrice"></div>
+                                    <div className="valueDollarPrice"></div>
                                     <div className="titlePrice"> monthly</div>
                                 </div>
                             </div>
@@ -40,12 +48,20 @@ export class Version extends React.Component {
                                         <li>From 1 to 5 site collections</li>
                                     </ul>
                                 </div>
-                                <div className="priceVersion">
+                                <div className="priceEuroVersion">
+                                    
+                                </div>
+                                <div className="priceSterlinVersion">
+                                    
+                                </div>
+                                <div className="priceDollarVersion">
                                     
                                 </div>
                                 <div className="subPriceVersion">
                                     <div className="titlePrice">Subscription</div>
-                                    <div className="valuePrice"></div>
+                                    <div className="valueEuroPrice"></div>
+                                    <div className="valueSterlinPrice"></div>
+                                    <div className="valueDollarPrice"></div>
                                     <div className="titlePrice"> monthly</div>
                                 </div>
                             </div>
@@ -58,18 +74,30 @@ export class Version extends React.Component {
                                         <li>Unlimited site collections</li>
                                     </ul>
                                 </div>
-                                <div className="priceVersion">
+                                <div className="priceEuroVersion">
+                                    
+                                </div>
+                                <div className="priceSterlinVersion">
+                                    
+                                </div>
+                                <div className="priceDollarVersion">
                                     
                                 </div>
                                 <div className="subPriceVersion">
                                     <div className="titlePrice">Subscription</div>
-                                    <div className="valuePrice"></div>
+                                    <div className="valueEuroPrice"></div>
+                                    <div className="valueSterlinPrice"></div>
+                                    <div className="valueDollarPrice"></div>
                                     <div className="titlePrice"> monthly</div>
                                 </div>
                             </div>
                         </div>
-                        <div className="priceSel pricePackageSel"></div>
-                        <div className="priceSel subPackageSel"></div>
+                        <div className="priceSel priceEuroPackageSel"></div>
+                        <div className="priceSel priceSterlinPackageSel"></div>
+                        <div className="priceSel priceDollarPackageSel"></div>
+                        <div className="priceSel subEuroPackageSel"></div>
+                        <div className="priceSel subSterlinPackageSel"></div>
+                        <div className="priceSel subDollarPackageSel"></div>
                         <div className="priceSel packageSelected"></div>
                     </div>
 

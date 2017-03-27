@@ -1,24 +1,25 @@
 body {
-    background-color: #0072c6;
+    background-color: white;
 }
 
 .header {
     width: 100%;
-    height: 100px;
+    height: 60px;
     position: absolute;
     top: 0px;
     left: 0px;
-    background-color: white;
+    background-color: #0072c6;
     .logo {
         position: absolute;
-        top: 25px;
+        top: 0px;
         left: 15px;
         border-radius: 80px;
-        width: 150px;
-        height: 150px;
+        width: 130px;
+        height: 130px;
         border: 1px solid black;
         background-color: white;
         cursor: pointer;
+        z-index: 99999;
         img {
             position: relative;
             top: 15px;
@@ -28,37 +29,139 @@ body {
     .profile-drop {
         position: absolute;
         cursor: pointer;
-        top: 35px;
-        right: 220px;
+        top: 0px;
+        height: 61px;
+        right: 290px;
         display: none;
+        color: white;
+        border: 1px solid white;
+        width: 90px;
+        padding-top: 18px;
+        z-index: 99999;
+        width: 100px;
+        .profile {
+            height: 8px;
+            width: 80px;
+        }
+        .profileMenu {
+            padding-left: 10px;
+            float: left;
+        }
+        .optionsProfile {
+            display: none;
+            .optionProfile {
+                border: 1px solid black;
+                padding: 10px;
+                color: black;
+                cursor: pointer;
+                position: relative;
+                top: 32px;
+                font-size: 13px;
+                &:hover {
+                    background-color: #0072c6 !important;
+                    color: white!important;
+                }
+            }
+        }
+        &:hover {
+            background-color: white !important;
+            color: #0072c6 !important;
+            .optionsProfile {
+                display: block;
+            }
+        }
     }
     .select-language {
         position: absolute;
         cursor: pointer;
-        top: 35px;
-        right: 155px;
-        select {
-            height: 41px !important;
-            font-family: Open Sans, sans-serif !important;
+        top: 0px;
+        right: 201px;
+        height: 61px;
+        color: white;
+        border: 1px solid white;
+        width: 90px;
+        padding-top: 18px;
+        z-index: 99999;
+        .languages {
+            height: 8px;
+        }
+        .myLanguage {
+            padding-left: 10px;
+            float: left;
+        }
+        .optionsLanguages {
+            display: none;
+            .optionLanguage {
+                border: 1px solid black;
+                padding: 10px;
+                color: black;
+                cursor: pointer;
+                position: relative;
+                top: 32px;
+                font-size: 13px;
+                &:hover {
+                    background-color: #0072c6 !important;
+                    color: white!important;
+                }
+            }
+        }
+        &:hover {
+            background-color: white !important;
+            color: #0072c6 !important;
+            .optionsLanguages {
+                display: block;
+            }
         }
     }
     .select-currency {
         display: none;
         position: absolute;
         cursor: pointer;
-        top: 35px;
+        top: 0px;
         right: 112px;
-        select {
-            height: 41px !important;
-            font-family: Open Sans, sans-serif !important;
+        color: white;
+        border: 1px solid white;
+        width: 90px;
+        padding-top: 18px;
+        height: 61px;
+        z-index: 99999;
+        .currencySel {
+            height: 8px;
+        }
+        .myCurrency {
+            padding-left: 10px;
+            float: left;
+        }
+        .optionsCurrency {
+            display: none;
+            .optionCurrency {
+                border: 1px solid black;
+                padding: 10px;
+                color: black;
+                cursor: pointer;
+                position: relative;
+                top: 32px;
+                font-size: 13px;
+                &:hover {
+                    background-color: #0072c6 !important;
+                    color: white!important;
+                }
+            }
+        }
+        &:hover {
+            background-color: white !important;
+            color: #0072c6 !important;
+            .optionsCurrency {
+                display: block;
+            }
         }
     }
     .cart-icon {
         display: none;
         position: absolute;
         cursor: pointer;
-        top: 25px;
-        right: 30px;
+        top: 5px;
+        right: -70px;
         .orderNumber {
             background-color: red;
             color: white;
@@ -70,6 +173,7 @@ body {
             width: 20px;
             text-align: center;
             padding-top: 2px;
+            font-size: 13px;
         }
     }
 }
@@ -78,7 +182,24 @@ body {
     text-align: center;
 }
 
-.sterlinPrice, .dollarPrice{
+.caret {
+    position: relative;
+    top: 5px;
+    left: 10px;
+}
+
+.sterlinPrice,
+.dollarPrice,
+.selectedSterlinPriceDet,
+.selectedDollarPriceDet,
+.selectedSterlinSubPriceDet,
+.selectedDollarSubPriceDet,
+.sterlin-total-cart,
+.dollar-total-cart,
+.priceSterlinVersion,
+.priceDollarVersion,
+.valueSterlinPrice,
+.valueDollarPrice {
     display: none;
 }
 
@@ -87,9 +208,9 @@ body {
     display: none;
     .title-select-apps {
         font-size: 40px;
-        padding-top: 50px;
+        padding-top: 40px;
         padding-bottom: 10px;
-        color: white;
+        color: black;
     }
     .suggested-apps {
         display: none;
@@ -97,24 +218,17 @@ body {
 }
 
 .my-select-apps-zone {
+    padding-top: 0px !important;
     .title-select-apps {
         padding-bottom: 0px !important;
+        padding-top: 0px !important;
     }
-}
-
-.title-sugg {
-    padding-top: 100px !important;
-    padding-bottom: 0px !important;
-}
-
-.btn-suggested {
-    padding-top: 70px;
 }
 
 .welcome-zone {
     text-align: center;
     padding-top: 60px;
-    color: white;
+    color: black;
     .welcomeTo {
         font-size: 40px;
         padding-bottom: 20px;
@@ -147,13 +261,11 @@ body {
     }
 }
 
-
-
 .register-form {
-    color: white !important;
+    color: black !important;
     padding-left: 40px;
     small {
-        color: white !important;
+        color: black !important;
     }
     .titleRegister {
         font-size: 40px;
@@ -167,14 +279,11 @@ body {
     .nameCompany,
     .locationCompany,
     .emailCompany,
+    .confirmEmailCompany,
     .passwordCompany,
     .confirmPassCompany {
         padding-top: 10px;
         padding-bottom: 10px;
-    }
-    .clean-register {
-        color: black !important;
-        border: 1px solid white !important;
     }
 }
 
@@ -187,14 +296,13 @@ body {
 .login-form,
 .reset-password {
     display: none;
-    color: white !important;
+    color: black !important;
     padding-left: 40px;
     text-align: center;
     .titleRegister {
         font-size: 40px;
         padding-top: 30px;
         padding-bottom: 10px;
-        
     }
     .titleInput {
         font-size: 20px;
@@ -225,31 +333,38 @@ body {
         width: 300px !important;
         margin: auto;
     }
-
-    .finish-login{
+    .finish-login {
         border-radius: 6px !important;
         width: 300px !important;
         margin: auto;
     }
 }
 
-.loader{
+.loader {
     display: none;
-    color: white;
+    color: #0072c6;
     padding-bottom: 20px;
 }
 
 .footer {
+    display: none;
     width: 100%;
-    height: 60px;
-    position: fixed;
-    bottom: 0px;
+    height: 40px;
+    position: absolute;
     left: 0px;
-    background-color: white;
+    bottom: 0px;
+    background-color: #0072c6;
+    color: white;
+    text-align: center;
+    padding-top: 15px;
+    font-size: 13px;
+}
+
+body {
+    font-family: "Open Sans", sans-serif;
 }
 
 #welcome-panel {
-    font-family: "Open Sans", sans-serif;
     margin-top: 100px;
 }
 
@@ -258,7 +373,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     opacity: 1;
-    background-color: white;
+    background-color: #0072c6;
 }
 
 .ST-IPdf {
@@ -266,7 +381,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     opacity: 1;
-    background-color: white;
+    background-color: #0072c6;
 }
 
 .ST-HelpDesk {
@@ -274,7 +389,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     opacity: 1;
-    background-color: white;
+    background-color: #0072c6;
 }
 
 .ST-HR {
@@ -282,7 +397,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     opacity: 1;
-    background-color: white;
+    background-color: #0072c6;
 }
 
 .ST-Intraweb {
@@ -290,7 +405,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     opacity: 1;
-    background-color: white;
+    background-color: #0072c6;
 }
 
 .card_0 {
@@ -329,21 +444,25 @@ body {
     font-weight: bold;
     text-align: center;
     font-size: 20px;
-    color: white;
+    color: black;
     padding-top: 20px;
 }
 
 //FLIP ORIZZONTALE
-.flip-container {
-    margin-bottom: 40px;
-}
-
 .flip-container:hover .flipper,
 .flip-container.hover .flipper {
     transform: rotateY(-180deg);
 }
 
-.flip-container,
+.flip-container {
+    height: 150px;
+    width: 150px;
+    font-size: 13px;
+    margin: auto;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
 .front,
 .back {
     padding: 20px;
@@ -393,8 +512,8 @@ body {
 //FINE FLIP
 .btn-welcome {
     border: 1px solid black;
-    color: #0072c6;
-    background-color: #eee;
+    color: white;
+    background-color: #0072c6;
     cursor: pointer;
     height: 30px;
     text-align: center;
@@ -408,7 +527,8 @@ body {
     text-transform: uppercase;
     border-radius: 8px !important;
     &:hover {
-        background-color: #ccc;
+        background-color: white !important;
+        color: #0072c6 !important;
     }
 }
 
@@ -418,10 +538,11 @@ body {
         overflow: hidden;
     }
     .package {
-        background-color: white;
+        background-color: #0072c6;
         overflow: hidden;
         padding: 10px;
         margin: 20px;
+        color: white;
         &.packageSel {
             border: 5px solid black;
         }
@@ -430,7 +551,7 @@ body {
         font-size: 40px;
         padding-top: 10px;
         padding-bottom: 10px;
-        color: white;
+        color: black;
     }
     .standard {
         animation-delay: 1s !important;
@@ -443,22 +564,22 @@ body {
     }
     .nameVersion {
         font-size: 20px;
-        color: black;
+        color: white;
         padding-bottom: 5px;
     }
     .detailsVersion {
         font-size: 13px;
-        color: black;
+        color: white;
         padding-bottom: 5px;
     }
     .priceVersion {
-        color: black;
+        color: white;
         padding-bottom: 5px;
         font-weight: bold;
         font-size: 30px;
     }
     .subPriceVersion {
-        color: black;
+        color: white;
         padding-bottom: 5px;
         .titlePrice {
             font-size: 13px;
@@ -470,10 +591,6 @@ body {
             font-weight: bold;
             float: left;
         }
-    }
-    .clean-version {
-        color: black !important;
-        border: 1px solid white !important;
     }
     .confirm-version,
     .clean-version {
@@ -504,6 +621,8 @@ body {
 .goBack-apps,
 .goBack-package,
 .goBack-cart {
+    background-color: #0072c6;
+    color: white;
     margin-top: 50px !important;
 }
 
@@ -514,7 +633,7 @@ body {
 .select-apps-zone,
 .my-select-apps-zone {
     display: none;
-    padding-top: 30px !important;
+    padding-top: 30px;
     .goBack-package {
         width: 170px !important;
     }
@@ -524,7 +643,7 @@ body {
         cursor: pointer;
         position: relative;
         margin-bottom: 10px;
-        border: 1px solid white;
+        border: 1px solid black;
         width: 150px;
         margin-top: 10px;
         .backLabel {
@@ -536,15 +655,14 @@ body {
     }
     .cart,
     .cart-buttons {
-        color: white;
+        color: black;
         .cart-title {
             font-size: 40px;
             padding-top: 10px;
             padding-bottom: 10px;
-            color: white;
+            color: black;
         }
-
-        .numberPackages{
+        .numberPackages {
             font-size: 40px;
             font-weight: bold;
         }
@@ -556,7 +674,7 @@ body {
             display: none;
             font-weight: bold;
             font-size: 20px;
-            color: white;
+            color: black;
             border-top: 1px solid #000;
             border-bottom: 1px solid white;
             margin-top: 20px;
@@ -566,34 +684,31 @@ body {
         }
         .clean-cart,
         .clean-sel-cart {
-            color: black !important;
-            border: 1px solid white !important;
+            margin-top: 10px;
             display: none;
         }
         .numberPackages {
             font-size: 20px;
-            color: white;
+            color: black;
         }
         .cart-container,
         .payment-container {
             position: relative;
             .infoCardAdded {
                 position: relative;
-                border-bottom: 1px dotted white;
+                border-bottom: 1px dotted black;
                 padding-bottom: 10px;
                 padding-top: 10px;
                 overflow: hidden;
-
-                .logoDetails{
-                    img{
-                        background-color: white;
+                .logoDetails {
+                    img {
+                        background-color: #0072c6;
                         width: 120px;
                         float: left;
                         height: 120px;
                         margin-right: 20px;
                     }
                 }
-
                 .titleCard {
                     font-weight: bold;
                     text-align: left !important;
@@ -625,4 +740,28 @@ body {
 
 .hiddenInfo {
     display: none;
+}
+
+.myApps, .otherShopCard {
+    .myCard {
+        margin-top: 0px !important;
+        height: 200px;
+        .flip-container {
+            margin-top: 0px !important;
+        }
+    }
+}
+
+.title-sugg {
+    padding-bottom: 0px !important;
+    margin-top: 20px;
+}
+
+.otherShopCard {
+    position: relative;
+    top: -10px;
+}
+
+.btn-suggested {
+    padding-top: 50px;
 }

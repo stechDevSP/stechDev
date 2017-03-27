@@ -16,9 +16,18 @@ export class CartDetails extends React.Component {
                         <div className="cart-container">
                             No apps selected
                         </div>
-                        <div className="totale-cart">Standard bundle: <span className="totale-cart-value">0</span>€</div>
-                        <div className="totale-cart">Standard Subscription: <span className="totale-sub-value">0</span>€ x month</div>
-
+                        <div className="euro-total-cart">
+                            <div className="totale-cart">Standard bundle: <span className="totale-cart-value">0</span>€</div>
+                            <div className="totale-cart">Standard Subscription: <span className="totale-sub-value">0</span>€ x month</div>
+                        </div>
+                        <div className="sterlin-total-cart">
+                            <div className="totale-cart">Standard bundle: <span className="totale-cart-value-sterlin">0</span>€</div>
+                            <div className="totale-cart">Standard Subscription: <span className="totale-sub-value-sterlin">0</span>€ x month</div>
+                        </div>
+                        <div className="dollar-total-cart">
+                            <div className="totale-cart">Standard bundle: <span className="totale-cart-value-dollar">0</span>€</div>
+                            <div className="totale-cart">Standard Subscription: <span className="totale-sub-value-dollar">0</span>€ x month</div>
+                        </div>
 
                         <div className="col-md-12">
                             <div className="col-md-6 col-xs-12">

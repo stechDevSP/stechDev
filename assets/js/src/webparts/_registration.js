@@ -20,12 +20,17 @@ export class Registration extends React.Component {
                         </div>
                     </div>
                     <div className="col-md-12">
+                    <div className="alert alert-danger companyConfirmEmailAlert2" role="alert">Please insert a correct email</div>
                         <div className="emailCompany col-md-6 col-xs-12">
                             <div className="alert alert-danger companyEmailAlert" role="alert">Please insert an email</div>
                             <label>Company Email (*):</label>
                             <input type="email" className="form-control companyEmail" aria-describedby="emailHelp" placeholder="Enter email" />
                         </div>
-                        
+                        <div className="confirmEmailCompany col-md-6 col-xs-12">
+                            <div className="alert alert-danger companyConfirmEmailAlert" role="alert">Please confirm your email</div>
+                            <label>Confirm Email (*):</label>
+                            <input type="email" className="form-control companyConfirmEmail" aria-describedby="emailHelp" placeholder="Confirm your email" />
+                        </div>
                     </div>
                     <div className="col-md-12">
                         <div className="alert alert-danger companyConfirmPassAlert2" role="alert">Please insert a correct password</div>

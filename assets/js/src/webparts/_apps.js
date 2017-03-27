@@ -102,20 +102,18 @@ export class Apps extends React.Component {
                                 <div className={'back boxInfo boxInfo_' + item.Name + " infoCard_" + i}>
                                     <div className="description">{item.Description}</div>
                                     <div className="euroPrice">
-                                        <div><b>Start Price</b> : <span className="priceCard">{item.StartPrice}</span>€ </div>
-                                        <div><b>Monthly Subscription</b> : <span className="priceSub">{item.MonthPrice}</span>€ x month</div>
+                                        <div><b>Start Price</b> : <span className="priceCard">{item.StartPrice}</span> €</div>
+                                        <div><b>Monthly Subscription</b> : <span className="priceSub">{item.MonthPrice}</span> € x month</div>
                                     </div>
                                     <div className="dollarPrice">
-                                        <div><b>Start Price</b> : <span className="priceCard">{item.StartDollarPrice}</span>$ </div>
-                                        <div><b>Monthly Subscription</b> : <span className="priceSub">{item.MonthDollarPrice}</span>$ x month</div>
+                                        <div><b>Start Price</b> : <span className="priceCard">{item.StartDollarPrice}</span> $</div>
+                                        <div><b>Monthly Subscription</b> : <span className="priceSub">{item.MonthDollarPrice}</span> $ x month</div>
                                     </div>
                                     <div className="sterlinPrice">
-                                        <div><b>Start Price</b> : <span className="priceCard">{item.StartSterlinPrice}</span>£ </div>
-                                        <div><b>Monthly Subscription</b> : <span className="priceSub">{item.MonthSterlinPrice}</span>£ x month</div>
+                                        <div><b>Start Price</b> : <span className="priceCard">{item.StartSterlinPrice}</span> £</div>
+                                        <div><b>Monthly Subscription</b> : <span className="priceSub">{item.MonthSterlinPrice}</span> £ x month</div>
                                     </div>
                                     <div className="hiddenInfo">
-                                        <div className="selectedPrice">{item.StartPrice}</div>
-                                        <div className="selectedSubPrice">{item.MonthPrice}</div>
                                         <div className="logoCard">{item.Logo}</div>
                                         <div className="descrFull">{item.DescriptionFull}</div>
                                         <div className="pic1Card">{item.Pic1}</div>
