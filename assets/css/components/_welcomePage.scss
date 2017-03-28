@@ -618,10 +618,28 @@ body {
 
 .goBack-apps,
 .goBack-package,
-.goBack-cart {
+.goBack-cart,
+.goBack-selectApps {
     background-color: #0072c6;
     color: white;
     margin-top: 50px !important;
+}
+
+.goBack-selectApps {
+    display: none;
+    cursor: pointer;
+    position: relative;
+    margin-bottom: 10px;
+    border: 1px solid black;
+    width: 150px;
+    margin-top: 10px;
+    height: 35px;
+    .backLabel {
+        position: absolute;
+        top: 5px;
+        left: 27px;
+        color: white;
+    }
 }
 
 .cart-details,
@@ -629,7 +647,8 @@ body {
 .register-form,
 .select-version,
 .select-apps-zone,
-.my-select-apps-zone {
+.my-select-apps-zone,
+{
     display: none;
     padding-top: 30px;
     .goBack-package {
@@ -682,7 +701,6 @@ body {
         }
         .clean-cart,
         .clean-sel-cart {
-            margin-top: 10px;
             display: none;
         }
         .numberPackages {
@@ -740,7 +758,8 @@ body {
     display: none;
 }
 
-.myApps, .otherShopCard {
+.myApps,
+.otherShopCard {
     .myCard {
         margin-top: 0px !important;
         height: 200px;
@@ -764,8 +783,7 @@ body {
     padding-top: 50px;
 }
 
-
-.appST{
+.appST {
     .goBack-selectApps {
         cursor: pointer;
         position: relative;
@@ -773,7 +791,6 @@ body {
         border: 1px solid black;
         width: 150px;
         margin-top: 10px;
-        
         .backLabel {
             position: absolute;
             top: 5px;
@@ -781,7 +798,6 @@ body {
             color: white;
         }
     }
-
     .title-myApp {
         font-size: 40px;
         padding-top: 10px;
