@@ -94,7 +94,7 @@ export class Apps extends React.Component {
 
         var items = this.state.apps.map(function(item, i) {
             var app = (
-                <div className={"col-md-3 card cardShop card_" + i + " cardId_" + item.Id} key={i}>
+                <div className={"col-md-3 col-sm-6 col-xs-12 card cardShop card_" + i + " cardId_" + item.Id} key={i}>
                     <div className={"titleCard cardTitle_" + i}>{item.Name}</div>
                         <div className="flip-container">
                             <div className="flipper">

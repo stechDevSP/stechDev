@@ -118,10 +118,10 @@ export class MyApps extends React.Component {
         var self = this;
 
         var items;
-        if (this.state.apps) {
+        if (this.state.apps && this.state.apps.length > 0) {
             items = this.state.apps.map(function(item, i) {
                 var app = (
-                    <div className="col-md-3 card myCardRedirect" key={i} data-myApp={item.Name} onClick={() => self.handleClick(item.Name)} >
+                    <div className="col-md-3 col-sm-6 col-xs-12 card myCardRedirect" key={i} data-myApp={item.Name} onClick={() => self.handleClick(item.Name)} >
                     <div className="flip-container">
                         <div className={"titleCard cardTitle_" + i}>{item.Name}</div>
                         <div className="myCard">
@@ -138,10 +138,10 @@ export class MyApps extends React.Component {
 
 
         var otherItems;
-        if (this.state.appsRemain) {
+        if (this.state.appsRemain && this.state.appsRemain.length > 0) {
             otherItems = this.state.appsRemain.map(function(item, i) {
                 var app2 = (
-                    <div className="col-md-3 card otherShopCard" key={i}>
+                    <div className="col-md-3 col-sm-6 col-xs-12 card otherShopCard" key={i}>
                     <div className="flip-container">
                         <div className={"titleCard cardTitle_" + i}>{item.Name}</div>
                         <div className="myCard">
@@ -172,7 +172,7 @@ export class MyApps extends React.Component {
                     </div>
                     <div className="col-md-12 btn-suggested">
                         <div className="col-md-9">&nbsp;</div>
-                        <div className="col-md-3 col-xs-12">
+                        <div className="col-md-3 col-sm- 12 col-xs-12">
                             <div className="btn-welcome go-shop">Go to shop</div>
                         </div>
                     </div>
