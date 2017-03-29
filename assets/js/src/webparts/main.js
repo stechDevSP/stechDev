@@ -48,10 +48,7 @@ import { ResetPassword } from '../main/_resetPassword.js';
         APP.EVENTS.appsEvents();
         APP.EVENTS.cartDetailsEvents();
         APP.EVENTS.loginEvents();
-        APP.EVENTS.paymentEvents();
-        APP.EVENTS.registrationEvents();
         APP.EVENTS.startPageEvents();
-        APP.EVENTS.versionEvents();
     };
 
 })(window.APP = window.APP || {});

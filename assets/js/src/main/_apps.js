@@ -101,15 +101,15 @@ export class Apps extends React.Component {
                                 <div className={"front " + item.Name}></div>
                                 <div className={'back boxInfo boxInfo_' + item.Name + " infoCard_" + i}>
                                     <div className="description">{item.Description}</div>
-                                    <div className="euroPrice">
+                                    <div className="euro euroPrice">
                                         <div><b>Start Price</b> : <span className="priceCard">{item.StartPrice}</span> €</div>
                                         <div><b>Monthly Subscription</b> : <span className="priceSub">{item.MonthPrice}</span> € x month</div>
                                     </div>
-                                    <div className="dollarPrice">
+                                    <div className="dollaro dollarPrice">
                                         <div><b>Start Price</b> : <span className="priceCard">{item.StartDollarPrice}</span> $</div>
                                         <div><b>Monthly Subscription</b> : <span className="priceSub">{item.MonthDollarPrice}</span> $ x month</div>
                                     </div>
-                                    <div className="sterlinPrice">
+                                    <div className="sterlina sterlinPrice">
                                         <div><b>Start Price</b> : <span className="priceCard">{item.StartSterlinPrice}</span> £</div>
                                         <div><b>Monthly Subscription</b> : <span className="priceSub">{item.MonthSterlinPrice}</span> £ x month</div>
                                     </div>

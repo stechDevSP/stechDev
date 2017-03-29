@@ -314,6 +314,15 @@ body {
     }
 }
 
+.login-form{
+    .goBack-homepage{
+        .icon{
+            position: relative;
+            left: -70px;
+        }
+    }
+}
+
 .login-form,
 .reset-password {
     display: none;
@@ -563,7 +572,9 @@ body {
         margin: 20px;
         color: white;
         &.packageSel {
-            border: 5px solid black;
+            background-color: white;
+            color: #0072c6;
+            border: 1px solid #0072c6;
         }
     }
     .title-select-version {
@@ -586,16 +597,13 @@ body {
     }
     .nameVersion {
         font-size: 20px;
-        color: white;
         padding-bottom: 5px;
     }
     .detailsVersion {
         font-size: 13px;
-        color: white;
         padding-bottom: 5px;
     }
     .priceVersion {
-        color: white;
         padding-bottom: 5px;
         font-weight: bold;
         font-size: 30px;
@@ -604,7 +612,6 @@ body {
         }
     }
     .subPriceVersion {
-        color: white;
         padding-bottom: 5px;
         .titlePrice {
             font-size: 13px;
@@ -674,6 +681,7 @@ body {
 .register-form,
 .select-version,
 .select-apps-zone,
+.login-form,
 .my-select-apps-zone,
 {
     display: none;
@@ -736,10 +744,6 @@ body {
         .clean-cart,
         .clean-sel-cart {
             display: none;
-        }
-        .numberPackages {
-            font-size: 20px;
-            color: black;
         }
         .cart-container,
         .payment-container {
