@@ -2,18 +2,22 @@ body {
     background-color: white;
 }
 
-.packageVersions{
+.packageVersions {
     display: block;
 }
 
-.welcome-page{
+.welcome-page {
     min-height: 900px !important;
     overflow: hidden;
 }
 
+.button-container {
+    margin-top: 10px;
+}
+
 .header {
     width: 100%;
-    height: 60px;
+    height: 50px;
     position: absolute;
     top: 0px;
     left: 0px;
@@ -35,12 +39,16 @@ body {
             left: 35px;
         }
     }
-    .profile-drop {
+    .nav-buttons {
         position: absolute;
+        top: 0px;
+        right: 100px;
+    }
+    .profile-drop {
+        position: relative;
         cursor: pointer;
         top: 0px;
-        height: 61px;
-        right: 290px;
+        height: 51px;
         display: none;
         color: white;
         border: 1px solid white;
@@ -48,6 +56,7 @@ body {
         padding-top: 18px;
         z-index: 99999;
         width: 100px;
+        float: left;
         .profile {
             height: 8px;
             width: 80px;
@@ -81,11 +90,11 @@ body {
         }
     }
     .select-language {
-        position: absolute;
+        position: relative;
         cursor: pointer;
         top: 0px;
-        right: 201px;
-        height: 61px;
+        float: left;
+        height: 51px;
         color: white;
         border: 1px solid white;
         width: 90px;
@@ -124,15 +133,15 @@ body {
     }
     .select-currency {
         display: none;
-        position: absolute;
+        position: relative;
         cursor: pointer;
         top: 0px;
-        right: 112px;
+        float: left;
         color: white;
         border: 1px solid white;
         width: 90px;
         padding-top: 18px;
-        height: 61px;
+        height: 51px;
         z-index: 99999;
         .currencySel {
             height: 8px;
@@ -170,7 +179,7 @@ body {
         position: absolute;
         cursor: pointer;
         top: 5px;
-        right: -70px;
+        right: 25px;
         .orderNumber {
             background-color: red;
             color: white;
@@ -185,10 +194,34 @@ body {
             font-size: 13px;
         }
     }
+    .contactUs {
+        position: relative;
+        cursor: pointer;
+        top: 0px;
+        height: 51px;
+        float: left;
+        color: white;
+        border: 1px solid white;
+        width: 110px;
+        padding-top: 18px;
+        z-index: 99999;
+        .contactText {
+            text-align: center;
+        }
+        &:hover {
+            background-color: white !important;
+            color: #0072c6 !important;
+        }
+    }
 }
 
 .noElements {
     text-align: center;
+}
+
+.noAccess{
+    text-align: center;
+    display: none;
 }
 
 .caret {
@@ -197,18 +230,8 @@ body {
     left: 10px;
 }
 
-.sterlinPrice,
-.dollarPrice,
-.selectedSterlinPriceDet,
-.selectedDollarPriceDet,
-.selectedSterlinSubPriceDet,
-.selectedDollarSubPriceDet,
-.sterlin-total-cart,
-.dollar-total-cart,
-.priceSterlinVersion,
-.priceDollarVersion,
-.valueSterlinPrice,
-.valueDollarPrice {
+.sterlina,
+.dollaro {
     display: none;
 }
 
@@ -217,12 +240,10 @@ body {
     display: none;
     .title-select-apps {
         font-size: 40px;
-
         @media screen and (max-width: 1100px) {
             font-size: 25px;
         }
-
-        padding-top: 40px;
+        padding-top: 30px;
         padding-bottom: 10px;
         color: black;
     }
@@ -232,7 +253,7 @@ body {
 }
 
 .my-select-apps-zone {
-    margin-top: 50px;
+    margin-top: 30px;
     padding-top: 0px !important;
     .title-select-apps {
         padding-bottom: 0px !important;
@@ -314,16 +335,34 @@ body {
     }
 }
 
-.login-form{
-    .goBack-homepage{
-        .icon{
+.login-form,
+.contact-us,
+.reset-password {
+    .goBack-homepage {
+        .icon {
             position: relative;
             left: -70px;
         }
     }
 }
 
+.contact-us {
+    .titleInput {
+        padding-bottom: 5px !important;
+        padding-top: 20px !important;
+        text-align: left !important;
+        width: 50% !important;
+        margin: auto !important;
+    }
+
+    .alert{
+        position: relative;
+        top: 20px;
+    }    
+}
+
 .login-form,
+.contact-us,
 .reset-password {
     display: none;
     color: black !important;
@@ -356,20 +395,9 @@ body {
         padding-top: 30px;
         padding-bottom: 20px;
     }
-    .form-control,
-    .finish-resetPass {
+    .form-control {
         margin: auto;
         width: 50% !important;
-    }
-    .finish-resetPass {
-        border-radius: 6px !important;
-        width: 300px !important;
-        margin: auto;
-    }
-    .finish-login {
-        border-radius: 6px !important;
-        width: 300px !important;
-        margin: auto;
     }
 }
 
@@ -486,8 +514,8 @@ body {
 }
 
 .flip-container {
-    height: 150px;
-    width: 150px;
+    height: 170px;
+    width: 170px;
     font-size: 13px;
     margin: auto;
     margin-bottom: 10px;
@@ -496,25 +524,36 @@ body {
 
 .front,
 .back {
-    padding: 20px;
-    height: 150px;
-    width: 150px;
+    padding: 10px;
+    height: 170px;
+    width: 170px;
     font-size: 13px;
+}
+
+.back {
+    .startPack,
+    .monthlySub {
+        font-weight: bold;
+        float: left;
+    }
+    .backInfo {
+        padding-top: 5px;
+    }
 }
 
 .flipper {
     transition: 1.5s;
     transform-style: preserve-3d;
     position: relative;
-    height: 150px;
-    width: 150px;
+    height: 170px;
+    width: 170px;
 }
 
 .myCard {
     margin-top: 20px;
     position: relative;
-    height: 150px;
-    width: 150px;
+    height: 170px;
+    width: 170px;
     cursor: pointer;
 }
 
@@ -626,7 +665,6 @@ body {
     }
     .confirm-version,
     .clean-version {
-        display: none;
         border: 1px solid black;
         cursor: pointer;
         height: 30px;
@@ -652,7 +690,10 @@ body {
 .goBack-homepage {
     background-color: #0072c6;
     color: white;
-    margin-top: 50px !important;
+    margin-top: 0px;
+    @media screen and (max-width: 1100px) {
+        margin-top: 50px;
+    }
 }
 
 .goBack-homepage {
@@ -676,6 +717,44 @@ body {
     }
 }
 
+.cart-container {
+    margin-bottom: 10px !important;
+}
+
+.packageBusiness, .totalStartPriceEuro{
+    padding-bottom: 10px;
+    padding-top: 10px;
+    border-bottom: 1px dotted black;
+    margin-bottom: 10px;
+
+    div{
+        padding-top: 3px;
+        padding-bottom: 3px;
+    }
+}
+
+.otherShopCard{
+    cursor: default !important;
+}
+
+.finalPackageSel, .finalSubSel, .finalTotSel{
+    font-weight: bold;
+}
+
+.buttonPayPal{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.cart-buttons{
+    display: none;
+}
+
+.confirm-payment{
+    margin-bottom: 50px !important;
+}
+
 .cart-details,
 .payment-zone,
 .register-form,
@@ -683,11 +762,12 @@ body {
 .select-apps-zone,
 .login-form,
 .my-select-apps-zone,
-{
+.contact-us,
+.reset-password {
     display: none;
     padding-top: 30px;
     .goBack-package {
-        width: 170px !important;
+        width: 200px !important;
     }
     .goBack-apps,
     .goBack-cart,
@@ -725,10 +805,6 @@ body {
             }
             font-weight: bold;
         }
-        .confirm-cart,
-        .confirm-sel-cart {
-            display: none;
-        }
         .totale-cart {
             display: none;
             font-weight: bold;
@@ -740,10 +816,6 @@ body {
             margin-bottom: 20px;
             padding-top: 10px;
             padding-bottom: 10px;
-        }
-        .clean-cart,
-        .clean-sel-cart {
-            display: none;
         }
         .cart-container,
         .payment-container {
@@ -776,6 +848,7 @@ body {
                 .deleteCard {
                     cursor: pointer;
                     position: absolute;
+                    display: none;
                     right: 10px;
                     top: 20px;
                 }
@@ -807,13 +880,13 @@ body {
     }
 }
 
-.myApps{
+.myApps {
     margin-bottom: 30px !important;
 }
 
-.card{
+.card {
     @media screen and (max-width: 1100px) {
-        margin-bottom:20px; 
+        margin-bottom: 20px;
     }
 }
 

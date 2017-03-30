@@ -7,12 +7,9 @@ import { PayPalButton } from '../components/paypal.jsx';
 import { StartPage } from '../main/_startPage.js';
 import { Registration } from '../main/_registration.js';
 import { Login } from '../main/_login.js';
-import { Apps } from '../main/_apps.js';
-import { MyApps } from '../main/_myApps.js';
-import { CartDetails } from '../main/_cartDetails.js';
-import { Version } from '../main/_version.js';
-import { Payment } from '../main/_payment.js';
+
 import { ResetPassword } from '../main/_resetPassword.js';
+import { ContactUs } from '../main/_contactUs.js';
 
 
 (function(APP) {
@@ -27,13 +24,9 @@ import { ResetPassword } from '../main/_resetPassword.js';
                     <div className="container">
                         <StartPage />
                         <Login />
-                        <MyApps />
                         <Registration />
-                        <Apps />
-                        <CartDetails />
-                        <Version />
-                        <Payment />
                         <ResetPassword />
+                        <ContactUs />
                     </div>
                 );
             }
@@ -44,11 +37,7 @@ import { ResetPassword } from '../main/_resetPassword.js';
             document.getElementById('welcome-panel')
         );
 
-        APP.EVENTS.mainEvents();
-        APP.EVENTS.appsEvents();
-        APP.EVENTS.cartDetailsEvents();
-        APP.EVENTS.loginEvents();
-        APP.EVENTS.startPageEvents();
+        APP.EVENTS.navEvents();
     };
 
 })(window.APP = window.APP || {});
