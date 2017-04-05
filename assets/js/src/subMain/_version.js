@@ -1,8 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import fx from 'money';
+import { Payment } from '../subMain/_payment.js';
 
 export class Version extends React.Component {
+    getInitialState() {
+        return {
+            showSelectApps: false,
+            finalValue: 0,
+            totalToPayEuro: 0,
+            totalToPaySterlin: 0,
+            totalToPayDollar: 0,
+            valueToPayEuro: 0,
+            valueToPaySterlin: 0,
+            valueToPayDollar: 0,
+            subToPayEuro: 0,
+            subToPaySterlin: 0,
+            subToPayDollar: 0,
+            myCurrency: 'EUR',
+            numberPackages: 0,
+            packageSelected: ""
+        };
+    }
     constructor(props) {
         super(props);
         var self = this;
@@ -11,10 +29,13 @@ export class Version extends React.Component {
         this.selectClick = this.selectClick.bind(this);
         this.finishClick = this.finishClick.bind(this);
         this.cleanClick = this.cleanClick.bind(this);
+
+        self.state = { showSelectApps: false };
     }
     goBackClick() {
         $(".select-version").slideUp();
         $(".select-apps-zone").slideDown();
+        this.setState({ showSelectApps: false });
         //$(".cart-details").slideDown();
     }
     selectClick(classClick) {
@@ -31,6 +52,7 @@ export class Version extends React.Component {
         $(".subDollarPackageSel").html($("." + classClick).find(".valueDollarPrice").html());
 
         $(".packageSelected").html($("." + classClick).find(".nameVersion").html());
+
     }
     finishClick() {
         var r = confirm("Are you sure to buy these business plan?");
@@ -41,14 +63,54 @@ export class Version extends React.Component {
             var totalToPaySterlin = parseInt($(".priceSterlinPackageSel").html()) + parseInt($(".subSterlinPackageSel").html()) + " £";
             var totalToPayDollar = parseInt($(".priceDollarPackageSel").html()) + parseInt($(".subDollarPackageSel").html()) + " $";
 
-            var divPayment = "<div class='packageBusiness'>Your business plan: <b>" + $(".packageSelected").html() + "</b></div><div class='euro totalStartPriceEuro'><div class='startPricePayEuro'>Total start bundle: <span class='finalPackageSel'>" + $(".priceEuroPackageSel").html() + "</span></div><div class='subPricePay'>You will pay <span class='finalSubSel'>" + $(".subEuroPackageSel").html() + "</span> for your monthly subscription</div><div class='totalToPay'>Total to pay: <span class='finalTotSel'>" + totalToPayEuro + "</span></div></div><div class='sterlina totalStartPriceEuro'><div class='startPricePaySterlin'>Total start bundle: <span class='finalPackageSel'>" + $(".priceSterlinPackageSel").html() + "</span></div><div class='subPricePay'>You will pay <span class='finalSubSel'>" + $(".subSterlinPackageSel").html() + "</span> for your monthly subscription</div><div class='totalToPay'>Total to pay: <span class='finalTotSel'>" + totalToPaySterlin + "</span></div></div><div class='dollaro totalStartPriceEuro'><div class='startPricePayDollar'>Total start bundle: <span class='finalPackageSel'>" + $(".priceDollarPackageSel").html() + "</span></div><div class='subPricePay'>You will pay  <span class='finalSubSel'>" + $(".subDollarPackageSel").html() + "</span> for your monthly subscription</div><div class='totalToPay'>Total to pay: <span class='finalTotSel'>" + totalToPayDollar + "</span></div></div>";
+            var finalValue = 0;
+            var myCurrency = "EUR";
 
-            $(".payment-container").html(divPayment);
-            $(".numberPackages").html($(".orderNumber").html());
+            if ($(".myCurrency").html() === "€") {
+                finalValue = parseInt($(".priceEuroPackageSel").html()) + parseInt($(".subEuroPackageSel").html());
+                myCurrency = "EUR";
+            } else if ($(".myCurrency").html() === "£") {
+                finalValue = parseInt($(".priceSterlinPackageSel").html()) + parseInt($(".subSterlinPackageSel").html());
+                myCurrency = "GBP";
+            } else {
+                finalValue = parseInt($(".priceDollarPackageSel").html()) + parseInt($(".subDollarPackageSel").html());
+                myCurrency = "USD";
+            }
 
-            $(".select-version").slideUp();
-            $(".cart-icon").show(); 
+            this.setState({
+                showSelectApps: true,
+                finalValue: finalValue,
+                myCurrency: myCurrency,
+                totalToPayEuro: totalToPayEuro,
+                totalToPaySterlin: totalToPaySterlin,
+                totalToPayDollar: totalToPayDollar,
+                valueToPayEuro: parseInt($(".priceEuroPackageSel").html()),
+                valueToPaySterlin: parseInt($(".priceSterlinPackageSel").html()),
+                valueToPayDollar: parseInt($(".priceDollarPackageSel").html()),
+                subToPayEuro: parseInt($(".subEuroPackageSel").html()),
+                subToPaySterlin: parseInt($(".subSterlinPackageSel").html()),
+                subToPayDollar: parseInt($(".subDollarPackageSel").html()),
+                numberPackages: $(".orderNumber").html(),
+                packageSelected: $(".packageSelected").html()
+            });
+
+            $(".version-select-zone").slideUp();
+            $(".select-currency").hide();
+            $(".cart-icon").show();
+
             $(".payment-zone").slideDown();
+
+            var htmlPayment = "";
+
+            if (myCurrency === "EUR") {
+                htmlPayment = "<div className='euro totalStartPriceEuro'><div className='startPricePayEuro'>Total start bundle: <span className='finalPackageSel'><b>" + parseInt($(".priceEuroPackageSel").html()) + "</b></span> €</div><div className='subPricePay'>You will pay <span className='finalSubSel'><b>" + parseInt($(".subEuroPackageSel").html()) + "</b></span> for your monthly subscription</div><div className='totalToPay'>Total to pay: <span className='finalTotSel'><b>" + totalToPayEuro+ "</b></span></div></div>";
+            } else if (myCurrency === "GBP") {
+                htmlPayment = "<div className='sterlina totalStartPriceEuro'><div className='startPricePaySterlin'>Total start bundle: <span className='finalPackageSel'><b>" + parseInt($(".priceSterlinPackageSel").html()) + "</b></span> £</div><div className='subPricePay'>You will pay <span className='finalSubSel'><b>" + parseInt($(".subSterlinPackageSel").html()) + "</b></span> for your monthly subscription</div><div className='totalToPay'>Total to pay: <span className='finalTotSel'><b>" + totalToPaySterlin + "</b></span></div></div>";
+            } else {
+                htmlPayment = "<div className='dollaro totalStartPriceEuro'><div className='startPricePayDollar'>Total start bundle: <span className='finalPackageSel'><b>" + parseInt($(".priceDollarPackageSel").html()) + "</b></span> $</div><div className='subPricePay'>You will pay  <span className='finalSubSel'><b>" + parseInt($(".subDollarPackageSel").html()) + "</b></span> for your monthly subscription</div><div className='totalToPay'>Total to pay: <span className='finalTotSel'><b>" + totalToPayDollar + "</b></span></div></div>";
+            }
+
+            sessionStorage.setItem("MyPaymentDetails", htmlPayment);
         } else {
             console.log("You pressed Cancel!");
         }
@@ -59,11 +121,13 @@ export class Version extends React.Component {
     render() {
         return (
             <div>
+                <div className="version-select-zone">
                     <div className="goBack-cart" onClick={() => this.goBackClick()}>
                         <img className="icon icons8-Long-Arrow-Left" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAA30lEQVRIS+2U/Q2CMBTE7ybQDWQDdQNHcARH0wl0Ax3BEXADneCZI21SPgOlEGPoX9Dy+utdj0fMNDgTBwso2unfsM7MMgBXySC5j5aj+rZiM9sBuANYO9Ao9Y3FZnZwSgrIJCAzO3q7QrUk0ymq2tVg6xvAM5h/BM+a17rGi2ReOqh/6QGJycKF5KmwPgDpBJuY3bpqvOUhSNK3c4D0zwi2SgirW6fN3T3pgttgn55hyFvDUAlFDZY03l2wSUCBjTefxMlADqYWdAaQkVTvix6j2soQ6gIa4lbp2/+z7gvHwkYbyI5xugAAAABJRU5ErkJggg==" width="26" height="26" />
                         <div className="backLabel">Back to cart</div>
                     </div>
                     <div className="title-select-version">Select your Business Plan</div>
+                    <div className="col-md-12 description-panel"></div>
                     <div className="col-md-12 container-packages">
                         <div className="col-md-4 animated fadeindown packageVersions standard">
                             <div className="package" onClick={() => this.selectClick("standard")}>
@@ -160,7 +224,13 @@ export class Version extends React.Component {
                             <div className="btn-welcome confirm-version" onClick={() => this.finishClick()}>Complete</div>
                         </div>
                     </div>
+                    
                 </div>
+                <div className="welcome-component payment-zone">
+                    {this.state.showSelectApps ? <Payment packageSelected={this.state.packageSelected} numberPackages={this.state.numberPackages} totalToPayEuro={this.state.totalToPayEuro} totalToPaySterlin={this.state.totalToPaySterlin} totalToPayDollar={this.state.totalToPayDollar} valueToPayEuro={this.state.valueToPayEuro} valueToPaySterlin={this.state.valueToPaySterlin} valueToPayDollar={this.state.valueToPayDollar} subToPayEuro={this.state.subToPayEuro} subToPaySterlin={this.state.subToPaySterlin} subToPayDollar={this.state.subToPayDollar} finalValue={this.state.finalValue} myCurrency={this.state.myCurrency}/> : <div className="noAccess">You don't have permissions for view this area</div>}
+                </div>
+            </div>
+
         );
     }
 }

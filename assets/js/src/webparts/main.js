@@ -5,8 +5,6 @@ import { ModalPopup } from '../components/modal.jsx';
 import { PayPalButton } from '../components/paypal.jsx';
 
 import { StartPage } from '../main/_startPage.js';
-import { Registration } from '../main/_registration.js';
-import { Login } from '../main/_login.js';
 
 import { ResetPassword } from '../main/_resetPassword.js';
 import { ContactUs } from '../main/_contactUs.js';
@@ -23,8 +21,6 @@ import { ContactUs } from '../main/_contactUs.js';
                 return (
                     <div className="container">
                         <StartPage />
-                        <Login />
-                        <Registration />
                         <ResetPassword />
                         <ContactUs />
                     </div>

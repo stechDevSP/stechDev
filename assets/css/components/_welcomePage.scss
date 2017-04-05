@@ -2,6 +2,10 @@ body {
     background-color: white;
 }
 
+.cart-container-prev{
+    display: none;
+}
+
 .packageVersions {
     display: block;
 }
@@ -13,6 +17,17 @@ body {
 
 .button-container {
     margin-top: 10px;
+}
+
+.btn-paypal{   
+    background-image: url("../_img/png/paypal-button.jpg");
+    height: 100px;
+    background-size: 197px;
+    background-repeat: no-repeat;
+    width: 197px;
+    margin-top: 20px !important;
+    border: none;
+    box-shadow: none;
 }
 
 .header {
@@ -284,7 +299,7 @@ body {
         word-wrap: break-word;
     }
     .welcomeToDescr {
-        padding-bottom: 20px;
+        padding-bottom: 30px;
         animation-delay: 3s !important;
     }
     .continue-select {
@@ -321,9 +336,10 @@ body {
     .nameCompany,
     .locationCompany,
     .emailCompany,
-    .confirmEmailCompany,
+    .jobCategory,
     .passwordCompany,
-    .confirmPassCompany {
+    .confirmPassCompany,
+    .jobtitle {
         padding-top: 10px;
         padding-bottom: 10px;
     }
@@ -361,7 +377,7 @@ body {
     }    
 }
 
-.login-form,
+.login-zone,
 .contact-us,
 .reset-password {
     display: none;
@@ -715,6 +731,11 @@ body {
         left: 27px;
         color: white;
     }
+
+    .icon{
+        position: relative;
+        left: -60px;
+    }
 }
 
 .cart-container {
@@ -757,10 +778,10 @@ body {
 
 .cart-details,
 .payment-zone,
-.register-form,
+.registration-zone,
 .select-version,
 .select-apps-zone,
-.login-form,
+.login-zone,
 .my-select-apps-zone,
 .contact-us,
 .reset-password {

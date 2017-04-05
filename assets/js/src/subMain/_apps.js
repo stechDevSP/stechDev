@@ -39,10 +39,10 @@ export class Apps extends React.Component {
                 "Pic3": "#",
                 "StartPrice": 400,
                 "MonthPrice": 10,
-                "StartDollarPrice": 360,
-                "MonthDollarPrice": 9,
-                "StartSterlinPrice": 500,
-                "MonthSterlinPrice": 14
+                "StartDollarPrice": 440,
+                "MonthDollarPrice": 12,
+                "StartSterlinPrice": 360,
+                "MonthSterlinPrice": 9
             }, {
                 "Logo": "../_img/png/pdfIcon.png",
                 "Id": 2,
@@ -54,10 +54,10 @@ export class Apps extends React.Component {
                 "Pic3": "#",
                 "StartPrice": 500,
                 "MonthPrice": 10,
-                "StartDollarPrice": 450,
-                "MonthDollarPrice": 9,
-                "StartSterlinPrice": 625,
-                "MonthSterlinPrice": 14
+                "StartDollarPrice": 600, // euro x 1.2,
+                "MonthDollarPrice": 12,
+                "StartSterlinPrice": 450, // euro x 0.9,
+                "MonthSterlinPrice": 9
             }, {
                 "Logo": "../_img/png/helpdeskIcon.png",
                 "Id": 3,
@@ -69,10 +69,10 @@ export class Apps extends React.Component {
                 "Pic3": "#",
                 "StartPrice": 200,
                 "MonthPrice": 10,
-                "StartDollarPrice": 180,
-                "MonthDollarPrice": 9,
-                "StartSterlinPrice": 250,
-                "MonthSterlinPrice": 14
+                "StartDollarPrice": 240,
+                "MonthDollarPrice": 12,
+                "StartSterlinPrice": 180,
+                "MonthSterlinPrice": 9
             }, {
                 "Logo": "../_img/png/hrIcon.png",
                 "Id": 4,
@@ -85,10 +85,10 @@ export class Apps extends React.Component {
 
                 "StartPrice": 400,
                 "MonthPrice": 10,
-                "StartDollarPrice": 360,
-                "MonthDollarPrice": 9,
-                "StartSterlinPrice": 500,
-                "MonthSterlinPrice": 14
+                "StartDollarPrice": 440,
+                "MonthDollarPrice": 12,
+                "StartSterlinPrice": 360,
+                "MonthSterlinPrice": 9
             }];
 
             sessionStorage.setItem("AllApps", JSON.stringify(appsArray));
@@ -111,7 +111,7 @@ export class Apps extends React.Component {
         var idPackage = idPackage;
         var htmlCard = "<div class='infoCardAdded cardAdded_" + idPackage + "'><div class='logoDetails'><img src='" + $(".infoCard_" + idPackage).find(".logoCard").html() + "' /></div><div class='titleCard'>" + $(".cardTitle_" + idPackage).html() + "</div><div class='descriptionCard'>" + $(".infoCard_" + idPackage).find(".description").html() + "</div><div class='priceCardDetails'>Standard package:<b><span class='euro selectedEuroPriceDet'>" + $(".infoCard_" + idPackage).find(".euroPrice").find(".priceCard").html() + "</span><span class='sterlina selectedSterlinPriceDet'>" + $(".infoCard_" + idPackage).find(".sterlinPrice").find(".priceCard").html() + "</span><span class='dollaro selectedDollarPriceDet'>" + $(".infoCard_" + idPackage).find(".dollarPrice").find(".priceCard").html() + "</span></b><span class='currencyDetail'> " + $(".myCurrency").html() + "</span></div><div class='priceSubDetails'>Standard package subscription:<b><span class='euro selectedEuroSubPriceDet'>" + $(".infoCard_" + idPackage).find(".euroPrice").find(".priceSub").html() + "</span><span class='dollaro selectedDollarSubPriceDet'>" + $(".infoCard_" + idPackage).find(".dollarPrice").find(".priceSub").html() + "</span><span class='sterlina selectedSterlinSubPriceDet'>" + $(".infoCard_" + idPackage).find(".sterlinPrice").find(".priceSub").html() + "</span></b><span class='currencyDetail'>" + $(".myCurrency").html() + "</span></div><div class='hiddenInfo'><div class='pic1Details'>" + $(".infoCard_" + idPackage).find(".pic1Card").html() + "</div><div class='pic2Details'>" + $(".infoCard_" + idPackage).find(".pic2Card").html() + "</div><div class='pic3Details'>" + $(".infoCard_" + idPackage).find(".pic3Card").html() + "</div><div class='descrFullDetails'>" + $(".infoCard_" + idPackage).find(".descrFull").html() + "</div></div><div class='deleteCard' id='deleteCard_" + idPackage + "' data-card-id='" + idPackage + "'><img class='icon icons8-Delete' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAABEklEQVRIS+WWyxHCMAxEdzugA+gAqICkYkogdJB0QAl0IEaMPZOPLDk55BIfg60nrbQaiJ0Od+LgICAROQF4JVlbkl9P4pr7C+lGj24peA+gCKu9b4E6AI9ZBSbMgORnHcl2HMMCadCrIdUE5kD06UAyK/IPVZJOqyrCUhLaw0mw9H0A0Mz7ao53ytaDacxqiFlRliyAWUNoVpIvuoZdAXMhbkUrKgshtSDtxRPApWBa12e10ilEp0s3hXdCWLFHIlILyQm4sNJ4exDtiZ7Q1NFmiCBNCuCaOjSsiHwAnI2GTKYrMjXJe1SRtVTNEXZgb5K58upd5/rEgG3adZrNYkHOZR3BivcP8p8h2AKbft5Nuh8LOJobI3DWvwAAAABJRU5ErkJggg==' width='26' height='26' /></div></div>";
 
-        $(".cart-container").append(htmlCard);
+        $(".cart-container-prev").append(htmlCard);
         $(".card_" + idPackage).hide();
         $(".cart-buttons").show();
 
@@ -231,7 +231,9 @@ export class Apps extends React.Component {
         $(".select-currency").show();
         $(".btn-versions").hide();
 
+        var htmlCard = $(".cart-container-prev").html();
 
+        sessionStorage.setItem("MyAppsDetails", htmlCard);
     }
     cleanClick() {
         $(".cart-container").html("No apps selected");
@@ -291,6 +293,7 @@ export class Apps extends React.Component {
                     <div className="backLabel">Back to homepage</div>
                 </div>
                 <div className="col-md-12 title-select-apps start-apps">Select your apps</div>
+                <div className="col-md-12 description-panel">In here you could find all the apps in our store, buy it or view more details about it. Click more info for check some details about an apps and add it on your cart.</div>
                 <div className="col-md-12 title-select-apps suggested-apps">Other suggested apps</div>
                 <div className="col-md-12 totalApps">{items}</div>
                 <div className="cart-buttons">
@@ -303,6 +306,7 @@ export class Apps extends React.Component {
                         </div>
                     </div>
                 </div>
+                <div className="cart-container-prev"></div>
             </div>
         );
     }

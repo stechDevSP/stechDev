@@ -4,11 +4,12 @@ import ReactDOM from 'react-dom';
 import { Apps } from '../subMain/_apps.js';
 import { CartDetails } from '../subMain/_cartDetails.js';
 import { Version } from '../subMain/_version.js';
-import { Payment } from '../subMain/_payment.js';
+
 
 export class Registration extends React.Component {
     getInitialState() {
         return {
+            arrayUsers: [],
             showSelectApps: false
         };
     }
@@ -20,12 +21,22 @@ export class Registration extends React.Component {
         this.finishClick = this.finishClick.bind(this);
         this.cleanClick = this.cleanClick.bind(this);
 
-        self.state = { showSelectApps: false };
+        var usersArray = [];
+        var arrayUsersStorage = sessionStorage.getItem("finalRegisteredUsers");
+        if (arrayUsersStorage) {
+            usersArray = JSON.parse(arrayUsersStorage);
+        }
+
+        self.state = {
+            showSelectApps: false,
+            arrayUsers: usersArray
+        };
     }
     goBackClick() {
-        $(".welcome-component").slideUp();
+        $(".registration-zone").slideUp();
         $(".welcome-zone").slideDown();
         $(".cart-icon, .select-currency, .profile-drop").hide();
+        this.setState({ showSelectApps: false });
     }
     finishClick() {
         $.each($(".register-form").find(".form-control"), function() {
@@ -36,29 +47,45 @@ export class Registration extends React.Component {
             }
         });
 
-        if ($(".companyEmail").val().indexOf('@') < 0 || $(".companyConfirmEmail").val().indexOf('@') < 0) {
-            $(".companyConfirmEmailAlert2").show();
+        if ($(".companyEmail").val().indexOf('@') < 0) {
+            $(".companyEmailAlert").show();
         } else {
-            $(".companyConfirmEmailAlert2").show();
+            $(".companyEmailAlert").show();
         }
 
 
-        if ($(".companyName").val() !== "" && $(".companyLocation").val() !== "" && $(".companyEmail").val() !== "" && $(".companyPassword").val() !== "" && $(".companyConfirmPassword").val() !== "") {
-            if ($(".companyPassword").val() === $(".companyConfirmPassword").val() && $(".companyEmail").val() === $(".companyConfirmEmail").val() && $(".companyEmail").val().indexOf('@') > 0) {
+        if ($(".companyName").val() !== "" && $(".companyEmail").val() !== "" && $(".companyPassword").val() !== "") {
+            if ($(".companyEmail").val().indexOf('@') > 0) {
                 this.setState({ showSelectApps: true });
+
+                var usersArray = [];
+                var arrayUsersStorage = sessionStorage.getItem("finalRegisteredUsers");
+                if (arrayUsersStorage) {
+                    usersArray = JSON.parse(arrayUsersStorage);
+                }
+
+                var userToAdd = {
+                    Name: $(".userName").val(),
+                    JobTitle:$(".jobtitle").val(),
+                    CompanyName: $(".companyName").val(),
+                    CompanyJobCategory: $("#selJobCategory").val(),
+                    CompanyLocation:$(".companyLocation").val(),
+                    CompanyPhoneNumber:$(".companyPhone").val(),
+                    CompanyEmail:$(".companyEmail").val(),
+                    Password:$(".companyPassword").val()
+                };
+
+                usersArray.push(userToAdd);
+
+                sessionStorage.setItem("registeredUsers", JSON.stringify(usersArray));
+
+                this.setState({ arrayUsers: usersArray });
+
                 $(".register-form").slideUp();
                 $(".select-apps-zone").slideDown();
                 $(".alert").hide();
                 $(".select-currency").show();
             } else {
-                if ($(".companyPassword").val() !== $(".companyConfirmPassword").val()) {
-                    $(".companyConfirmPassAlert2").show();
-                    $(".companyConfirmEmailAlert2").hide();
-                }
-                if ($(".companyEmail").val() !== $(".companyConfirmEmail").val() || $(".companyEmail").val().indexOf('@') < 0) {
-                    $(".companyConfirmEmailAlert2").show();
-                    $(".companyConfirmPassAlert2").hide();
-                }
                 this.setState({ showSelectApps: false });
             }
 
@@ -71,8 +98,8 @@ export class Registration extends React.Component {
     }
     render() {
         return (
-            <div className="col-md-12 registration-zone">
-                <div className="welcome-component register-form form-group">
+            <div>
+                <div className="register-form form-group">
                     <div className="goBack-homepage" onClick={() => this.goBackClick()}>
                         <img className="icon icons8-Long-Arrow-Left" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAA30lEQVRIS+2U/Q2CMBTE7ybQDWQDdQNHcARH0wl0Ax3BEXADneCZI21SPgOlEGPoX9Dy+utdj0fMNDgTBwso2unfsM7MMgBXySC5j5aj+rZiM9sBuANYO9Ao9Y3FZnZwSgrIJCAzO3q7QrUk0ymq2tVg6xvAM5h/BM+a17rGi2ReOqh/6QGJycKF5KmwPgDpBJuY3bpqvOUhSNK3c4D0zwi2SgirW6fN3T3pgttgn55hyFvDUAlFDZY03l2wSUCBjTefxMlADqYWdAaQkVTvix6j2soQ6gIa4lbp2/+z7gvHwkYbyI5xugAAAABJRU5ErkJggg==" width="26" height="26" />
                         <div className="backLabel">Back to homepage</div>
@@ -80,40 +107,63 @@ export class Registration extends React.Component {
                     <div className="titleRegister">Registration form</div>
                     <div className="col-md-12">
                         <div className="nameCompany col-md-6 col-xs-12">
+                            <label>Full Name:</label>
+                            <input type="text" className="form-control userName" placeholder="Insert your full name"/>
+                        </div>
+                        <div className="jobTitle col-md-6 col-xs-12">
+                            <label>Job title:</label>
+                            <input type="text" className="form-control jobtitle" placeholder="Insert your job title"/>
+                        </div>
+                    </div>
+                    <div className="col-md-12">
+                        <div className="nameCompany col-md-6 col-xs-12">
                             <div className="alert alert-danger companyNameAlert" role="alert">Please insert the company name</div>
                             <label>Company Name (*):</label>
                             <input type="text" className="form-control companyName" placeholder="Insert your company name"/>
                         </div>
-                        <div className="locationCompany col-md-6 col-xs-12">
-                            <div className="alert alert-danger companyLocationAlert" role="alert">Please insert the company location</div>
-                            <label>Company Location (*):</label>
-                            <input type="text" className="form-control companyLocation" placeholder="Insert your company location"/>
+                        <div className="jobCategory col-md-6 col-xs-12">
+                            <label>Job category:</label>
+                            <select className="form-control" id="selJobCategory" placeholder="Select your job category">
+                                <option disabled selected>Select your job category</option>
+                                <option>Agriculture, Food and Natural Resources</option>
+                                <option>Architecture and Construction</option>
+                                <option>Arts, Audio/Video Technology & Communications</option>
+                                <option>Business Management & Administration</option>
+                                <option>Education & Training</option>
+                                <option>Finance</option>
+                                <option>Government & Public Administration</option>
+                                <option>Health Science</option>
+                                <option>Hospitality & Tourism </option>
+                                <option>Information Technology</option>
+                                <option>Law, Public Safety, Corrections & Security</option>
+                                <option>Manufacturing</option>
+                                <option>Marketing, Sales and Service</option>
+                                <option>Science, Technology, Engineering & Mathematics</option>
+                                <option>Transportation, Distribution & Logistics</option>
+                                <option>Other</option>
+                            </select>
                         </div>
                     </div>
                     <div className="col-md-12">
-                    <div className="alert alert-danger companyConfirmEmailAlert2" role="alert">Please insert a correct email</div>
+                        <div className="locationCompany col-md-6 col-xs-12">
+                            <label>Company Location:</label>
+                            <input type="text" className="form-control companyLocation" placeholder="Insert your company location"/>
+                        </div>
+                        <div className="locationCompany col-md-6 col-xs-12">
+                            <label>Company Phone number:</label>
+                            <input type="text" className="form-control companyPhone" placeholder="Insert your company phone number"/>
+                        </div>
+                    </div>
+                    <div className="col-md-12">
                         <div className="emailCompany col-md-6 col-xs-12">
                             <div className="alert alert-danger companyEmailAlert" role="alert">Please insert an email</div>
                             <label>Company Email (*):</label>
                             <input type="email" className="form-control companyEmail" aria-describedby="emailHelp" placeholder="Enter email" />
                         </div>
-                        <div className="confirmEmailCompany col-md-6 col-xs-12">
-                            <div className="alert alert-danger companyConfirmEmailAlert" role="alert">Please confirm your email</div>
-                            <label>Confirm Email (*):</label>
-                            <input type="email" className="form-control companyConfirmEmail" aria-describedby="emailHelp" placeholder="Confirm your email" />
-                        </div>
-                    </div>
-                    <div className="col-md-12">
-                        <div className="alert alert-danger companyConfirmPassAlert2" role="alert">Please insert a correct password</div>
                         <div className="passwordCompany col-md-6 col-xs-12">
                             <div className="alert alert-danger companyPasswordAlert" role="alert">Please insert a password</div>
                             <label>Password (*):</label>
                             <input type="password" className="form-control companyPassword" placeholder="Enter password"/>
-                        </div>
-                        <div className="confirmPassCompany col-md-6 col-xs-12">
-                            <div className="alert alert-danger companyConfirmPassAlert" role="alert">Please insert a confirm password</div>
-                            <label>Confirm password (*):</label>
-                            <input type="password" className="form-control companyConfirmPassword" placeholder="Confirm your password"/>
                         </div>
                     </div>
                     <div className="col-md-12">
@@ -127,9 +177,6 @@ export class Registration extends React.Component {
                 </div>
                 <div className="welcome-component select-version">
                     {this.state.showSelectApps ? <Version /> : <div className="noAccess">You don't have permissions for view this area</div>}
-                </div>
-                <div className="welcome-component payment-zone">
-                    {this.state.showSelectApps ? <Payment /> : <div className="noAccess">You don't have permissions for view this area</div>}
                 </div>
                 <div className="welcome-component cart-details">
                     {this.state.showSelectApps ? <CartDetails /> : <div className="noAccess">You don't have permissions for view this area</div>}

@@ -41,7 +41,7 @@ export class MyApps extends React.Component {
         var allApps = JSON.parse(sessionStorage.getItem("AllApps"));
         var appsArray2 = [];
 
-        if (appsArray.length && allApps.length) {
+        if (appsArray.length > 0 && allApps.length > 0) {
             $.each(allApps, function(iAll, eAll) {
                 var find = false;
                 $.each(appsArray, function(iMy, eMy) {
@@ -63,6 +63,14 @@ export class MyApps extends React.Component {
             apps: appsArray,
             appsRemain: appsArray2
         };
+    }
+    goBackClick() {
+        $(".goBack-selectApps").hide();
+        $(".view-my-apps, .profile-drop, .select-currency").show();
+        this.setState({ showCheckUp: false });
+        this.setState({ showHPdfMaker: false });
+        this.setState({ showHelpDesk: false });
+        this.setState({ showHr: false });
     }
     goShopClick() {
         $(".my-select-apps-zone").slideUp();
@@ -178,7 +186,7 @@ export class MyApps extends React.Component {
 
         return (
             <div>
-                 <div className="goBack-selectApps">
+                 <div className="goBack-selectApps" onClick={() => this.goBackClick()}>
                     <img className="icon icons8-Long-Arrow-Left" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAA30lEQVRIS+2U/Q2CMBTE7ybQDWQDdQNHcARH0wl0Ax3BEXADneCZI21SPgOlEGPoX9Dy+utdj0fMNDgTBwso2unfsM7MMgBXySC5j5aj+rZiM9sBuANYO9Ao9Y3FZnZwSgrIJCAzO3q7QrUk0ymq2tVg6xvAM5h/BM+a17rGi2ReOqh/6QGJycKF5KmwPgDpBJuY3bpqvOUhSNK3c4D0zwi2SgirW6fN3T3pgttgn55hyFvDUAlFDZY03l2wSUCBjTefxMlADqYWdAaQkVTvix6j2soQ6gIa4lbp2/+z7gvHwkYbyI5xugAAAABJRU5ErkJggg==" width="26" height="26" />
                     <div className="backLabel">Back to apps</div>
                 </div> 

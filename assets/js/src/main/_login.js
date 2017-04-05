@@ -24,7 +24,7 @@ export class Login extends React.Component {
         self.state = { showMyApps: false };
     }
     goBackClick() {
-        $(".welcome-component").slideUp();
+        $(".login-zone").slideUp();
         $(".welcome-zone").slideDown();
         $(".cart-icon, .select-currency, .profile-drop").hide();
     }
@@ -46,18 +46,18 @@ export class Login extends React.Component {
 
         if (nameCompany !== "" && passwordCompany !== "") {
             //checkLogin
-
-            var userTest = {
-                Name: "1",
-                Password: "1"
-            };
+            var usersArray = [];
+            var arrayUsersStorage = sessionStorage.getItem("finalRegisteredUsers");
+            if (arrayUsersStorage) {
+                usersArray = JSON.parse(arrayUsersStorage);
+            }
 
             var checkLogin = false;
-            if (nameCompany === userTest.Name && passwordCompany === userTest.Password) {
-                checkLogin = true;
-            } else {
-                checkLogin = false;
-            }
+            $.each(usersArray, function(index, value) {
+                if (nameCompany === value.Name && passwordCompany === value.Password) {
+                    checkLogin = true;
+                }
+            });
 
             if (checkLogin) {
                 this.setState({ showMyApps: true });
@@ -77,8 +77,8 @@ export class Login extends React.Component {
     }
     render() {
         return (
-            <div className="col-md-12 login-zone">
-                <div className="welcome-component login-form form-group">
+            <div>
+                <div className="login-form form-group">
                     <div className="goBack-homepage" onClick={() => this.goBackClick()}>
                         <img className="icon icons8-Long-Arrow-Left" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAA30lEQVRIS+2U/Q2CMBTE7ybQDWQDdQNHcARH0wl0Ax3BEXADneCZI21SPgOlEGPoX9Dy+utdj0fMNDgTBwso2unfsM7MMgBXySC5j5aj+rZiM9sBuANYO9Ao9Y3FZnZwSgrIJCAzO3q7QrUk0ymq2tVg6xvAM5h/BM+a17rGi2ReOqh/6QGJycKF5KmwPgDpBJuY3bpqvOUhSNK3c4D0zwi2SgirW6fN3T3pgttgn55hyFvDUAlFDZY03l2wSUCBjTefxMlADqYWdAaQkVTvix6j2soQ6gIa4lbp2/+z7gvHwkYbyI5xugAAAABJRU5ErkJggg==" width="26" height="26" />
                         <div className="backLabel">Back to homepage</div>
