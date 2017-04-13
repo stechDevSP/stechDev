@@ -68,6 +68,7 @@
     "vinyl-fs": "^2.4.3"
   },
   "devDependencies": {
+    "angular": "^1.6.4",
     "babel-loader": "^6.4.0",
     "babel-register": "^6.23.0",
     "fancybox": "^3.0.0",
@@ -89,8 +90,8 @@
     "gulp-plumber": "^1.1.0",
     "gulp-sass": "^2.3.2",
     "gulp-spsave": "^2.0.2",
-    "react-scripts": "0.9.5",
     "react-bootstrap-modal": "^3.0.1",
+    "react-scripts": "0.9.5",
     "spsave": "^2.1.2",
     "vinyl-source-stream": "^1.1.0",
     "yargs": "^4.8.1"
