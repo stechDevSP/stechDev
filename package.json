@@ -19,7 +19,6 @@
   "author": "Giorgio Hanna Saad <stechDevSP@gmail.com>",
   "license": "Unlicense",
   "dependencies": {
-    "SPOC": "git+https://github.com/wearearchitect/SPOC.git",
     "assetinjector": "^1.0.0",
     "autoprefixer": "^6.3.6",
     "babel-cli": "^6.11.4",
