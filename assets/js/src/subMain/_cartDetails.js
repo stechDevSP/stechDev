@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import fx from 'money';
+//import fx from 'money';
 
 export class CartDetails extends React.Component {
     constructor(props) {

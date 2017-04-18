@@ -44,15 +44,15 @@ export class StartPage extends React.Component {
                     <div className="animated fadeindown welcomeTo">Welcome to </div>
                     <div className="animated fadeindown welcomeToName">ST Solutions</div>
                     <div className="animated bouncein welcomeToDescr">
-                        <div>Hi, we are Stech, a brand new company formed by a group of very professional dev with a great knowledge about Sharepoint and Microsoft's products.</div>
+                        <div>Hi, we are Stech - Sharepoint Technical Solutions, a brand new company formed by a group of very professional dev with a great knowledge about Sharepoint and Microsoft's products.</div>
                         <div>Stech Solutions is an new hub of innovative Sharepoint's services.</div>
                         <div>Here you could find some apps that isn't available in the out of the box infrastructure.</div>
                         <div>How many times you would check how your intranet works...how many users really use your infrastructure...</div>
                         <div>Help your users to work easily and faster...</div>
                         <div>Create fast and very dinamically Pdf files to export...</div>
                         <div><b>Now you can!</b></div>
-                        <div>Manage, with simple steps and features, your HR activities.</div>
-                        <div>Everything merged with your existing Sharepoint enviroment</div>
+                        <div>Manage, with simple steps and features, your intranet activities.</div>
+                        <div>Everything merged with your existing Sharepoint environment</div>
                         <div>Find in the library everything you need.</div>
                         <div>With some simple steps you could improve your company IT and help your employees to work better.</div>
                     </div>
