@@ -1,18 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { StHelpDesk } from '../webparts/st-helpdesk.jsx';
+import { StMultiList } from '../webparts/st-multilist.jsx';
 import { StCheckUp } from '../webparts/st-checkup.jsx';
-import { StHr } from '../webparts/st-hr.jsx';
+import { StProjectGantter } from '../webparts/st-projectgantter.jsx';
 import { StPdfMaker } from '../webparts/st-pdfmaker.jsx';
 
 export class MyApps extends React.Component {
     getInitialState() {
         return {
-            showHelpDesk: false,
+            showMultiList: false,
             showCheckUp: false,
-            showHr: false,
-            showHPdfMaker: false,
+            showProjectGantter: false,
+            showPdfMaker: false,
             apps: [],
             appsRemain: []
         };
@@ -67,8 +67,8 @@ export class MyApps extends React.Component {
         $(".view-my-apps, .profile-drop, .select-currency").show();
         this.setState({ showCheckUp: false });
         this.setState({ showHPdfMaker: false });
-        this.setState({ showHelpDesk: false });
-        this.setState({ showHr: false });
+        this.setState({ showMultiList: false });
+        this.setState({ showProjectGantter: false });
     }
     goShopClick() {
         $(".my-select-apps-zone").slideUp();
@@ -92,44 +92,44 @@ export class MyApps extends React.Component {
     handleClick(nameApp) {
         var myApps = true;
 
-        if (nameApp == "ST-CheckUp") {
+        if (nameApp == "ST-CheckUp Intranet") {
             this.setState({ showCheckUp: true });
-            this.setState({ showHPdfMaker: false });
-            this.setState({ showHelpDesk: false });
-            this.setState({ showHr: false });
+            this.setState({ showPdfMaker: false });
+            this.setState({ showMultiList: false });
+            this.setState({ showProjectGantter: false });
             myApps = false;
         } else {
             this.setState({ showCheckUp: false });
         }
 
         if (nameApp == "ST-PdfMaker") {
-            this.setState({ showHPdfMaker: true });
+            this.setState({ showPdfMaker: true });
             this.setState({ showCheckUp: false });
-            this.setState({ showHelpDesk: false });
-            this.setState({ showHr: false });
+            this.setState({ showMultiList: false });
+            this.setState({ showProjectGantter: false });
             myApps = false;
         } else {
             this.setState({ showHPdfMaker: false });
         }
 
-        if (nameApp == "ST-HelpDesk") {
-            this.setState({ showHelpDesk: true });
-            this.setState({ showHPdfMaker: false });
+        if (nameApp == "ST-MultiList") {
+            this.setState({ showMultiList: true });
+            this.setState({ showPdfMaker: false });
             this.setState({ showCheckUp: false });
-            this.setState({ showHr: false });
+            this.setState({ showProjectGantter: false });
             myApps = false;
         } else {
             this.setState({ showHelpDesk: false });
         }
 
-        if (nameApp == "ST-HR") {
-            this.setState({ showHr: true });
-            this.setState({ showHPdfMaker: false });
-            this.setState({ showHelpDesk: false });
+        if (nameApp == "ST-Project Gantter") {
+            this.setState({ showProjectGantter: true });
+            this.setState({ showPdfMaker: false });
+            this.setState({ showMultiList: false });
             this.setState({ showCheckUp: false });
             myApps = false;
         } else {
-            this.setState({ showHr: false });
+            this.setState({ showProjectGantter: false });
         }
 
         if (myApps) {
@@ -206,8 +206,8 @@ export class MyApps extends React.Component {
                 <div id="view" className="div-React">
                     {this.state.showCheckUp ? <StCheckUp /> : <div className="STCheckUp"></div>}
                     {this.state.showHPdfMaker ? <StPdfMaker /> : <div className="StPdfMaker"></div>}
-                    {this.state.showHelpDesk ? <StHelpDesk /> : <div className="StHelpDesk"></div>}
-                    {this.state.showHr ? <StHr /> : <div className="StHr"></div>}
+                    {this.state.showMultiList ? <StMultiList /> : <div className="StMultiList"></div>}
+                    {this.state.showProjectGantter ? <StProjectGantter /> : <div className="StProjectGantter"></div>}
                 </div>
             </div>
         );
