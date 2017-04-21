@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { Apps } from '../subMain/_apps.js';
-import { CartDetails } from '../subMain/_cartDetails.js';
-import { Version } from '../subMain/_version.js';
+import { Apps } from '../components/_apps.js';
+import { CartDetails } from '../components/_cartDetails.js';
+import { Version } from '../components/_version.js';
 
 
 export class Registration extends React.Component {

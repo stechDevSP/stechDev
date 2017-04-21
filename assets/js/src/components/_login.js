@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { MyApps } from '../subMain/_myApps.js';
-import { Apps } from '../subMain/_apps.js';
-import { CartDetails } from '../subMain/_cartDetails.js';
-import { Version } from '../subMain/_version.js';
-import { Payment } from '../subMain/_payment.js';
+import { MyApps } from '../components/_myApps.js';
+import { Apps } from '../components/_apps.js';
+import { CartDetails } from '../components/_cartDetails.js';
+import { Version } from '../components/_version.js';
+import { Payment } from '../components/_payment.js';
 
 export class Login extends React.Component {
     getInitialState() {

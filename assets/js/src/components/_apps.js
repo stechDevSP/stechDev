@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { ModalPopup } from '../components/modal.jsx';
+import { ModalPopup } from '../reusable/modal.jsx';
 
 export class Apps extends React.Component {
     getInitialState() {
@@ -37,11 +37,11 @@ export class Apps extends React.Component {
                 "Pic1": "#",
                 "Pic2": "#",
                 "Pic3": "#",
-                "StartPrice": 400,
+                "StartPrice": 300,
                 "MonthPrice": 10,
-                "StartDollarPrice": 440,
+                "StartDollarPrice": 360,
                 "MonthDollarPrice": 12,
-                "StartSterlinPrice": 360,
+                "StartSterlinPrice": 270,
                 "MonthSterlinPrice": 9
             }, {
                 "Logo": "../_img/png/pdfIcon.png",
@@ -52,11 +52,11 @@ export class Apps extends React.Component {
                 "Pic1": "#",
                 "Pic2": "#",
                 "Pic3": "#",
-                "StartPrice": 500,
+                "StartPrice": 300,
                 "MonthPrice": 10,
-                "StartDollarPrice": 600, // euro x 1.2,
+                "StartDollarPrice": 360, // euro x 1.2,
                 "MonthDollarPrice": 12,
-                "StartSterlinPrice": 450, // euro x 0.9,
+                "StartSterlinPrice": 270, // euro x 0.9,
                 "MonthSterlinPrice": 9
             }, {
                 "Logo": "../_img/png/helpdeskIcon.png",
@@ -82,12 +82,11 @@ export class Apps extends React.Component {
                 "Pic1": "#",
                 "Pic2": "#",
                 "Pic3": "#",
-
-                "StartPrice": 400,
+                "StartPrice": 300,
                 "MonthPrice": 10,
-                "StartDollarPrice": 440,
+                "StartDollarPrice": 360,
                 "MonthDollarPrice": 12,
-                "StartSterlinPrice": 360,
+                "StartSterlinPrice": 270,
                 "MonthSterlinPrice": 9
             }];
 
@@ -114,6 +113,19 @@ export class Apps extends React.Component {
         $(".cart-container-prev").append(htmlCard);
         $(".card_" + idPackage).hide();
         $(".cart-buttons").show();
+
+        var allSelected = true;
+        $.each($(".totalApps").find(".card"), function(i, v){
+            if($(v).css('display') === 'block'){
+                allSelected = false;
+            }
+        });
+
+        if (allSelected) {
+            $(".totalApps").append("<div class='allSelected'>No more apps to select</div>");
+        }else{
+            $(".allSelected").remove();
+        }
 
         var newCounter = parseInt($(".orderNumber").html()) + 1;
         $(".orderNumber").html(newCounter);
@@ -237,9 +249,12 @@ export class Apps extends React.Component {
     }
     cleanClick() {
         $(".cart-container").html("No apps selected");
-        $(".totale-cart-value, .totale-sub-value, .orderNumber").html(0);
+        $(".orderNumber,.totale-cart-value,.totale-sub-value,.totale-cart-value-sterlin,.totale-sub-value-sterlin,.totale-cart-value-dollar,.totale-sub-value-dollar").html(0);
         $(".card").show();
         $(".confirm-cart, .clean-cart").hide();
+        $(".allSelected").remove();
+
+        this.packageClick = this.packageClick.bind(this);
     }
     render() {
         var self = this;

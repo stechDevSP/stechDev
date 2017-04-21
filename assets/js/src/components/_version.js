@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Payment } from '../subMain/_payment.js';
+import { Payment } from '../components/_payment.js';
 
 export class Version extends React.Component {
     getInitialState() {
@@ -147,11 +147,10 @@ export class Version extends React.Component {
                                     
                                 </div>
                                 <div className="subPriceVersion">
-                                    <div className="titlePrice">Subscription</div>
+                                    <div className="titlePrice">Monthly Subscription: </div>
                                     <div className="euro valueEuroPrice"></div>
                                     <div className="sterlina valueSterlinPrice"></div>
                                     <div className="dollaro valueDollarPrice"></div>
-                                    <div className="titlePrice"> monthly</div>
                                 </div>
                             </div>
                         </div>
@@ -161,6 +160,7 @@ export class Version extends React.Component {
                                 <div className="detailsVersion">
                                     <ul className="featurePackage">
                                         <li>From 1 to 5 site collections</li>
+                                        <li>50% sale on the first annual renewal</li>
                                     </ul>
                                 </div>
                                 <div className="euro priceEuroVersion">
@@ -173,11 +173,10 @@ export class Version extends React.Component {
                                     
                                 </div>
                                 <div className="subPriceVersion">
-                                    <div className="titlePrice">Subscription</div>
+                                    <div className="titlePrice">Monthly Subscription: </div>
                                     <div className="euro valueEuroPrice"></div>
                                     <div className="sterlina valueSterlinPrice"></div>
                                     <div className="dollaro valueDollarPrice"></div>
-                                    <div className="titlePrice"> monthly</div>
                                 </div>
                             </div>
                         </div>
@@ -187,6 +186,9 @@ export class Version extends React.Component {
                                 <div className="detailsVersion">
                                     <ul className="featurePackage">
                                         <li>Unlimited site collections</li>
+                                        <li>Free renewal for the first time</li>
+                                        <li>Free support for the first week</li>
+                                        <li>First 2 months free monthly subscription</li>
                                     </ul>
                                 </div>
                                 <div className="euro priceEuroVersion">
@@ -199,11 +201,10 @@ export class Version extends React.Component {
                                     
                                 </div>
                                 <div className="subPriceVersion">
-                                    <div className="titlePrice">Subscription</div>
+                                    <div className="titlePrice">Monthly Subscription: </div>
                                     <div className="euro valueEuroPrice"></div>
                                     <div className="sterlina valueSterlinPrice"></div>
                                     <div className="dollaro valueDollarPrice"></div>
-                                    <div className="titlePrice"> monthly</div>
                                 </div>
                             </div>
                         </div>

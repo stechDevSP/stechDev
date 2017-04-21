@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Registration } from '../main/_registration.js';
-import { Login } from '../main/_login.js';
+import { Registration } from '../components/_registration.js';
+import { Login } from '../components/_login.js';
 
 export class StartPage extends React.Component {
     getInitialState() {

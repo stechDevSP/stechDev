@@ -66,8 +66,7 @@ images:
 js:
 	@echo 'Building JS'
 	@mkdir -p $(BASEPATH_DEST_JS)
-	@$(BROWSERIFY) `find $(BASEPATH_SRC_JS) -type f -name "*.js" -o -name "*.jsx"` -o $(BASEPATH_DEST_JS)/app.js -t babelify -t uglifyify --presets --debug 
-	@$(BROWSERIFY) `find $(BASEPATH_SRC_JS) -type f -name "*.js" -o -name "*.jsx"` -o $(BASEPATH_DEST_JS)/appFull.js -t babelify --presets --debug
+	@$(BROWSERIFY) `find $(BASEPATH_SRC_JS) -type f -name "*.js" -o -name "*.jsx"` -o $(BASEPATH_DEST_JS)/app.js -t babelify -t uglifyify --presets --debug
 	@echo 'Finished building JS'
 
 js_lint:

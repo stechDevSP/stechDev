@@ -1,8 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { ModalPopup } from '../components/modal.jsx';
-
 import { StHelpDesk } from '../webparts/st-helpdesk.jsx';
 import { StCheckUp } from '../webparts/st-checkup.jsx';
 import { StHr } from '../webparts/st-hr.jsx';

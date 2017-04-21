@@ -1,11 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { ModalPopup } from '../components/modal.jsx';
-import { PayPalButton } from '../components/paypal.jsx';
-
 import { StartPage } from '../main/_startPage.js';
-
 import { ResetPassword } from '../main/_resetPassword.js';
 import { ContactUs } from '../main/_contactUs.js';
 

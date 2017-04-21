@@ -230,6 +230,12 @@ body {
     }
 }
 
+.allSelected{
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
 .noElements {
     text-align: center;
 }
@@ -459,7 +465,7 @@ body {
     background-color: #fd5f00;
 }
 
-.ST-HelpDesk {
+.ST-MultiList {
     background-image: url('../_img/png/helpdeskIcon.png');
     background-repeat: no-repeat;
     background-size: cover;
@@ -467,7 +473,7 @@ body {
     background-color: #fd5f00;
 }
 
-.ST-HR {
+.ST-Project {
     background-image: url('../_img/png/hrIcon.png');
     background-repeat: no-repeat;
     background-size: cover;
@@ -590,7 +596,7 @@ body {
 }
 
 .back {
-    background-color: black;
+    background-color: #888;
     color: white;
     transform: rotateY(-180deg);
 }
