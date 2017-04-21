@@ -29,7 +29,7 @@ export class Apps extends React.Component {
             //get my apps, if my login is empty get all
 
             appsArray = [{
-                "Logo": "../_img/png/assessIcon.png",
+                "Logo": "../_img/png/checkup.png",
                 "Id": 1,
                 "Name": "ST-CheckUp Intranet",
                 "Description": "Assessment of your site collection",
@@ -44,7 +44,7 @@ export class Apps extends React.Component {
                 "StartSterlinPrice": 270,
                 "MonthSterlinPrice": 9
             }, {
-                "Logo": "../_img/png/pdfIcon.png",
+                "Logo": "../_img/png/pdfIcon2.png",
                 "Id": 2,
                 "Name": "ST-PdfMaker",
                 "Description": "Select an item from one of your list & create in few steps your Pdf",
@@ -59,7 +59,7 @@ export class Apps extends React.Component {
                 "StartSterlinPrice": 270, // euro x 0.9,
                 "MonthSterlinPrice": 9
             }, {
-                "Logo": "../_img/png/helpdeskIcon.png",
+                "Logo": "../_img/png/helpdeskIcon2.png",
                 "Id": 3,
                 "Name": "ST-MultiList",
                 "Description": "Select & trasform one list in a task list with a lot of functionalities",
@@ -74,7 +74,7 @@ export class Apps extends React.Component {
                 "StartSterlinPrice": 180,
                 "MonthSterlinPrice": 9
             }, {
-                "Logo": "../_img/png/hrIcon.png",
+                "Logo": "../_img/png/hrIcon2.png",
                 "Id": 4,
                 "Name": "ST-Project Gantter",
                 "Description": "Help your users to schedule and track all activities",
