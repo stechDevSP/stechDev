@@ -10,7 +10,7 @@
  * Wrap inside container class to avoid SharePoint conflicts
  */
 //
-.reactTest {
+.stech-solution {
 /**
  * Import vendor CSS files
  */
@@ -64,4 +64,5 @@
  */
 @import 'components/external';
 @import 'components/welcomePage';
+@import 'components/stMultiList';
 @import 'components/services';

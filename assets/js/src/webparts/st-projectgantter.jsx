@@ -1,6 +1,6 @@
 import React from 'react';
 
-export class StHr extends React.Component {
+export class StProjectGantter extends React.Component {
     constructor(props) {
         super(props);
         var self = this;
@@ -12,7 +12,7 @@ export class StHr extends React.Component {
         return (
             <div className="appST stHr_app">
                 <div className="title-myApp"> 
-                    ST HR
+                    ST PROJECT GANTTER
                 </div> 
             </div>
 

@@ -1,0 +1,158 @@
+#allViews{
+    display: none;
+}
+
+.saveListSelection, .saveItemSelection {
+    cursor: pointer;
+    background-color: #0072c6 !important;
+    color: white !important;
+    border: 1px solid black !important;
+}
+
+    .saveListSelection:hover {
+        background-color: white !important;
+        color: #0072c6 !important;
+    }
+
+    .saveItemSelection:hover {
+        background-color: white !important;
+        color: #0072c6 !important;
+    }
+
+.listFields-container {
+    height: 400px;
+    overflow-y: auto;
+    width: 500px;
+    overflow-x: hidden;
+    margin-bottom: 10px;
+}
+
+.checkAllLabel{
+    position: relative;
+    top: 3px;
+    left: 3px;
+}
+
+.selectAllArea{
+    margin-bottom: 10px;
+}
+
+.fieldSelected{
+    background-color: #0072c6;
+    color: white;
+}
+
+.titleField {
+    position: relative;
+    top: 3px;
+    left: 5px;
+}
+
+.titleZone {
+    font-size: 20px;
+    padding-bottom: 10px;
+    padding-bottom: 5px;
+}
+
+.myApps {
+    margin-bottom:30px;
+}
+
+.goBack-homepage {
+    background-color: #0072c6;
+    color: white;
+    margin-top: 0px;
+    cursor: pointer;
+    width: 170px;
+    position: relative;
+    margin-bottom: 10px;
+    border: 1px solid black;
+    width: 150px;
+    margin-top: 10px;
+}
+
+.backLabel {
+    position: absolute;
+    top: 5px;
+    left: 27px;
+    color: white;
+}
+
+.headerTableItems{
+    background-color: #0072c6 !important;
+    color: white !important;
+}
+
+
+#selectedList{
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+    padding-bottom: 5px;
+}
+
+table {
+    font-size: 13px !important;
+    border-collapse: collapse !important;
+}
+
+td {
+    position: relative !important;
+    padding: 5px 10px !important;
+}
+
+tr.strikeout td:before {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    border-bottom: 2px solid #111;
+    width: 100%;
+    margin: auto;
+}
+
+.checkItem, .statusItem{
+    width: 30px !important;
+    margin:auto;
+}
+
+.checkItem:before{
+    display:none !important;
+}
+
+.stCompleted{
+    background-color: #d9534f;
+    color: #fff;
+}
+.stPending{
+    background-color: #f0ad4e;
+    color: #fff;
+}
+.stInProgress{
+    background-color: #5cb85c;
+    color: #fff;
+}
+
+.stInProgress a, .stPending a, .stCompleted a{
+    color: #fff !important;
+}
+
+.legenda{
+    font-size: 12px;
+    margin-bottom: 5px;
+    float: left;
+    width: 300px;
+}
+
+.descriptionLegenda{
+    position: relative;
+    top: 0px;
+    left: 6px;
+    margin-right: 10px;
+}
+
+.legenda-container{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 25px;
+}

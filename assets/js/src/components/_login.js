@@ -54,7 +54,7 @@ export class Login extends React.Component {
 
             var checkLogin = false;
             $.each(usersArray, function(index, value) {
-                if (nameCompany === value.Name && passwordCompany === value.Password) {
+                if (nameCompany === value.CompanyName && passwordCompany === value.Password) {
                     checkLogin = true;
                 }
             });
@@ -113,9 +113,6 @@ export class Login extends React.Component {
                 </div>
                 <div className="welcome-component select-version">
                     {this.state.showMyApps ? <Version /> : <div className="noAccess">You don't have permissions for view this area</div>}
-                </div>
-                <div className="welcome-component payment-zone">
-                    {this.state.showMyApps ? <Payment /> : <div className="noAccess">You don't have permissions for view this area</div>}
                 </div>
                 <div className="welcome-component cart-details">
                     {this.state.showMyApps ? <CartDetails /> : <div className="noAccess">You don't have permissions for view this area</div>}
