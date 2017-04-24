@@ -40,7 +40,7 @@ export class StartPage extends React.Component {
     render() {
         return (
             <div>
-                <div className="col-md-12 welcome-component welcome-zone">
+                <div className="col-md-12 welcome-zone">
                     <div className="animated fadeindown welcomeTo">Welcome to </div>
                     <div className="animated fadeindown welcomeToName">ST Solutions</div>
                     <div className="animated bouncein welcomeToDescr">
