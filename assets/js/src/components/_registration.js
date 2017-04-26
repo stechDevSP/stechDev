@@ -124,7 +124,7 @@ export class Registration extends React.Component {
                         <div className="jobCategory col-md-6 col-xs-12">
                             <label>Job category:</label>
                             <select className="form-control" id="selJobCategory" placeholder="Select your job category">
-                                <option disabled selected>Select your job category</option>
+                                <option disabled>Select your job category</option>
                                 <option>Agriculture, Food and Natural Resources</option>
                                 <option>Architecture and Construction</option>
                                 <option>Arts, Audio/Video Technology & Communications</option>
