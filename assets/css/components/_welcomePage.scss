@@ -600,8 +600,8 @@ body {
 }
 
 .back {
-    background-color: #888;
-    color: white;
+    border:2px solid #fd5f00;
+    color: #fd5f00;
     transform: rotateY(-180deg);
 }
 
@@ -636,7 +636,15 @@ body {
         padding: 10px;
         margin: 20px;
         color: white;
+        cursor: pointer;
+        
         &.packageSel {
+            background-color: white;
+            color: #fd5f00;
+            border: 1px solid #fd5f00;
+        }
+
+        &:hover{
             background-color: white;
             color: #fd5f00;
             border: 1px solid #fd5f00;
@@ -859,7 +867,7 @@ body {
                 overflow: hidden;
                 .logoDetails {
                     img {
-                        background-color: #fd5f00;
+                        border:2px solid #fd5f00;
                         width: 120px;
                         float: left;
                         height: 120px;

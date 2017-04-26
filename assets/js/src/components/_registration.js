@@ -39,13 +39,19 @@ export class Registration extends React.Component {
         this.setState({ showSelectApps: false });
     }
     finishClick() {
-        $.each($(".register-form").find(".form-control"), function() {
-            if ($(this).val() === "") {
-                $(this).parent().find(".alert").show();
-            } else {
-                $(this).parent().find(".alert").hide();
-            }
-        });
+        // $.each($(".register-form").find(".form-control"), function() {
+        //     if ($(this).val() === "") {
+        //         $(this).parent().find(".alert").show();
+        //     } else {
+        //         $(this).parent().find(".alert").hide();
+        //     }
+        // });
+
+        if ($(".companyName").val() === "") {
+            $(".companyNameAlert").show();
+        } else {
+            $(".companyNameAlert").show();
+        }
 
         if ($(".companyEmail").val().indexOf('@') < 0) {
             $(".companyEmailAlert").show();
@@ -53,44 +59,46 @@ export class Registration extends React.Component {
             $(".companyEmailAlert").show();
         }
 
-
-        if ($(".companyName").val() !== "" && $(".companyEmail").val() !== "" && $(".companyPassword").val() !== "") {
-            if ($(".companyEmail").val().indexOf('@') > 0) {
-                this.setState({ showSelectApps: true });
-
-                var usersArray = [];
-                var arrayUsersStorage = sessionStorage.getItem("finalRegisteredUsers");
-                if (arrayUsersStorage) {
-                    usersArray = JSON.parse(arrayUsersStorage);
-                }
-
-                var userToAdd = {
-                    Name: $(".userName").val(),
-                    JobTitle:$(".jobtitle").val(),
-                    CompanyName: $(".companyName").val(),
-                    CompanyJobCategory: $("#selJobCategory").val(),
-                    CompanyLocation:$(".companyLocation").val(),
-                    CompanyPhoneNumber:$(".companyPhone").val(),
-                    CompanyEmail:$(".companyEmail").val(),
-                    Password:$(".companyPassword").val()
-                };
-
-                usersArray.push(userToAdd);
-
-                sessionStorage.setItem("registeredUsers", JSON.stringify(usersArray));
-
-                this.setState({ arrayUsers: usersArray });
-
-                $(".register-form").slideUp();
-                $(".select-apps-zone").slideDown();
-                $(".alert").hide();
-                $(".select-currency").show();
-            } else {
-                this.setState({ showSelectApps: false });
-            }
-
+        if ($(".companyPassword").val() === "") {
+            $(".companyPasswordAlert").show();
+        } else {
+            $(".companyPasswordAlert").show();
         }
 
+
+        if ($(".companyName").val() !== "" && $(".companyEmail").val().indexOf('@') > 0 && $(".companyPassword").val() !== "") {
+            this.setState({ showSelectApps: true });
+
+            var usersArray = [];
+            var arrayUsersStorage = sessionStorage.getItem("finalRegisteredUsers");
+            if (arrayUsersStorage) {
+                usersArray = JSON.parse(arrayUsersStorage);
+            }
+
+            var userToAdd = {
+                Name: $(".userName").val(),
+                JobTitle: $(".jobtitle").val(),
+                CompanyName: $(".companyName").val(),
+                CompanyJobCategory: $("#selJobCategory").val(),
+                CompanyLocation: $(".companyLocation").val(),
+                CompanyPhoneNumber: $(".companyPhone").val(),
+                CompanyEmail: $(".companyEmail").val(),
+                Password: $(".companyPassword").val()
+            };
+
+            usersArray.push(userToAdd);
+
+            sessionStorage.setItem("registeredUsers", JSON.stringify(usersArray));
+
+            this.setState({ arrayUsers: usersArray });
+
+            $(".register-form").slideUp();
+            $(".select-apps-zone").slideDown();
+            $(".alert").hide();
+            $(".select-currency").show();
+        } else {
+            this.setState({ showSelectApps: false });
+        }
     }
     cleanClick() {
         $(".register-form").find("input").val("");
@@ -123,7 +131,7 @@ export class Registration extends React.Component {
                         </div>
                         <div className="jobCategory col-md-6 col-xs-12">
                             <label>Job category:</label>
-                            <select className="form-control" id="selJobCategory" placeholder="Select your job category">
+                            <select className="form-control" id="selJobCategory" placeholder="Select your job category" value="Select your job category">
                                 <option disabled>Select your job category</option>
                                 <option>Agriculture, Food and Natural Resources</option>
                                 <option>Architecture and Construction</option>

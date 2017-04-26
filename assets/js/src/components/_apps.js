@@ -59,7 +59,7 @@ export class Apps extends React.Component {
                 "StartSterlinPrice": 270, // euro x 0.9,
                 "MonthSterlinPrice": 9
             }, {
-                "Logo": "../_img/png/helpdeskIcon2.png",
+                "Logo": "../_img/png/multilist.png",
                 "Id": 3,
                 "Name": "ST-MultiList",
                 "Description": "Select & trasform one list in a task list with a lot of functionalities",
@@ -74,7 +74,7 @@ export class Apps extends React.Component {
                 "StartSterlinPrice": 180,
                 "MonthSterlinPrice": 9
             }, {
-                "Logo": "../_img/png/hrIcon2.png",
+                "Logo": "../_img/png/gantter.png",
                 "Id": 4,
                 "Name": "ST-Project Gantter",
                 "Description": "Help your users to schedule and track all activities",
