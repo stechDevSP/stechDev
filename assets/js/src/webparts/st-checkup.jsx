@@ -7,6 +7,9 @@ export class StCheckUp extends React.Component {
     }
     componentDidMount() {
 
+ var res = $http.post(configuration.serviceUrlHost + configuration.crudServiceBaseUrlbikeLoginUser, dataObj);
+
+
     }
     render() {
         return (
