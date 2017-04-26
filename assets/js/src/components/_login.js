@@ -54,7 +54,7 @@ export class Login extends React.Component {
 
             var checkLogin = false;
             $.each(usersArray, function(index, value) {
-                if (nameCompany === value.CompanyName && passwordCompany === value.Password) {
+                if (nameCompany === value.Email && passwordCompany === value.Password) {
                     checkLogin = true;
                 }
             });
@@ -86,9 +86,9 @@ export class Login extends React.Component {
                     <div className="titleRegister">Sign in</div>
                     <div className="alert alert-danger loginFailed" role="alert">Try again! Company name or password is not correct!</div>
                     <div className="nameCompany">
-                        <div className="alert alert-danger loginCompanyNameAlert" role="alert">Please insert the company name</div>
-                        <label>Company Name (*):</label>
-                        <input type="text" className="form-control myLoginCompanyName" placeholder="Insert your company name"/>
+                        <div className="alert alert-danger loginCompanyNameAlert" role="alert">Please insert the user account</div>
+                        <label>User Account (*):</label>
+                        <input type="text" className="form-control myLoginCompanyName" placeholder="Insert your user account"/>
                     </div>
                     <div className="passwordCompany">
                         <div className="alert alert-danger loginPasswordAlert" role="alert">Please insert a password</div>

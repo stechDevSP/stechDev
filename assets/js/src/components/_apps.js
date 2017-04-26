@@ -48,7 +48,7 @@ export class Apps extends React.Component {
                 "Id": 2,
                 "Name": "ST-PdfMaker",
                 "Description": "Select an item from one of your list & create in few steps your Pdf",
-                "DescriptionFull": "Create your custom pdf files with drag & drop all the information you need from a Sharepoint's list/library",
+                "DescriptionFull": "Create your custom pdf files with drag & drop all the information you need from a Sharepoint's list",
                 "Pic1": "#",
                 "Pic2": "#",
                 "Pic3": "#",
@@ -63,7 +63,7 @@ export class Apps extends React.Component {
                 "Id": 3,
                 "Name": "ST-MultiList",
                 "Description": "Select & trasform one list in a task list with a lot of functionalities",
-                "DescriptionFull": "Select a list a trasform it in a task list or checkbox list or wishlist",
+                "DescriptionFull": "Select a list from your Sharepoint's environment and trasform it in a very easy way in a task list with a lot functionalities",
                 "Pic1": "#",
                 "Pic2": "#",
                 "Pic3": "#",
@@ -78,7 +78,7 @@ export class Apps extends React.Component {
                 "Id": 4,
                 "Name": "ST-Project Gantter",
                 "Description": "Help your users to schedule and track all activities",
-                "DescriptionFull": "You could help all your users to create activities tracker and gantt for any projects",
+                "DescriptionFull": "You could estimate all your projects by create an easy gantt",
                 "Pic1": "#",
                 "Pic2": "#",
                 "Pic3": "#",
@@ -93,7 +93,11 @@ export class Apps extends React.Component {
             sessionStorage.setItem("AllApps", JSON.stringify(appsArray));
         }
 
-        self.state = { apps: appsArray };
+        $(".cart-icon").show();
+
+        self.state = {
+            apps: appsArray
+        };
     }
     goBackClick() {
         $(".welcome-component").slideUp();
@@ -110,20 +114,22 @@ export class Apps extends React.Component {
         var idPackage = idPackage;
         var htmlCard = "<div class='infoCardAdded cardAdded_" + idPackage + "'><div class='logoDetails'><img src='" + $(".infoCard_" + idPackage).find(".logoCard").html() + "' /></div><div class='titleCard'>" + $(".cardTitle_" + idPackage).html() + "</div><div class='descriptionCard'>" + $(".infoCard_" + idPackage).find(".description").html() + "</div><div class='priceCardDetails'>Standard package:<b><span class='euro selectedEuroPriceDet'>" + $(".infoCard_" + idPackage).find(".euroPrice").find(".priceCard").html() + "</span><span class='sterlina selectedSterlinPriceDet'>" + $(".infoCard_" + idPackage).find(".sterlinPrice").find(".priceCard").html() + "</span><span class='dollaro selectedDollarPriceDet'>" + $(".infoCard_" + idPackage).find(".dollarPrice").find(".priceCard").html() + "</span></b><span class='currencyDetail'> " + $(".myCurrency").html() + "</span></div><div class='priceSubDetails'>Standard package subscription:<b><span class='euro selectedEuroSubPriceDet'>" + $(".infoCard_" + idPackage).find(".euroPrice").find(".priceSub").html() + "</span><span class='dollaro selectedDollarSubPriceDet'>" + $(".infoCard_" + idPackage).find(".dollarPrice").find(".priceSub").html() + "</span><span class='sterlina selectedSterlinSubPriceDet'>" + $(".infoCard_" + idPackage).find(".sterlinPrice").find(".priceSub").html() + "</span></b><span class='currencyDetail'>" + $(".myCurrency").html() + "</span></div><div class='hiddenInfo'><div class='pic1Details'>" + $(".infoCard_" + idPackage).find(".pic1Card").html() + "</div><div class='pic2Details'>" + $(".infoCard_" + idPackage).find(".pic2Card").html() + "</div><div class='pic3Details'>" + $(".infoCard_" + idPackage).find(".pic3Card").html() + "</div><div class='descrFullDetails'>" + $(".infoCard_" + idPackage).find(".descrFull").html() + "</div></div><div class='deleteCard' id='deleteCard_" + idPackage + "' data-card-id='" + idPackage + "'><img class='icon icons8-Delete' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAABEklEQVRIS+WWyxHCMAxEdzugA+gAqICkYkogdJB0QAl0IEaMPZOPLDk55BIfg60nrbQaiJ0Od+LgICAROQF4JVlbkl9P4pr7C+lGj24peA+gCKu9b4E6AI9ZBSbMgORnHcl2HMMCadCrIdUE5kD06UAyK/IPVZJOqyrCUhLaw0mw9H0A0Mz7ao53ytaDacxqiFlRliyAWUNoVpIvuoZdAXMhbkUrKgshtSDtxRPApWBa12e10ilEp0s3hXdCWLFHIlILyQm4sNJ4exDtiZ7Q1NFmiCBNCuCaOjSsiHwAnI2GTKYrMjXJe1SRtVTNEXZgb5K58upd5/rEgG3adZrNYkHOZR3BivcP8p8h2AKbft5Nuh8LOJobI3DWvwAAAABJRU5ErkJggg==' width='26' height='26' /></div></div>";
 
+        $(".cart-container-prev").find(".noElements").remove();
         $(".cart-container-prev").append(htmlCard);
+
         $(".card_" + idPackage).hide();
         $(".cart-buttons").show();
 
         var allSelected = true;
-        $.each($(".totalApps").find(".card"), function(i, v){
-            if($(v).css('display') === 'block'){
+        $.each($(".totalApps").find(".card"), function(i, v) {
+            if ($(v).css('display') === 'block') {
                 allSelected = false;
             }
         });
 
         if (allSelected) {
             $(".totalApps").append("<div class='allSelected'>No more apps to select</div>");
-        }else{
+        } else {
             $(".allSelected").remove();
         }
 
@@ -181,6 +187,9 @@ export class Apps extends React.Component {
         //         $(".confirm-cart, .clean-cart").hide();
         //     }
         // });
+
+        var htmlCard = $(".cart-container-prev").html();
+        sessionStorage.setItem("MyAppsDetails", htmlCard);
     }
     finishClick() {
         $(".select-apps-zone, .payment-zone, .select-version, .cart-details").slideUp();
@@ -321,7 +330,6 @@ export class Apps extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div className="cart-container-prev"></div>
             </div>
         );
     }

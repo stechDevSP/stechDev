@@ -30,7 +30,12 @@ export class Version extends React.Component {
         this.finishClick = this.finishClick.bind(this);
         this.cleanClick = this.cleanClick.bind(this);
 
-        self.state = { showSelectApps: false };
+        var myAppsSelected = sessionStorage.getItem("MyAppsDetails");
+
+        self.state = {
+            showSelectApps: false,
+            myAppsDetails: myAppsSelected
+        };
     }
     goBackClick() {
         $(".select-version").slideUp();
@@ -96,14 +101,13 @@ export class Version extends React.Component {
 
             $(".version-select-zone").slideUp();
             $(".select-currency").hide();
-            $(".cart-icon").show();
 
             $(".payment-zone").slideDown();
 
             var htmlPayment = "";
 
             if (myCurrency === "EUR") {
-                htmlPayment = "<div className='euro totalStartPriceEuro'><div className='startPricePayEuro'>Total start bundle: <span className='finalPackageSel'><b>" + parseInt($(".priceEuroPackageSel").html()) + "</b></span> €</div><div className='subPricePay'>You will pay <span className='finalSubSel'><b>" + parseInt($(".subEuroPackageSel").html()) + "</b></span> for your monthly subscription</div><div className='totalToPay'>Total to pay: <span className='finalTotSel'><b>" + totalToPayEuro+ "</b></span></div></div>";
+                htmlPayment = "<div className='euro totalStartPriceEuro'><div className='startPricePayEuro'>Total start bundle: <span className='finalPackageSel'><b>" + parseInt($(".priceEuroPackageSel").html()) + "</b></span> €</div><div className='subPricePay'>You will pay <span className='finalSubSel'><b>" + parseInt($(".subEuroPackageSel").html()) + "</b></span> for your monthly subscription</div><div className='totalToPay'>Total to pay: <span className='finalTotSel'><b>" + totalToPayEuro + "</b></span></div></div>";
             } else if (myCurrency === "GBP") {
                 htmlPayment = "<div className='sterlina totalStartPriceEuro'><div className='startPricePaySterlin'>Total start bundle: <span className='finalPackageSel'><b>" + parseInt($(".priceSterlinPackageSel").html()) + "</b></span> £</div><div className='subPricePay'>You will pay <span className='finalSubSel'><b>" + parseInt($(".subSterlinPackageSel").html()) + "</b></span> for your monthly subscription</div><div className='totalToPay'>Total to pay: <span className='finalTotSel'><b>" + totalToPaySterlin + "</b></span></div></div>";
             } else {

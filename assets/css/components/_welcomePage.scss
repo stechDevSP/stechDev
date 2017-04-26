@@ -2,10 +2,6 @@ body {
     background-color: white;
 }
 
-.cart-container-prev{
-    display: none;
-}
-
 .packageVersions {
     display: block;
 }
@@ -637,7 +633,7 @@ body {
         margin: 20px;
         color: white;
         cursor: pointer;
-        
+
         &.packageSel {
             background-color: white;
             color: #fd5f00;
@@ -966,5 +962,54 @@ body {
         padding-top: 10px;
         padding-bottom: 10px;
         color: black;
+    }
+}
+
+.labelInfo{
+    float: left;
+}
+
+.tooltipReg{
+    background-color: #fd5f00;
+    color: white;
+    width: 14px;
+    height: 14px;
+    border-radius: 15px;
+    padding-left: 6px;
+    padding-top: 2px;
+    float: left;
+    margin-left: 3px;
+    font-size: 9px;
+    position: relative;
+    top: 3px;
+    cursor: pointer;
+}
+
+#popupCart{
+    display: none;
+    width: 700px;
+
+    .cart-title-number{
+        font-size: 20px;
+        margin-bottom: 4px;
+        font-weight: bold;
+    }
+    .cart-title{
+        font-size: 15px;
+        margin-bottom: 4px;
+    }
+}
+
+.myCartDetailsPage{
+    .titleCard{
+        text-align: left !important;
+    }
+
+    .logoDetails{
+        float: left;
+
+        img{
+            width: 96px !important;
+        }
     }
 }

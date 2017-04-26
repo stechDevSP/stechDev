@@ -53,6 +53,12 @@ export class Registration extends React.Component {
             $(".companyNameAlert").show();
         }
 
+        if ($(".companyAccount").val() === "") {
+            $(".companyAccountAlert").show();
+        } else {
+            $(".companyAccountAlert").show();
+        }
+
         if ($(".companyEmail").val().indexOf('@') < 0) {
             $(".companyEmailAlert").show();
         } else {
@@ -66,7 +72,7 @@ export class Registration extends React.Component {
         }
 
 
-        if ($(".companyName").val() !== "" && $(".companyEmail").val().indexOf('@') > 0 && $(".companyPassword").val() !== "") {
+        if ($(".companyName").val() !== "" && $(".companyEmail").val().indexOf('@') > 0 && $(".companyAccount").val() !== "" && $(".companyPassword").val() !== "") {
             this.setState({ showSelectApps: true });
 
             var usersArray = [];
@@ -101,7 +107,7 @@ export class Registration extends React.Component {
         }
     }
     cleanClick() {
-        $(".register-form").find("input").val("");
+        //$(".register-form").find("input").val("");
         $('.alert').hide();
     }
     render() {
@@ -126,7 +132,8 @@ export class Registration extends React.Component {
                     <div className="col-md-12">
                         <div className="nameCompany col-md-6 col-xs-12">
                             <div className="alert alert-danger companyNameAlert" role="alert">Please insert the company name</div>
-                            <label>Company Name (*):</label>
+                            <label className="labelInfo">Company Name (*):</label>
+                            <div className="tooltipReg" title="Insert your company name">i</div>
                             <input type="text" className="form-control companyName" placeholder="Insert your company name"/>
                         </div>
                         <div className="jobCategory col-md-6 col-xs-12">
@@ -158,19 +165,23 @@ export class Registration extends React.Component {
                             <input type="text" className="form-control companyLocation" placeholder="Insert your company location"/>
                         </div>
                         <div className="locationCompany col-md-6 col-xs-12">
-                            <label>Company Phone number:</label>
-                            <input type="text" className="form-control companyPhone" placeholder="Insert your company phone number"/>
+                            <div className="alert alert-danger companyEmailAlert" role="alert">Please insert an email</div>
+                            <label className="labelInfo">Company Email (*):</label>
+                            <div className="tooltipReg" title="Insert a valid email">i</div>
+                            <input type="text" className="form-control companyEmail" placeholder="Insert your company email"/>
                         </div>
                     </div>
                     <div className="col-md-12">
                         <div className="emailCompany col-md-6 col-xs-12">
-                            <div className="alert alert-danger companyEmailAlert" role="alert">Please insert an email</div>
-                            <label>Company Email (*):</label>
-                            <input type="email" className="form-control companyEmail" aria-describedby="emailHelp" placeholder="Enter email" />
+                            <div className="alert alert-danger companyAccountAlert" role="alert">Please insert an email</div>
+                            <label className="labelInfo">User Account (*):</label>
+                            <div className="tooltipReg" title="Insert an user account with admin role">i</div>
+                            <input type="email" className="form-control companyAccount" aria-describedby="accountHelp" placeholder="Enter account" />
                         </div>
                         <div className="passwordCompany col-md-6 col-xs-12">
                             <div className="alert alert-danger companyPasswordAlert" role="alert">Please insert a password</div>
-                            <label>Password (*):</label>
+                            <label className="labelInfo">User Password (*):</label>
+                            <div className="tooltipReg" title="Insert the password of your user account">i</div>
                             <input type="password" className="form-control companyPassword" placeholder="Enter password"/>
                         </div>
                     </div>

@@ -21,7 +21,6 @@
             $(".welcome-zone").slideDown();
         }
 
-
         if ($(".totalApps").html() == "No apps found") {
             $(".totalApps").addClass("noElements");
         }
@@ -97,11 +96,14 @@
             }
         });
 
-        $(".cart-icon").click(function() {
-            $(".welcome-component").slideUp();
-            $(".registration-zone, .select-version").show();
-            $(".payment-zone").slideDown();
-        });
+        $(".cart-icon").fancybox();
+        // $(".cart-icon").click(function() {
+        //     // $(".welcome-component").slideUp();
+        //     // $(".registration-zone, .select-version").show();
+        //     // $(".payment-zone").slideDown();
+
+
+        // });
     };
 
     APP.EVENTS.getQueryString = function(variable, query) {

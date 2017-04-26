@@ -18,7 +18,7 @@
 @import 'vendors/font-awesome';
 @import 'vendors/normalize';
 @import 'vendors/bootstrap';
-@import 'vendors/fancybox';
+
 @import 'vendors/c3';
 
 /**
@@ -62,6 +62,7 @@
  /**
  * Import element CSS files that should be applied on the whole page
  */
+@import 'vendors/fancybox';
 @import 'components/external';
 @import 'components/welcomePage';
 @import 'components/stMultiList';
