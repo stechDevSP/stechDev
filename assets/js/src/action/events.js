@@ -61,13 +61,13 @@
 
         });
 
-        // $(".logo").click(function() {
-        //     $(".welcome-component").slideUp();
-        //     $(".welcome-zone").slideDown();
-        //     $(".cart-icon, .profile-drop, .select-currency").hide();
-        //     $(".alert").hide();
-        //     $(".form-control").val("");
-        // });
+        $(".logo").click(function() {
+            $(".welcome-component").slideUp();
+            $(".welcome-zone").slideDown();
+            $(".cart-icon, .profile-drop, .select-currency").hide();
+            $(".alert").hide();
+            //$(".form-control").val("");
+        });
 
         $(".go-resetPassword").click(function() {
             $(".welcome-component").slideUp();

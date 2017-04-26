@@ -31,6 +31,11 @@ export class Version extends React.Component {
         this.cleanClick = this.cleanClick.bind(this);
 
         var myAppsSelected = sessionStorage.getItem("MyAppsDetails");
+        var myPackageSel = sessionStorage.getItem("packageSelected");
+
+        if (myPackageSel) {
+            $("." + myPackageSel).addClass("packageSel");
+        }
 
         self.state = {
             showSelectApps: false,
@@ -58,6 +63,9 @@ export class Version extends React.Component {
 
         $(".packageSelected").html($("." + classClick).find(".nameVersion").html());
 
+        sessionStorage.setItem("packageSelected", $("." + classClick).find(".nameVersion").html());
+
+        $(".packageSelDetails").html("Your business plan: " + $("." + classClick).find(".nameVersion").html());
     }
     finishClick() {
         var r = confirm("Are you sure to buy these business plan?");

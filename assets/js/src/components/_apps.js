@@ -246,7 +246,7 @@ export class Apps extends React.Component {
         $(".premium").find(".priceDollarVersion").html(priceDollarPremium + " $");
         $(".premium").find(".valueDollarPrice").html(subDollarPremium + " $");
 
-        $(".package").removeClass("packageSel");
+        //$(".package").removeClass("packageSel");
         $(".packageVersions").show();
         $(".select-version").slideDown();
         $(".select-currency").show();
