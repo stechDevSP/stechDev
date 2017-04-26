@@ -88,6 +88,21 @@ export class Apps extends React.Component {
                 "MonthDollarPrice": 12,
                 "StartSterlinPrice": 270,
                 "MonthSterlinPrice": 9
+            }, {
+                "Logo": "../_img/png/news.png",
+                "Id": 5,
+                "Name": "ST-News Aggregate",
+                "Description": "Aggregate all news from a lot of provider like facebook, twitter etc...",
+                "DescriptionFull": "View in your application all news aggregate and searchable by provider, name, topic, title and much more",
+                "Pic1": "#",
+                "Pic2": "#",
+                "Pic3": "#",
+                "StartPrice": 340,
+                "MonthPrice": 10,
+                "StartDollarPrice": 400,
+                "MonthDollarPrice": 12,
+                "StartSterlinPrice": 300,
+                "MonthSterlinPrice": 9
             }];
 
             sessionStorage.setItem("AllApps", JSON.stringify(appsArray));
@@ -270,7 +285,7 @@ export class Apps extends React.Component {
 
         var items = this.state.apps.map(function(item, i) {
             var app = (
-                <div className={"col-md-3 col-sm-6 col-xs-12 card cardShop card_" + i + " cardId_" + item.Id} key={i}>
+                <div className={"col-md-4 col-sm-6 col-xs-12 card cardShop card_" + i + " cardId_" + item.Id} key={i}>
                     <div className={"titleCard cardTitle_" + i}>{item.Name}</div>
                         <div className="flip-container">
                             <div className="flipper">
