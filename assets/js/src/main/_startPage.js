@@ -44,7 +44,7 @@ export class StartPage extends React.Component {
                     <div className="animated fadeindown welcomeTo">Welcome to </div>
                     <div className="animated fadeindown welcomeToName">ST Solutions</div>
                     <div className="animated bouncein welcomeToDescr">
-                        <div>Hi, we are Stech - Sharepoint Technical Solutions, a brand new company formed by a group of very professional dev with a great knowledge about Sharepoint and Microsoft's products.</div>
+                        <div>Hi, we are Stech - Solutions & Services, a brand new company formed by a group of very professional dev with a great knowledge about Sharepoint and Microsoft's products.</div>
                         <div>Stech Solutions is an new hub of innovative Sharepoint's services.</div>
                         <div>Here you could find some apps that isn't available in the out of the box infrastructure.</div>
                         <div>How many times you would check how your intranet works...how many users really use your infrastructure...</div>
