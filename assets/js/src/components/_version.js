@@ -68,64 +68,77 @@ export class Version extends React.Component {
         $(".packageSelDetails").html("Your business plan: " + $("." + classClick).find(".nameVersion").html());
     }
     finishClick() {
-        var r = confirm("Are you sure to buy these business plan?");
-        if (r == true) {
-            console.log("Go to the payment...You pressed OK!");
+        // var r = confirm("Are you sure to buy these business plan?");
+        // if (r == true) {
+        //     console.log("Go to the payment...You pressed OK!");
 
-            var totalToPayEuro = parseInt($(".priceEuroPackageSel").html()) + parseInt($(".subEuroPackageSel").html()) + " €";
-            var totalToPaySterlin = parseInt($(".priceSterlinPackageSel").html()) + parseInt($(".subSterlinPackageSel").html()) + " £";
-            var totalToPayDollar = parseInt($(".priceDollarPackageSel").html()) + parseInt($(".subDollarPackageSel").html()) + " $";
+        var totalToPayEuro = parseInt($(".priceEuroPackageSel").html()) + parseInt($(".subEuroPackageSel").html()) + " €";
+        var totalToPaySterlin = parseInt($(".priceSterlinPackageSel").html()) + parseInt($(".subSterlinPackageSel").html()) + " £";
+        var totalToPayDollar = parseInt($(".priceDollarPackageSel").html()) + parseInt($(".subDollarPackageSel").html()) + " $";
 
-            var finalValue = 0;
-            var myCurrency = "EUR";
+        var finalValue = 0;
+        var myCurrency = "EUR";
 
-            if ($(".myCurrency").html() === "€") {
+        if ($(".myCurrency").html() === "€") {
+            if ($(".packageSelected").html().toLowerCase() !== "premium") {
                 finalValue = parseInt($(".priceEuroPackageSel").html()) + parseInt($(".subEuroPackageSel").html());
-                myCurrency = "EUR";
-            } else if ($(".myCurrency").html() === "£") {
+            } else {
+                finalValue = parseInt($(".priceEuroPackageSel").html())
+            }
+
+            myCurrency = "EUR";
+        } else if ($(".myCurrency").html() === "£") {
+            if ($(".packageSelected").html().toLowerCase() !== "premium") {
                 finalValue = parseInt($(".priceSterlinPackageSel").html()) + parseInt($(".subSterlinPackageSel").html());
-                myCurrency = "GBP";
             } else {
-                finalValue = parseInt($(".priceDollarPackageSel").html()) + parseInt($(".subDollarPackageSel").html());
-                myCurrency = "USD";
+                finalValue = parseInt($(".priceSterlinPackageSel").html());
             }
-
-            this.setState({
-                showSelectApps: true,
-                finalValue: finalValue,
-                myCurrency: myCurrency,
-                totalToPayEuro: totalToPayEuro,
-                totalToPaySterlin: totalToPaySterlin,
-                totalToPayDollar: totalToPayDollar,
-                valueToPayEuro: parseInt($(".priceEuroPackageSel").html()),
-                valueToPaySterlin: parseInt($(".priceSterlinPackageSel").html()),
-                valueToPayDollar: parseInt($(".priceDollarPackageSel").html()),
-                subToPayEuro: parseInt($(".subEuroPackageSel").html()),
-                subToPaySterlin: parseInt($(".subSterlinPackageSel").html()),
-                subToPayDollar: parseInt($(".subDollarPackageSel").html()),
-                numberPackages: $(".orderNumber").html(),
-                packageSelected: $(".packageSelected").html()
-            });
-
-            $(".version-select-zone").slideUp();
-            $(".select-currency").hide();
-
-            $(".payment-zone").slideDown();
-
-            var htmlPayment = "";
-
-            if (myCurrency === "EUR") {
-                htmlPayment = "<div className='euro totalStartPriceEuro'><div className='startPricePayEuro'>Total start bundle: <span className='finalPackageSel'><b>" + parseInt($(".priceEuroPackageSel").html()) + "</b></span> €</div><div className='subPricePay'>You will pay <span className='finalSubSel'><b>" + parseInt($(".subEuroPackageSel").html()) + "</b></span> for your monthly subscription</div><div className='totalToPay'>Total to pay: <span className='finalTotSel'><b>" + totalToPayEuro + "</b></span></div></div>";
-            } else if (myCurrency === "GBP") {
-                htmlPayment = "<div className='sterlina totalStartPriceEuro'><div className='startPricePaySterlin'>Total start bundle: <span className='finalPackageSel'><b>" + parseInt($(".priceSterlinPackageSel").html()) + "</b></span> £</div><div className='subPricePay'>You will pay <span className='finalSubSel'><b>" + parseInt($(".subSterlinPackageSel").html()) + "</b></span> for your monthly subscription</div><div className='totalToPay'>Total to pay: <span className='finalTotSel'><b>" + totalToPaySterlin + "</b></span></div></div>";
-            } else {
-                htmlPayment = "<div className='dollaro totalStartPriceEuro'><div className='startPricePayDollar'>Total start bundle: <span className='finalPackageSel'><b>" + parseInt($(".priceDollarPackageSel").html()) + "</b></span> $</div><div className='subPricePay'>You will pay  <span className='finalSubSel'><b>" + parseInt($(".subDollarPackageSel").html()) + "</b></span> for your monthly subscription</div><div className='totalToPay'>Total to pay: <span className='finalTotSel'><b>" + totalToPayDollar + "</b></span></div></div>";
-            }
-
-            sessionStorage.setItem("MyPaymentDetails", htmlPayment);
+            myCurrency = "GBP";
         } else {
-            console.log("You pressed Cancel!");
+            if ($(".packageSelected").html().toLowerCase() !== "premium") {
+                finalValue = parseInt($(".priceDollarPackageSel").html()) + parseInt($(".subDollarPackageSel").html());
+            } else {
+                finalValue = parseInt($(".priceDollarPackageSel").html());
+            }
+            myCurrency = "USD";
         }
+
+        this.setState({
+            showSelectApps: true,
+            finalValue: finalValue,
+            myCurrency: myCurrency,
+            totalToPayEuro: totalToPayEuro,
+            totalToPaySterlin: totalToPaySterlin,
+            totalToPayDollar: totalToPayDollar,
+            valueToPayEuro: parseInt($(".priceEuroPackageSel").html()),
+            valueToPaySterlin: parseInt($(".priceSterlinPackageSel").html()),
+            valueToPayDollar: parseInt($(".priceDollarPackageSel").html()),
+            subToPayEuro: parseInt($(".subEuroPackageSel").html()),
+            subToPaySterlin: parseInt($(".subSterlinPackageSel").html()),
+            subToPayDollar: parseInt($(".subDollarPackageSel").html()),
+            numberPackages: $(".orderNumber").html(),
+            packageSelected: $(".packageSelected").html()
+        });
+
+        $(".version-select-zone").slideUp();
+        $(".select-currency").hide();
+
+        $(".payment-zone").slideDown();
+
+        var htmlPayment = "";
+
+        if (myCurrency === "EUR") {
+            htmlPayment = "<div className='euro totalStartPriceEuro'><div className='startPricePayEuro'>Total start bundle: <span className='finalPackageSel'><b>" + parseInt($(".priceEuroPackageSel").html()) + "</b></span> €</div><div className='subPricePay'>You will pay <span className='finalSubSel'><b>" + parseInt($(".subEuroPackageSel").html()) + "</b></span> € for your monthly subscription</div><div className='totalToPay'>Total to pay: <span className='finalTotSel'><b>" + totalToPayEuro + "</b></span></div></div>";
+        } else if (myCurrency === "GBP") {
+            htmlPayment = "<div className='sterlina totalStartPriceEuro'><div className='startPricePaySterlin'>Total start bundle: <span className='finalPackageSel'><b>" + parseInt($(".priceSterlinPackageSel").html()) + "</b></span> £</div><div className='subPricePay'>You will pay <span className='finalSubSel'><b>" + parseInt($(".subSterlinPackageSel").html()) + "</b></span> £ for your monthly subscription</div><div className='totalToPay'>Total to pay: <span className='finalTotSel'><b>" + totalToPaySterlin + "</b></span></div></div>";
+        } else {
+            htmlPayment = "<div className='dollaro totalStartPriceEuro'><div className='startPricePayDollar'>Total start bundle: <span className='finalPackageSel'><b>" + parseInt($(".priceDollarPackageSel").html()) + "</b></span> $</div><div className='subPricePay'>You will pay  <span className='finalSubSel'><b>" + parseInt($(".subDollarPackageSel").html()) + "</b></span> $ for your monthly subscription</div><div className='totalToPay'>Total to pay: <span className='finalTotSel'><b>" + totalToPayDollar + "</b></span></div></div>";
+        }
+
+        sessionStorage.setItem("MyPaymentDetails", htmlPayment);
+        // } else {
+        //     console.log("You pressed Cancel!");
+        // }
     }
     cleanClick() {
         $(".package").removeClass("packageSel");

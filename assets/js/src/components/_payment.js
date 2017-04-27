@@ -78,8 +78,8 @@ export class Payment extends React.Component {
         $(".version-select-zone").slideDown();
     }
     finishClick() {
-        var r = confirm("Are you sure to pay these apps?");
-        if (r == true) {
+        // var r = confirm("Are you sure to pay these apps?");
+        // if (r == true) {
             console.log("Finish payment...You pressed OK!");
             var companyName = $(".companyName").html();
             var urlSite = APP.EVENTS.getQueryString("SPUrl");
@@ -87,7 +87,7 @@ export class Payment extends React.Component {
             var storedApps = [];
             var storedNameApps = [];
 
-            $.each($(".infoCardAdded"), function(index, value) {
+            $.each($(".content").find(".infoCardAdded"), function(index, value) {
                 var appName = $(this).find(".titleCard").html();
                 var appDescr = $(this).find(".descriptionCard").html();
                 var appDescriptionFull = $(this).find(".descrFull").html();
@@ -128,9 +128,9 @@ export class Payment extends React.Component {
             sessionStorage.setItem("finalRegisteredUsers", arrayUsersStorage);
 
             location.reload();
-        } else {
-            console.log("You pressed Cancel!");
-        }
+        // } else {
+        //     console.log("You pressed Cancel!");
+        // }
     }
     render() {
         return (

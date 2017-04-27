@@ -54,7 +54,7 @@ export class Login extends React.Component {
 
             var checkLogin = false;
             $.each(usersArray, function(index, value) {
-                if (nameCompany === value.Email && passwordCompany === value.Password) {
+                if (nameCompany === value.UserAccount && passwordCompany === value.Password) {
                     checkLogin = true;
                 }
             });

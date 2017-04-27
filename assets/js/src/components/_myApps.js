@@ -93,9 +93,27 @@ export class MyApps extends React.Component {
         $(".totale-cart-value, .totale-sub-value, .orderNumber").html(0);
 
         $(".packageVersions").hide();
+        $(".cart-icon").show();
+        $(".version-select-zone").show();
+
         var versionSelected = sessionStorage.getItem("PackageSelected");
         $("." + versionSelected).show();
-        $("." + versionSelected).addClass("packageSel");
+        $("." + versionSelected).find(".package").addClass("packageSel");
+
+        $(".priceEuroPackageSel").html($("." + versionSelected).find(".priceEuroVersion").html());
+        $(".priceSterlinPackageSel").html($("." + versionSelected).find(".priceSterlinVersion").html());
+        $(".priceDollarPackageSel").html($("." + versionSelected).find(".priceDollarVersion").html());
+
+        $(".subEuroPackageSel").html($("." + versionSelected).find(".valueEuroPrice").html());
+        $(".subSterlinPackageSel").html($("." + versionSelected).find(".valueSterlinPrice").html());
+        $(".subDollarPackageSel").html($("." + versionSelected).find(".valueDollarPrice").html());
+
+        $(".packageSelected").html($("." + versionSelected).find(".nameVersion").html());
+
+        sessionStorage.setItem("packageSelected", $("." + versionSelected).find(".nameVersion").html());
+
+        $(".packageSelDetails").html("Your business plan: " + $("." + versionSelected).find(".nameVersion").html());
+
     }
     handleClick(nameApp) {
         var myApps = true;

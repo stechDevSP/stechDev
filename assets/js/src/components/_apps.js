@@ -6,7 +6,8 @@ import { ModalPopup } from '../reusable/modal.jsx';
 export class Apps extends React.Component {
     getInitialState() {
         return {
-            apps: []
+            apps: [],
+            appsSelected: []
         };
     }
     constructor(props) {
@@ -92,8 +93,8 @@ export class Apps extends React.Component {
                 "Logo": "../_img/png/news.png",
                 "Id": 5,
                 "Name": "ST-News Aggregate",
-                "Description": "Aggregate all news from a lot of provider like facebook, twitter etc...",
-                "DescriptionFull": "View in your application all news aggregate and searchable by provider, name, topic, title and much more",
+                "Description": "Aggregate all news from a lot of blog and newspaper in the world etc...",
+                "DescriptionFull": "View in your application all news aggregate and searchable by source, topic, title and much more",
                 "Pic1": "#",
                 "Pic2": "#",
                 "Pic3": "#",
@@ -108,10 +109,47 @@ export class Apps extends React.Component {
             sessionStorage.setItem("AllApps", JSON.stringify(appsArray));
         }
 
-        $(".cart-icon").show();
+        // var appsArraySel = [];
+        // var appsArray2 = [];
+
+        // var myAppsChoice = sessionStorage.getItem("MyAppsChoice");
+        // if (myAppsChoice) {
+        //     appsArraySel = JSON.parse(myAppsChoice);
+        //     $(".cart-buttons").show();
+        //     $(".orderNumber").html(appsArraySel.length);
+
+        //     var htmlCard = sessionStorage.getItem("MyAppsDetails");
+        //     if (htmlCard) {
+        //         $(".cart-container-prev").find(".noElements").remove();
+        //         $(".cart-container-prev").append(htmlCard);
+        //     }
+        // }
+
+
+
+        // if (appsArray.length > 0 && appsArraySel.length > 0) {
+        //     $.each(appsArray, function(iAll, eAll) {
+        //         var find = false;
+        //         $.each(appsArraySel, function(iMy, eMy) {
+        //             if (eMy.Name === eAll.Name) {
+        //                 find = true;
+        //             }
+        //         });
+        //         if (!find) {
+        //             appsArray2.push(eAll);
+        //         }
+        //     });
+        // } else {
+        //     appsArray2 = allApps;
+        // }
+
+        // sessionStorage.setItem("AppsShop", JSON.stringify(appsArray2));
+
+        // $(".cart-icon").show();
 
         self.state = {
             apps: appsArray
+            //appsSelected: appsArray2
         };
     }
     goBackClick() {
@@ -126,8 +164,30 @@ export class Apps extends React.Component {
             $(".cart-container").empty();
         }
 
+        var appSel = {
+            "Logo": $(".infoCard_" + idPackage).find(".logoCard").html(),
+            "Id": idPackage,
+            "Name": $(".cardTitle_" + idPackage).html(),
+            "Description": $(".infoCard_" + idPackage).find(".description").html(),
+            "DescriptionFull": $(".infoCard_" + idPackage).find(".descrFull").html(),
+            "Pic1": $(".infoCard_" + idPackage).find(".pic1Card").html(),
+            "Pic2": $(".infoCard_" + idPackage).find(".pic2Card").html(),
+            "Pic3": $(".infoCard_" + idPackage).find(".pic3Card").html(),
+            "StartPrice": $(".infoCard_" + idPackage).find(".euroPrice").find(".priceCard").html(),
+            "MonthPrice": $(".infoCard_" + idPackage).find(".euroPrice").find(".priceSub").html(),
+            "StartDollarPrice": $(".infoCard_" + idPackage).find(".dollarPrice").find(".priceCard").html(),
+            "MonthDollarPrice": $(".infoCard_" + idPackage).find(".dollarPrice").find(".priceSub").html(),
+            "StartSterlinPrice": $(".infoCard_" + idPackage).find(".sterlinPrice").find(".priceCard").html(),
+            "MonthSterlinPrice": $(".infoCard_" + idPackage).find(".sterlinPrice").find(".priceSub").html()
+        };
+
+        // var arrayvar = this.state.appsSelected.slice();
+        // arrayvar.push(appSel);
+        // this.setState({ appsSelected: arrayvar });
+        // sessionStorage.setItem("MyAppsChoice", JSON.stringify(arrayvar));
+
         var idPackage = idPackage;
-        var htmlCard = "<div class='infoCardAdded cardAdded_" + idPackage + "'><div class='logoDetails'><img src='" + $(".infoCard_" + idPackage).find(".logoCard").html() + "' /></div><div class='titleCard'>" + $(".cardTitle_" + idPackage).html() + "</div><div class='descriptionCard'>" + $(".infoCard_" + idPackage).find(".description").html() + "</div><div class='priceCardDetails'>Standard package:<b><span class='euro selectedEuroPriceDet'>" + $(".infoCard_" + idPackage).find(".euroPrice").find(".priceCard").html() + "</span><span class='sterlina selectedSterlinPriceDet'>" + $(".infoCard_" + idPackage).find(".sterlinPrice").find(".priceCard").html() + "</span><span class='dollaro selectedDollarPriceDet'>" + $(".infoCard_" + idPackage).find(".dollarPrice").find(".priceCard").html() + "</span></b><span class='currencyDetail'> " + $(".myCurrency").html() + "</span></div><div class='priceSubDetails'>Standard package subscription:<b><span class='euro selectedEuroSubPriceDet'>" + $(".infoCard_" + idPackage).find(".euroPrice").find(".priceSub").html() + "</span><span class='dollaro selectedDollarSubPriceDet'>" + $(".infoCard_" + idPackage).find(".dollarPrice").find(".priceSub").html() + "</span><span class='sterlina selectedSterlinSubPriceDet'>" + $(".infoCard_" + idPackage).find(".sterlinPrice").find(".priceSub").html() + "</span></b><span class='currencyDetail'>" + $(".myCurrency").html() + "</span></div><div class='hiddenInfo'><div class='pic1Details'>" + $(".infoCard_" + idPackage).find(".pic1Card").html() + "</div><div class='pic2Details'>" + $(".infoCard_" + idPackage).find(".pic2Card").html() + "</div><div class='pic3Details'>" + $(".infoCard_" + idPackage).find(".pic3Card").html() + "</div><div class='descrFullDetails'>" + $(".infoCard_" + idPackage).find(".descrFull").html() + "</div></div><div class='deleteCard' id='deleteCard_" + idPackage + "' data-card-id='" + idPackage + "'><img class='icon icons8-Delete' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAABEklEQVRIS+WWyxHCMAxEdzugA+gAqICkYkogdJB0QAl0IEaMPZOPLDk55BIfg60nrbQaiJ0Od+LgICAROQF4JVlbkl9P4pr7C+lGj24peA+gCKu9b4E6AI9ZBSbMgORnHcl2HMMCadCrIdUE5kD06UAyK/IPVZJOqyrCUhLaw0mw9H0A0Mz7ao53ytaDacxqiFlRliyAWUNoVpIvuoZdAXMhbkUrKgshtSDtxRPApWBa12e10ilEp0s3hXdCWLFHIlILyQm4sNJ4exDtiZ7Q1NFmiCBNCuCaOjSsiHwAnI2GTKYrMjXJe1SRtVTNEXZgb5K58upd5/rEgG3adZrNYkHOZR3BivcP8p8h2AKbft5Nuh8LOJobI3DWvwAAAABJRU5ErkJggg==' width='26' height='26' /></div></div>";
+        var htmlCard = "<div class='infoCardAdded cardAdded_" + idPackage + "'><div class='logoDetails'><img src='" + $(".infoCard_" + idPackage).find(".logoCard").html() + "' /></div><div class='titleCard'>" + $(".cardTitle_" + idPackage).html() + "</div><div class='descriptionCard'>" + $(".infoCard_" + idPackage).find(".description").html() + "</div><div class='priceCardDetails'>Standard package: <b><span class='euro selectedEuroPriceDet'>" + $(".infoCard_" + idPackage).find(".euroPrice").find(".priceCard").html() + "</span><span class='sterlina selectedSterlinPriceDet'>" + $(".infoCard_" + idPackage).find(".sterlinPrice").find(".priceCard").html() + "</span><span class='dollaro selectedDollarPriceDet'>" + $(".infoCard_" + idPackage).find(".dollarPrice").find(".priceCard").html() + "</span></b><span class='currencyDetail'> " + $(".myCurrency").html() + "</span></div><div class='priceSubDetails'>Standard package subscription: <b><span class='euro selectedEuroSubPriceDet'>" + $(".infoCard_" + idPackage).find(".euroPrice").find(".priceSub").html() + "</span><span class='dollaro selectedDollarSubPriceDet'>" + $(".infoCard_" + idPackage).find(".dollarPrice").find(".priceSub").html() + "</span><span class='sterlina selectedSterlinSubPriceDet'>" + $(".infoCard_" + idPackage).find(".sterlinPrice").find(".priceSub").html() + "</span></b><span class='currencyDetail'> " + $(".myCurrency").html() + "</span></div><div class='hiddenInfo'><div class='pic1Details'>" + $(".infoCard_" + idPackage).find(".pic1Card").html() + "</div><div class='pic2Details'>" + $(".infoCard_" + idPackage).find(".pic2Card").html() + "</div><div class='pic3Details'>" + $(".infoCard_" + idPackage).find(".pic3Card").html() + "</div><div class='descrFullDetails'>" + $(".infoCard_" + idPackage).find(".descrFull").html() + "</div></div><div class='deleteCard' id='deleteCard_" + idPackage + "' data-card-id='" + idPackage + "'><img class='icon icons8-Delete' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAABEklEQVRIS+WWyxHCMAxEdzugA+gAqICkYkogdJB0QAl0IEaMPZOPLDk55BIfg60nrbQaiJ0Od+LgICAROQF4JVlbkl9P4pr7C+lGj24peA+gCKu9b4E6AI9ZBSbMgORnHcl2HMMCadCrIdUE5kD06UAyK/IPVZJOqyrCUhLaw0mw9H0A0Mz7ao53ytaDacxqiFlRliyAWUNoVpIvuoZdAXMhbkUrKgshtSDtxRPApWBa12e10ilEp0s3hXdCWLFHIlILyQm4sNJ4exDtiZ7Q1NFmiCBNCuCaOjSsiHwAnI2GTKYrMjXJe1SRtVTNEXZgb5K58upd5/rEgG3adZrNYkHOZR3BivcP8p8h2AKbft5Nuh8LOJobI3DWvwAAAABJRU5ErkJggg==' width='26' height='26' /></div></div>";
 
         $(".cart-container-prev").find(".noElements").remove();
         $(".cart-container-prev").append(htmlCard);
@@ -265,8 +325,16 @@ export class Apps extends React.Component {
         $(".packageVersions").show();
         $(".select-version").slideDown();
         $(".select-currency").show();
-        $(".btn-versions").hide();
 
+        var versionSelected = sessionStorage.getItem("packageSelected");
+        if (!versionSelected) {
+            $(".btn-versions").hide();
+        } else {
+            $("." + versionSelected).find(".package").addClass("packageSel");
+        }
+
+        $(".version-select-zone").show();
+        
         var htmlCard = $(".cart-container-prev").html();
 
         sessionStorage.setItem("MyAppsDetails", htmlCard);
