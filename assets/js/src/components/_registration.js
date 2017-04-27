@@ -39,14 +39,6 @@ export class Registration extends React.Component {
         this.setState({ showSelectApps: false });
     }
     finishClick() {
-        // $.each($(".register-form").find(".form-control"), function() {
-        //     if ($(this).val() === "") {
-        //         $(this).parent().find(".alert").show();
-        //     } else {
-        //         $(this).parent().find(".alert").hide();
-        //     }
-        // });
-
         if ($(".companyName").val() === "") {
             $(".companyNameAlert").show();
         } else {
@@ -89,6 +81,7 @@ export class Registration extends React.Component {
                 CompanyLocation: $(".companyLocation").val(),
                 CompanyPhoneNumber: $(".companyPhone").val(),
                 CompanyEmail: $(".companyEmail").val(),
+                UserAccount: $(".companyAccount").val(),
                 Password: $(".companyPassword").val()
             };
 
@@ -102,6 +95,7 @@ export class Registration extends React.Component {
             $(".select-apps-zone").slideDown();
             $(".alert").hide();
             $(".select-currency").show();
+            $(".cart-icon").show();
         } else {
             this.setState({ showSelectApps: false });
         }
@@ -138,7 +132,7 @@ export class Registration extends React.Component {
                         </div>
                         <div className="jobCategory col-md-6 col-xs-12">
                             <label>Job category:</label>
-                            <select className="form-control" id="selJobCategory" placeholder="Select your job category" value="Select your job category">
+                            <select className="form-control" id="selJobCategory" placeholder="Select your job category">
                                 <option disabled>Select your job category</option>
                                 <option>Agriculture, Food and Natural Resources</option>
                                 <option>Architecture and Construction</option>

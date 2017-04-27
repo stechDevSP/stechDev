@@ -5,6 +5,7 @@ import { StMultiList } from '../webparts/st-multilist.jsx';
 import { StCheckUp } from '../webparts/st-checkup.jsx';
 import { StProjectGantter } from '../webparts/st-projectgantter.jsx';
 import { StPdfMaker } from '../webparts/st-pdfmaker.jsx';
+import { StNewsAggregate } from '../webparts/st-newsaggregate.jsx';
 
 export class MyApps extends React.Component {
     getInitialState() {
@@ -13,6 +14,7 @@ export class MyApps extends React.Component {
             showCheckUp: false,
             showProjectGantter: false,
             showPdfMaker: false,
+            showNews: false,
             apps: [],
             appsRemain: []
         };
@@ -59,16 +61,22 @@ export class MyApps extends React.Component {
 
         self.state = {
             apps: appsArray,
-            appsRemain: appsArray2
+            appsRemain: appsArray2,
+            showCheckUp: false,
+            showPdfMaker: false,
+            showMultiList: false,
+            showProjectGantter: false,
+            showNews: false
         };
     }
     goBackClick() {
         $(".goBack-selectApps").hide();
         $(".view-my-apps, .profile-drop, .select-currency").show();
         this.setState({ showCheckUp: false });
-        this.setState({ showHPdfMaker: false });
+        this.setState({ showPdfMaker: false });
         this.setState({ showMultiList: false });
         this.setState({ showProjectGantter: false });
+        this.setState({ showNews: false });
     }
     goShopClick() {
         $(".my-select-apps-zone").slideUp();
@@ -85,9 +93,27 @@ export class MyApps extends React.Component {
         $(".totale-cart-value, .totale-sub-value, .orderNumber").html(0);
 
         $(".packageVersions").hide();
+        $(".cart-icon").show();
+        $(".version-select-zone").show();
+
         var versionSelected = sessionStorage.getItem("PackageSelected");
         $("." + versionSelected).show();
-        $("." + versionSelected).addClass("packageSel");
+        $("." + versionSelected).find(".package").addClass("packageSel");
+
+        $(".priceEuroPackageSel").html($("." + versionSelected).find(".priceEuroVersion").html());
+        $(".priceSterlinPackageSel").html($("." + versionSelected).find(".priceSterlinVersion").html());
+        $(".priceDollarPackageSel").html($("." + versionSelected).find(".priceDollarVersion").html());
+
+        $(".subEuroPackageSel").html($("." + versionSelected).find(".valueEuroPrice").html());
+        $(".subSterlinPackageSel").html($("." + versionSelected).find(".valueSterlinPrice").html());
+        $(".subDollarPackageSel").html($("." + versionSelected).find(".valueDollarPrice").html());
+
+        $(".packageSelected").html($("." + versionSelected).find(".nameVersion").html());
+
+        sessionStorage.setItem("packageSelected", $("." + versionSelected).find(".nameVersion").html());
+
+        $(".packageSelDetails").html("Your business plan: " + $("." + versionSelected).find(".nameVersion").html());
+
     }
     handleClick(nameApp) {
         var myApps = true;
@@ -97,6 +123,7 @@ export class MyApps extends React.Component {
             this.setState({ showPdfMaker: false });
             this.setState({ showMultiList: false });
             this.setState({ showProjectGantter: false });
+            this.setState({ showNews: false });
             myApps = false;
         } else {
             this.setState({ showCheckUp: false });
@@ -107,9 +134,10 @@ export class MyApps extends React.Component {
             this.setState({ showCheckUp: false });
             this.setState({ showMultiList: false });
             this.setState({ showProjectGantter: false });
+            this.setState({ showNews: false });
             myApps = false;
         } else {
-            this.setState({ showHPdfMaker: false });
+            this.setState({ showPdfMaker: false });
         }
 
         if (nameApp == "ST-MultiList") {
@@ -117,6 +145,7 @@ export class MyApps extends React.Component {
             this.setState({ showPdfMaker: false });
             this.setState({ showCheckUp: false });
             this.setState({ showProjectGantter: false });
+            this.setState({ showNews: false });
             myApps = false;
         } else {
             this.setState({ showHelpDesk: false });
@@ -127,9 +156,21 @@ export class MyApps extends React.Component {
             this.setState({ showPdfMaker: false });
             this.setState({ showMultiList: false });
             this.setState({ showCheckUp: false });
+            this.setState({ showNews: false });
             myApps = false;
         } else {
             this.setState({ showProjectGantter: false });
+        }
+
+        if (nameApp == "ST-News Aggregate") {
+            this.setState({ showNews: true });
+            this.setState({ showProjectGantter: false });
+            this.setState({ showPdfMaker: false });
+            this.setState({ showMultiList: false });
+            this.setState({ showCheckUp: false });
+            myApps = false;
+        } else {
+            this.setState({ showNews: false });
         }
 
         if (myApps) {
@@ -205,9 +246,10 @@ export class MyApps extends React.Component {
                 </div>
                 <div id="view" className="div-React">
                     {this.state.showCheckUp ? <StCheckUp /> : <div className="STCheckUp"></div>}
-                    {this.state.showHPdfMaker ? <StPdfMaker /> : <div className="StPdfMaker"></div>}
+                    {this.state.showPdfMaker ? <StPdfMaker /> : <div className="StPdfMaker"></div>}
                     {this.state.showMultiList ? <StMultiList /> : <div className="StMultiList"></div>}
                     {this.state.showProjectGantter ? <StProjectGantter /> : <div className="StProjectGantter"></div>}
+                    {this.state.showNews ? <StNewsAggregate /> : <div className="StNewsAggregate"></div>}
                 </div>
             </div>
         );

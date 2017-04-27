@@ -50,6 +50,7 @@ export class StartPage extends React.Component {
                         <div>How many times you would check how your intranet works...how many users really use your infrastructure...</div>
                         <div>Help your users to work easily and faster...</div>
                         <div>Create fast and very dinamically Pdf files to export...</div>
+                        <div>Find all news in the world in one point...</div>
                         <div><b>Now you can!</b></div>
                         <div>Manage, with simple steps and features, your intranet activities.</div>
                         <div>Everything merged with your existing Sharepoint environment</div>
