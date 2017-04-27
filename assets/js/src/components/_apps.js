@@ -50,9 +50,9 @@ export class Apps extends React.Component {
                 "Name": "ST-PdfMaker",
                 "Description": "Select an item from one of your list & create in few steps your Pdf",
                 "DescriptionFull": "Create your custom pdf files with drag & drop all the information you need from a Sharepoint's list",
-                "Pic1": "#",
-                "Pic2": "#",
-                "Pic3": "#",
+                "Pic1": "../IMG_PowerPoint/ST-pdf1.png",
+                "Pic2": "../IMG_PowerPoint/ST-pdf2.png",
+                "Pic3": "../IMG_PowerPoint/ST-pdf3.png",
                 "StartPrice": 300,
                 "MonthPrice": 10,
                 "StartDollarPrice": 360, // euro x 1.2,
@@ -65,8 +65,8 @@ export class Apps extends React.Component {
                 "Name": "ST-MultiList",
                 "Description": "Select & trasform one list in a task list with a lot of functionalities",
                 "DescriptionFull": "Select a list from your Sharepoint's environment and trasform it in a very easy way in a task list with a lot functionalities",
-                "Pic1": "#",
-                "Pic2": "#",
+                "Pic1": "../IMG_PowerPoint/ST-MultiList_slide1.png",
+                "Pic2": "../IMG_PowerPoint/ST-MultiList_slide2.png",
                 "Pic3": "#",
                 "StartPrice": 200,
                 "MonthPrice": 10,
@@ -95,7 +95,7 @@ export class Apps extends React.Component {
                 "Name": "ST-News Aggregate",
                 "Description": "Aggregate all news from a lot of blog and newspaper in the world etc...",
                 "DescriptionFull": "View in your application all news aggregate and searchable by source, topic, title and much more",
-                "Pic1": "#",
+                "Pic1": "../IMG_PowerPoint/ST-news.png",
                 "Pic2": "#",
                 "Pic3": "#",
                 "StartPrice": 340,
@@ -334,7 +334,7 @@ export class Apps extends React.Component {
         }
 
         $(".version-select-zone").show();
-        
+
         var htmlCard = $(".cart-container-prev").html();
 
         sessionStorage.setItem("MyAppsDetails", htmlCard);
