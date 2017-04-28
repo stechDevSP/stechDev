@@ -1,0 +1,134 @@
+//FLIP ORIZZONTALE
+.flip-container-news:hover .flipper-news,
+.flip-container-news.hover .flipper-news {
+    transform: rotateY(-180deg);
+}
+
+.flip-container-news{
+    height: 140px;
+    width: 140px;
+    font-size: 13px;
+    margin: auto;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    float: left;
+}
+
+.frontNews,
+.backNews {
+    padding: 10px;
+    height: 140px;
+    width: 140px;
+    font-size: 13px;
+}
+
+.backNews {
+    span{
+        font-weight: bold;
+    }
+
+    .backInfoNews {
+        padding-top: 10px;
+    }
+
+    .newsTitle{
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+        padding-bottom: 5px;
+    }
+
+    .newsUrl{
+        display: none;
+    }
+}
+
+.flipper-news {
+    transition: 1.5s;
+    transform-style: preserve-3d;
+    position: relative;
+    height: 140px;
+    width: 140px;
+}
+
+.frontNews,
+.backNews {
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    // border-radius: 5px;
+    // box-shadow: 4px 4px 5px #222;
+}
+
+.frontNews {
+    z-index: 2;
+    padding: 0px !important;
+    /* for firefox 31 */
+    transform: rotateY(0deg);
+
+    img{
+        width: 100%;
+    }
+}
+
+.backNews {
+    border:2px solid #fd5f00;
+    color: #fd5f00;
+    transform: rotateY(-180deg);
+}
+
+.totalNews{
+    margin-top: 30px;
+}
+
+.newsSelected{
+    margin-top: 30px;
+    border-left: 1px solid #fd5f00;
+}
+
+.titleSelected{
+    text-align: center;
+    padding-bottom: 3px;
+    border-bottom: 1px solid #fd5f00;
+    margin-bottom: 10px;
+}
+.newsSelectItem{
+    padding: 4px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.selectNews{
+    float:left;
+    width: 30px;
+}
+
+.stNewsAggregate_app{
+    .title-select-apps{
+        font-size: 20px !important;
+    }
+}
+
+.news-container{
+    overflow: hidden;
+}
+
+.send-sel-news{
+    display: none;
+}
+
+
+.imgCard-sel{
+    float: left;
+    height: 40px;
+
+    img{
+        width:30px;
+    }
+}
+
+.titleCard-sel{
+    padding-left: 4px;
+    float: left;
+}
